@@ -229,8 +229,8 @@
         <h1 class="tagline reveal">Helping companies think clearly about what AI is doing to their brand and their audience.</h1>
         <p class="intro reveal">I'm a strategist based in Cape Town. I work with business owners, founders, and leadership teams at small and mid-sized businesses on what AI is doing to how their customers find them, how they experience the company, and whether they come back.</p>
         <div class="actions reveal">
-          <a class="btn btn-primary" href="#work">View Case Studies</a>
-          <a class="btn btn-outline" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Read Substack</a>
+          <a class="btn btn-primary" href="#engagements">View my services</a>
+          <a class="btn btn-outline" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Read my Substack</a>
         </div>
       </div>
       <div class="portrait reveal">
@@ -312,7 +312,7 @@
   <section class="voices">
     <div class="wrap">
       <div class="head-block reveal">
-        <h2 class="section-head">Voices of Collaboration</h2>
+        <h2 class="section-head">Testimonials</h2>
         <div class="accent-line"></div>
       </div>
       <div class="carousel reveal">
@@ -343,10 +343,6 @@
       <h2 class="reveal">Recent Writing</h2>
       <p class="reveal">I write regularly about AI's real-world implications — AI policy, the future of knowledge work, and what happens when systems don't account for the humans inside them.</p>
       <a class="btn btn-gold reveal" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a>
-      <div class="news reveal">
-        <input type="email" placeholder="Join the monthly newsletter" aria-label="Email address">
-        <button id="joinBtn">Join</button>
-      </div>
     </div>
   </section>
 </main>
@@ -394,11 +390,10 @@
     }
     document.querySelector('.car-btn.next').addEventListener('click', () => go(i + 1));
     document.querySelector('.car-btn.prev').addEventListener('click', () => go(i - 1));
-
-    // Newsletter button → Substack
-    document.getElementById('joinBtn').addEventListener('click', () => {
-      window.open('https://elzanneamao.substack.com', '_blank', 'noopener');
-    });
+    // Swipe support
+    let touchStartX = 0;
+    document.querySelector('.slides').addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    document.querySelector('.slides').addEventListener('touchend', e => { const diff = touchStartX - e.changedTouches[0].screenX; if (Math.abs(diff) > 50) go(diff > 0 ? i + 1 : i - 1); }, { passive: true });
 
     // Mobile menu toggle
     const menuIcon = document.querySelector('.menu-icon');

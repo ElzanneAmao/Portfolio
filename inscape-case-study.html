@@ -129,6 +129,23 @@
   .btn-download:hover{opacity:.9;}
   .btn-download svg{width:18px;height:18px;}
 
+  /* ---------- Testimonials ---------- */
+  .voices{background:var(--coolwhite);padding-block:96px;text-align:center;}
+  .carousel{max-width:820px;margin:48px auto 0;position:relative;}
+  .slides{position:relative;}
+  .slide{display:none;flex-direction:column;align-items:center;justify-content:center;padding-inline:24px;}
+  .slide.active{display:flex;}
+  .slide blockquote{background:none;padding:0;margin-bottom:0;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.42;color:var(--moss);max-width:54ch;}
+  .slide .attr{margin-top:28px;font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--moss);}
+  .slide .attr .role{display:block;font-weight:300;text-transform:none;letter-spacing:0;font-size:14px;margin-top:6px;color:var(--sage);}
+  .car-btn{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:28px;color:var(--sage);font-family:var(--serif);line-height:1;padding:8px;transition:color .3s ease;}
+  .car-btn:hover{color:var(--moss);}
+  .car-btn.prev{left:-8px;}
+  .car-btn.next{right:-8px;}
+  .dots{display:flex;gap:10px;justify-content:center;margin-top:36px;}
+  .dot{width:8px;height:8px;background:var(--hairline);border:none;cursor:pointer;padding:0;transition:background .3s ease;}
+  .dot.active{background:var(--gold);}
+
   /* ---------- Footer (light strip) ---------- */
   footer{background:var(--white);border-top:1px solid var(--hairline);padding-block:32px;}
   .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
@@ -291,6 +308,35 @@
       </div>
     </div>
   </section>
+
+  <!-- Testimonials -->
+  <section class="voices">
+    <div class="wrap">
+      <div class="reveal" style="text-align:center;">
+        <h2 class="section-head" style="text-align:center;">Testimonials</h2>
+        <div class="accent-line" style="margin:18px auto 0;width:72px;"></div>
+      </div>
+      <div class="carousel reveal">
+        <button class="car-btn prev" aria-label="Previous">&#8249;</button>
+        <button class="car-btn next" aria-label="Next">&#8250;</button>
+        <div class="slides">
+          <div class="slide active">
+            <blockquote>"Calm and collected, Elzanne probed with clarity and intent, helping me to hear myself with the same clarity, confidence, and authority to stick to our brand WHY. The result was a breathtaking brand identity, an interpretation of our vision."</blockquote>
+            <div class="attr">Thato Matlala-Tawana<span class="role">Human Capital Leadership &amp; Business Partnering · Client, 2024</span></div>
+          </div>
+          <div class="slide">
+            <blockquote>"Elzanne deeply comprehends that content is not solely about aesthetics and emotions, but equally about structure and purpose. Her ability to combine the artistic and analytical aspects of writing is a testament to her holistic approach."</blockquote>
+            <div class="attr">Haddas Shem Tov<span class="role">Creative Director, eTeacher Group · Direct manager, 2023</span></div>
+          </div>
+          <div class="slide">
+            <blockquote>"Elzanne played a key role in establishing a new approach to delivering Commerce degrees in block mode rather than traditional semester mode. She skillfully planned and managed this programme, which paved the way for rolling out block mode across all our degree programmes."</blockquote>
+            <div class="attr">Janie Steyn<span class="role">Head of Programme, Commerce &amp; Law, Pearson Institute of Higher Education · Direct manager, 2020</span></div>
+          </div>
+        </div>
+        <div class="dots"></div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
@@ -314,6 +360,25 @@
       }, { threshold: 0.1 });
       els.forEach(el => io.observe(el));
     } else { els.forEach(el => el.classList.add('in')); }
+
+    // Carousel
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dotsWrap = document.querySelector('.dots');
+    let ci = 0;
+    slides.forEach((_, idx) => {
+      const d = document.createElement('button');
+      d.className = 'dot' + (idx === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Go to testimonial ' + (idx + 1));
+      d.addEventListener('click', () => goTo(idx));
+      dotsWrap.appendChild(d);
+    });
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    function goTo(n){ ci = (n + slides.length) % slides.length; slides.forEach((s,idx) => s.classList.toggle('active', idx===ci)); dots.forEach((d,idx) => d.classList.toggle('active', idx===ci)); }
+    document.querySelector('.car-btn.next').addEventListener('click', () => goTo(ci + 1));
+    document.querySelector('.car-btn.prev').addEventListener('click', () => goTo(ci - 1));
+    let touchStartX = 0;
+    document.querySelector('.slides').addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+    document.querySelector('.slides').addEventListener('touchend', e => { const diff = touchStartX - e.changedTouches[0].screenX; if (Math.abs(diff) > 50) goTo(diff > 0 ? ci + 1 : ci - 1); }, { passive: true });
 
     // Mobile menu toggle
     const menuIcon = document.querySelector('.menu-icon');
