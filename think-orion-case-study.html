@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  EDITING NOTES — think-orion-case-study.html
+  ============================================================
+  HOW TO EDIT TEXT:
+    Change only the words BETWEEN tags. Don't touch tags, quotes,
+    or class="..." parts. Keep a backup of the folder first.
+
+  KEEP FILES TOGETHER in one folder or the links break.
+
+  THINGS TO REPLACE / CHECK ON THIS PAGE:
+    - HERO IMAGE (will break): find  src="https://lh3...  near the
+      top of the <body>. Replace the whole URL with your own image
+      filename, e.g. src="think-orion.jpg" (file in this folder).
+    - SUBSTACK LINK: find  href="https://elzanneamao.substack.com"
+      in the "I wrote about this..." line and swap in the specific
+      post URL when you have it.
+    - ROLE: in the hero meta, the value
+      "Strategic Lead, Content & AI Workflows" — change if you'd
+      prefer your title as it was in early 2025.
+    - SECTION HEADINGS (e.g. "Starting without a process") were
+      added as connective tissue — rename or remove freely; they
+      are just text inside <h2 class="section-head">...</h2>.
+
+  LINKS: edit the value inside href="...".
+  ============================================================
+-->
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Building Think Orion's onboarding system | Elzanne Amao</title>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --moss:#2c3830;
+    --sage:#7a8c6e;
+    --gold:#a8a44c;
+    --seaglass:#b8cdd4;
+    --coolwhite:#f1f4f2;
+    --white:#ffffff;
+    --hairline:#dde2dd;          /* light sage-grey for fine lines on white */
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"DM Sans",system-ui,sans-serif;
+    --container:1280px;
+    --margin:64px;
+    --reading:760px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--white);
+    color:var(--moss);
+    font-family:var(--sans);
+    font-weight:300;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  ::selection{background:var(--seaglass);color:var(--moss);}
+
+  .wrap{
+    max-width:var(--container);
+    margin-inline:auto;
+    padding-inline:var(--margin);
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--white);
+    border-bottom:1px solid var(--hairline);
+  }
+  .nav{
+    display:flex;justify-content:space-between;align-items:center;
+    height:80px;
+  }
+  .wordmark{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:26px;
+    letter-spacing:.01em;
+    color:var(--moss);
+  }
+  .nav-links{
+    display:flex;align-items:center;gap:32px;
+  }
+  .nav-links a{
+    font-family:var(--sans);
+    font-size:15px;font-weight:400;
+    color:var(--sage);
+    text-decoration:none;
+    padding-bottom:4px;
+    transition:color .3s ease;
+  }
+  .nav-links a:hover{color:var(--moss);}
+  .nav-links a.active{
+    color:var(--moss);
+    border-bottom:2px solid var(--gold);
+  }
+  .btn-cta{
+    font-family:var(--sans);
+    font-size:12px;font-weight:500;
+    text-transform:uppercase;letter-spacing:.1em;
+    background:var(--gold);
+    color:var(--moss);
+    border:none;
+    padding:11px 22px;
+    cursor:pointer;
+    transition:opacity .3s ease;
+  }
+  .btn-cta:hover{opacity:.88;}
+  .menu-icon{display:none;font-family:var(--sans);font-weight:500;color:var(--moss);}
+
+  /* ---------- Hero ---------- */
+  .hero{padding-top:120px;padding-bottom:48px;}
+  .hero-inner{max-width:66%;}
+  h1.title{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(2.75rem,6vw,5rem);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+    color:var(--moss);
+    margin-bottom:48px;
+  }
+  .meta{
+    display:flex;flex-wrap:wrap;gap:40px;
+    border-top:1px solid var(--hairline);
+    padding-top:24px;
+  }
+  .meta .label{
+    display:block;
+    font-family:var(--sans);font-size:12px;font-weight:500;
+    text-transform:uppercase;letter-spacing:.1em;
+    color:var(--sage);
+    margin-bottom:6px;
+  }
+  .meta .value{font-family:var(--sans);font-weight:400;color:var(--moss);}
+  .accent-line{width:96px;height:2px;background:var(--gold);margin-top:48px;}
+
+  /* ---------- Featured image ---------- */
+  .feature{margin-bottom:120px;}
+  .feature .frame{
+    aspect-ratio:21/9;
+    overflow:hidden;
+    border:1px solid var(--hairline);
+    background:var(--coolwhite);
+  }
+  .feature img{
+    width:100%;height:100%;object-fit:cover;
+    filter:grayscale(20%) contrast(1.05);
+    display:block;
+  }
+
+  /* ---------- Body ---------- */
+  .body-section{padding-bottom:120px;}
+  .reading{max-width:var(--reading);margin-inline:auto;}
+  .block{margin-bottom:48px;}
+  h2.section-head{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(1.75rem,3.5vw,2.5rem);
+    line-height:1.15;
+    color:var(--moss);
+    margin-bottom:24px;
+  }
+  .lead{
+    font-family:var(--sans);
+    font-weight:300;
+    font-size:20px;
+    line-height:1.65;
+    color:var(--moss);
+  }
+  .lead + .lead{margin-top:24px;}
+
+  /* pull-quote — Sea Glass panel */
+  blockquote{
+    background:var(--seaglass);
+    padding:40px;
+    margin-bottom:48px;
+  }
+  blockquote p{
+    font-family:var(--serif);
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.4rem,2.4vw,1.75rem);
+    line-height:1.35;
+    color:var(--moss);
+  }
+
+  /* Live Question — Cool White panel */
+  .callout{
+    background:var(--coolwhite);
+    border:1px solid var(--hairline);
+    padding:40px;
+    margin-bottom:48px;
+  }
+  .callout h3{
+    font-family:var(--serif);font-weight:500;font-size:1.55rem;
+    color:var(--moss);margin-bottom:10px;
+  }
+  .callout p{
+    font-family:var(--sans);font-weight:300;font-style:italic;
+    color:var(--moss);opacity:.92;line-height:1.6;
+  }
+  .callout .tag{
+    display:flex;align-items:center;gap:10px;margin-top:24px;
+    font-family:var(--sans);font-size:12px;font-weight:500;
+    text-transform:uppercase;letter-spacing:.1em;color:var(--sage);
+  }
+  .callout .tag .dot{width:9px;height:9px;background:var(--gold);display:inline-block;}
+
+  /* Architecture list — gold square markers (replaces broken **bold**) */
+  .pillars{list-style:none;margin-top:8px;}
+  .pillars li{
+    position:relative;
+    padding-left:28px;
+    margin-bottom:18px;
+    font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.6;
+    color:var(--moss);
+  }
+  .pillars li::before{
+    content:"";position:absolute;left:0;top:11px;
+    width:9px;height:9px;background:var(--gold);
+  }
+  .pillars li strong{font-weight:500;}
+
+  /* Substack link */
+  .substack-row{border-top:1px solid var(--hairline);padding-top:48px;}
+  .substack-link{display:inline-flex;align-items:center;gap:10px;text-decoration:none;}
+  .substack-link .text{
+    font-family:var(--sans);font-weight:500;color:var(--moss);
+    position:relative;
+  }
+  .substack-link .text::after{
+    content:"";position:absolute;left:0;bottom:-3px;width:100%;height:1px;
+    background:var(--moss);transform:scaleX(0);transform-origin:right;
+    transition:transform .35s ease;
+  }
+  .substack-link:hover .text::after{transform:scaleX(1);transform-origin:left;}
+  .substack-link .arrow{color:var(--gold);font-size:20px;transition:transform .3s ease;display:inline-block;}
+  .substack-link:hover .arrow{transform:translateX(5px);}
+
+  /* Back nav */
+  .backnav{border-top:1px solid var(--hairline);padding-block:48px;}
+  .back-link{
+    display:inline-flex;align-items:center;gap:10px;text-decoration:none;
+    font-family:var(--sans);font-size:12px;font-weight:500;
+    text-transform:uppercase;letter-spacing:.1em;color:var(--sage);
+    transition:color .3s ease;
+  }
+  .back-link .arrow{transition:transform .3s ease;display:inline-block;}
+  .back-link:hover{color:var(--moss);}
+  .back-link:hover .arrow{transform:translateX(-5px);}
+
+  /* ---------- Footer — light strip ---------- */
+  footer{background:var(--white);border-top:1px solid var(--hairline);padding-block:32px;}
+  .footer-inner{
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:16px;
+  }
+  .footer-inner .fname{font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--moss);}
+  .footer-mid{display:flex;gap:24px;}
+  .footer-mid a{font-family:var(--sans);font-size:14px;color:var(--sage);text-decoration:none;transition:color .3s ease;}
+  .footer-mid a:hover{color:var(--moss);}
+  .footer-copy{font-family:var(--sans);font-size:13px;color:var(--sage);}
+
+  /* ---------- Motion (progressive enhancement) ---------- */
+  .js .reveal{opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1s ease;}
+  .js .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){
+    .js .reveal{opacity:1;transform:none;transition:none;}
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    :root{--margin:20px;}
+    .nav-links{display:none;}
+    .menu-icon{display:block;}
+    .hero{padding-top:64px;}
+    .hero-inner{max-width:100%;}
+    .feature{margin-bottom:64px;}
+    .body-section{padding-bottom:64px;}
+    blockquote,.callout{padding:28px;}
+    .footer-inner{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav">
+    <a href="index.html" class="wordmark">Elzanne Amao</a>
+    <div class="nav-links">
+      <a href="index.html#work" class="active">Experience</a>
+      <a href="index.html#engagements">Services</a>
+      <a href="index.html#work">Case Studies</a>
+      <a href="index.html#writing">Writing</a>
+      <a href="about.html">About</a>
+      <button class="btn-cta">Connect</button>
+    </div>
+    <div class="menu-icon">Menu</div>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="wrap hero">
+    <div class="hero-inner">
+      <h1 class="title reveal">Building Think Orion's onboarding system</h1>
+      <div class="meta reveal">
+        <div>
+          <span class="label">Client</span>
+          <span class="value">Think Orion</span>
+        </div>
+        <div>
+          <span class="label">Year</span>
+          <span class="value">2025</span>
+        </div>
+        <div>
+          <span class="label">Role</span>
+          <span class="value">Strategic Lead, Content &amp; AI Workflows</span>
+        </div>
+      </div>
+      <div class="accent-line reveal"></div>
+    </div>
+  </section>
+
+  <!-- Featured image -->
+  <section class="wrap feature">
+    <div class="frame reveal">
+      <img alt="A calm, minimal corporate interior with light oak textures, muted greens and natural light — evoking strategic clarity and quiet luxury."
+           src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwCdq4cSwuV4Rtck6OL9AjnIepDwF1EF86lM6UO4o-HD94oqT9hr3rFG05g6xWiqsHBSobBxJjdhx6972tb-iDTpVzrHXBEOa_-MnDe6nz4C1TjqGr05WTrk-g02xbUo4npuVrEf6v2AU7nHHKVLYs-ZyEMKW_Yh5ew5TXiaG5CdiFzRMdyZzFAyX22K_xfbNhY84WicXsZafWB_jVbWMvptjLn16C8bqSxxFxn3Wb3xBrAh3nrZPGE_P5UAsR8uJ5ZwBtPKaoC7CE">
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="wrap body-section">
+    <div class="reading">
+
+      <div class="block reveal">
+        <h2 class="section-head">Starting without a process</h2>
+        <p class="lead">When I joined Think Orion in January 2025, there was no formalised onboarding process. One of the cofounders, Manno, described what he wanted: brand overview, audience personas, competitor analysis, brand guidelines, channel-specific hooks. He left me to figure out what each of those should actually be and how they should fit together.</p>
+        <p class="lead">I spent three to four days on the first client. Then the next. Then the next. By the fourth or fifth, the shape of a system was visible underneath what had started as a stack of separate deliverables.</p>
+      </div>
+
+      <div class="block reveal">
+        <h2 class="section-head">The stated problem, and the real one</h2>
+        <p class="lead">The stated problem was that onboarding was slow. The real problem was different. When the founders signed a new client, the work handed over to partner success managers and media buyers who had no foundation to work from. They needed something they could open on day one and start operating from — not a thirty-page strategy document, not a deck, something usable. That's why the overview doc ended up at one page, and why it included channel-specific hooks (paid, email, landing) rather than abstract messaging principles. The receiving team needed a starting point per channel, not a strategy to translate.</p>
+        <p class="lead">The persona work leaned heavily on pain points because pain points are what media buyers actually need to write ads against. The competitor analysis was framed around messaging — how they compete, what they claim, and how our positioning could mitigate or sidestep theirs — rather than as a general market scan.</p>
+      </div>
+
+      <div class="block reveal">
+        <h2 class="section-head">What the research caught</h2>
+        <p class="lead">One thing the research caught early: a training course client whose product claimed to cure a specific human condition. Peer-reviewed literature was clear that the claim wasn't supportable in the form they were making it. I flagged this to the team. The marketing was already in production because the client's lead representative kept asserting the claim, and it took several months and a separate family member's intervention before the position shifted. The engagement eventually fell apart for unrelated reasons, but the research had identified the structural problem within the first week. That kind of catch is one of the arguments for doing the research seriously rather than quickly.</p>
+      </div>
+
+      <blockquote class="reveal">
+        <p>"Diagnostic depth surfaces things the sales conversation can't."</p>
+      </blockquote>
+
+      <div class="block reveal">
+        <h2 class="section-head">Productising the system</h2>
+        <p class="lead">Around the time the agency had built up a body of these manual onboarding documents across multiple clients, Manno built a platform — trained on the outputs from the manual builds, hooked into the APIs the team needs. What had taken three to four days now takes about three hours. The structural deliverables are similar; the speed is real.</p>
+      </div>
+
+      <div class="block reveal">
+        <h2 class="section-head">What speed gives, and what it costs</h2>
+        <p class="lead">Running the productised version across roughly twenty programs at a prominent Middle Eastern university's online faculty over the past months, I've been able to see what the speed gives and what it costs. The structure of the research is preserved. The texture isn't, or isn't yet. When I ran the manual version on those early clients, I knew them — their competitors, their personas, the specific shape of their offer — well enough to walk into a meeting and brief the partner success managers from memory. Running twenty programs through the system in a fraction of that time, I don't know them the same way. I know the deliverables. The deliverables are good. The relationship between me and the underlying knowledge has changed.</p>
+      </div>
+
+      <div class="callout reveal">
+        <h3>The live question</h3>
+        <p>What kind of knowledge should a content operations system encode, what kind can it not, and where does a human operator need to stay in the loop for the work to retain its depth?</p>
+        <div class="tag"><span class="dot"></span>Working on this with Manno</div>
+      </div>
+
+      <div class="block reveal">
+        <p class="lead">It's a real engineering question that anyone building AI-assisted content systems is going to run into, and one of the more interesting parts of my role right now is being inside it.</p>
+      </div>
+
+      <div class="substack-row reveal">
+        <a class="substack-link" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">
+          <span class="text">I wrote about this tension at greater length on Substack</span>
+          <span class="arrow">&rarr;</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Back nav -->
+  <section class="wrap backnav">
+    <a class="back-link" href="index.html#work">
+      <span class="arrow">&larr;</span>
+      Back to portfolio
+    </a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="fname">Elzanne Amao</span>
+    <div class="footer-mid">
+      <a href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="#">LinkedIn</a>
+    </div>
+    <span class="footer-copy">© 2026 Elzanne Amao. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('in')); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    els.forEach(el => io.observe(el));
+  });
+</script>
+</body>
+</html>

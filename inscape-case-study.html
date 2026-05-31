@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  EDITING NOTES — inscape-case-study.html
+  ============================================================
+  HOW TO EDIT TEXT:
+    Change only the words BETWEEN tags. Don't touch tags, quotes,
+    or class="..." parts. Keep a backup of the folder first.
+
+  KEEP FILES TOGETHER in one folder or the links break.
+
+  THINGS TO REPLACE / CHECK ON THIS PAGE:
+    - TWO IMAGES (both will break), each found as src="https://lh3...
+        1. the wide hero/featured image near the top
+        2. the "Fictional Brands" image lower down
+      Replace each whole URL with your own image filename in this
+      folder, e.g. src="inscape-hero.jpg".
+    - EYEBROW: the small line "Curriculum Strategy & Content Design
+      · Inscape" above the title — edit if you want.
+    - SECTION HEADINGS match your real structure; rename freely.
+    - There is no "Download" button here (there was no real file
+      to download). Add one later if you create a summary PDF.
+
+  LINKS: edit the value inside href="...".
+  ============================================================
+-->
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restructuring a BA degree for distance delivery | Elzanne Amao</title>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --moss:#2c3830;
+    --sage:#7a8c6e;
+    --gold:#a8a44c;
+    --seaglass:#b8cdd4;
+    --coolwhite:#f1f4f2;
+    --white:#ffffff;
+    --hairline:#dde2dd;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"DM Sans",system-ui,sans-serif;
+    --container:1280px;
+    --margin:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--white);color:var(--moss);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  ::selection{background:var(--seaglass);color:var(--moss);}
+  a{color:inherit;}
+  .wrap{max-width:var(--container);margin-inline:auto;padding-inline:var(--margin);}
+
+  /* Scroll progress */
+  #progress{position:fixed;top:0;left:0;height:3px;background:var(--gold);width:0;z-index:60;transition:width .1s linear;}
+
+  /* ---------- Header ---------- */
+  header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--hairline);}
+  .nav{display:flex;justify-content:space-between;align-items:center;height:80px;}
+  .wordmark{font-family:var(--serif);font-weight:500;font-size:26px;letter-spacing:.01em;color:var(--moss);text-decoration:none;}
+  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-links a{font-family:var(--sans);font-size:15px;font-weight:400;color:var(--sage);text-decoration:none;padding-bottom:4px;transition:color .3s ease;}
+  .nav-links a:hover{color:var(--moss);}
+  .nav-links a.active{color:var(--moss);border-bottom:2px solid var(--gold);}
+  .btn-cta{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;background:var(--gold);color:var(--moss);border:none;padding:11px 22px;cursor:pointer;transition:opacity .3s ease;}
+  .btn-cta:hover{opacity:.88;}
+  .menu-icon{display:none;font-family:var(--sans);font-weight:500;color:var(--moss);}
+
+  .eyebrow{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.16em;color:var(--sage);display:block;}
+  .section-head{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.5rem);line-height:1.1;color:var(--moss);}
+  .accent-line{width:72px;height:2px;background:var(--gold);margin-top:18px;}
+
+  /* ---------- Hero ---------- */
+  .cs-hero{padding-top:80px;padding-bottom:40px;}
+  .cs-hero .eyebrow{margin-bottom:18px;}
+  .cs-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.75rem,6vw,5rem);line-height:1.04;letter-spacing:-0.01em;color:var(--moss);margin-bottom:28px;max-width:16ch;}
+  .cs-hero .lead{font-family:var(--sans);font-weight:300;font-size:19px;line-height:1.7;color:var(--moss);max-width:60ch;}
+
+  /* Featured image */
+  .feature{margin-bottom:96px;}
+  .feature .frame{aspect-ratio:21/9;overflow:hidden;border:1px solid var(--hairline);background:var(--coolwhite);}
+  .feature img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);transition:filter .7s ease;display:block;}
+  .feature .frame:hover img{filter:grayscale(0%);}
+
+  /* ---------- Editorial sticky-sidebar sections ---------- */
+  .cs-section{padding-bottom:96px;}
+  .cs-grid{display:grid;grid-template-columns:1fr 2fr;gap:56px;align-items:start;}
+  .cs-head{position:sticky;top:104px;}
+  .cs-body p.lead{font-family:var(--sans);font-weight:300;font-size:19px;line-height:1.75;color:var(--moss);}
+  .cs-body p.note{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;color:var(--moss);}
+  .cs-body p + p{margin-top:24px;}
+
+  /* Pull-quote — Sea Glass panel */
+  blockquote.pull{background:var(--seaglass);padding:36px;margin:36px 0;}
+  blockquote.pull p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.4rem,2.4vw,1.7rem);line-height:1.35;color:var(--moss);}
+
+  /* Dark Moss callout */
+  .moss-callout{background:var(--moss);padding:32px;margin-top:32px;display:flex;gap:16px;align-items:flex-start;}
+  .moss-callout svg{width:22px;height:22px;color:var(--gold);flex-shrink:0;margin-top:3px;}
+  .moss-callout p{font-family:var(--serif);font-style:italic;font-weight:500;font-size:1.35rem;line-height:1.4;color:var(--coolwhite);}
+
+  /* Pillar cards (2x2) */
+  .pillars{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px;}
+  .pillar{border:1px solid var(--hairline);padding:28px;}
+  .pillar h3{font-family:var(--serif);font-weight:500;font-size:1.4rem;color:var(--moss);margin-bottom:10px;}
+  .pillar p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.6;color:var(--moss);}
+
+  /* ---------- Three-Check (cool white full-width) ---------- */
+  .three-check{background:var(--coolwhite);padding-block:96px;text-align:center;}
+  .three-check .section-head{text-align:center;}
+  .three-check .accent-line{margin:18px auto 0;}
+  .tc-intro{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;color:var(--moss);max-width:54ch;margin:24px auto 56px;}
+  .checks{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;}
+  .check .badge{width:64px;height:64px;border-radius:50%;background:var(--moss);color:var(--coolwhite);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;}
+  .check .badge svg{width:26px;height:26px;}
+  .check h4{font-family:var(--serif);font-weight:500;font-size:1.4rem;color:var(--moss);margin-bottom:12px;}
+  .check p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.6;color:var(--moss);max-width:34ch;margin-inline:auto;}
+
+  /* Fictional brands image */
+  .fb-img{aspect-ratio:16/9;overflow:hidden;border:1px solid var(--hairline);background:var(--coolwhite);margin-bottom:28px;}
+  .fb-img img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* Conclusion */
+  .conclusion .q{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.5rem,2.6vw,1.9rem);line-height:1.3;color:var(--moss);margin-bottom:24px;}
+  .btn-download{display:inline-flex;align-items:center;gap:12px;background:var(--moss);color:var(--coolwhite);font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;padding:16px 30px;text-decoration:none;border:none;cursor:pointer;margin-top:40px;transition:opacity .3s ease;}
+  .btn-download:hover{opacity:.9;}
+  .btn-download svg{width:18px;height:18px;}
+
+  /* ---------- Footer (light strip) ---------- */
+  footer{background:var(--white);border-top:1px solid var(--hairline);padding-block:32px;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-inner .fname{font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--moss);}
+  .footer-mid{display:flex;gap:24px;align-items:center;}
+  .footer-mid a{font-family:var(--sans);font-size:14px;color:var(--sage);text-decoration:none;transition:color .3s ease;}
+  .footer-mid a:hover{color:var(--moss);}
+  .footer-mid .back{display:inline-flex;align-items:center;gap:8px;color:var(--moss);font-weight:500;}
+  .footer-copy{font-family:var(--sans);font-size:13px;color:var(--sage);}
+
+  /* ---------- Motion ---------- */
+  .js .reveal{opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1s ease;}
+  .js .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none;}}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    :root{--margin:20px;}
+    .nav-links{display:none;}
+    .menu-icon{display:block;}
+    .cs-hero{padding-top:48px;}
+    .feature{margin-bottom:56px;}
+    .cs-section{padding-bottom:56px;}
+    .cs-grid{grid-template-columns:1fr;gap:24px;}
+    .cs-head{position:static;}
+    .pillars{grid-template-columns:1fr;}
+    .three-check{padding-block:64px;}
+    .checks{grid-template-columns:1fr;gap:40px;}
+    .footer-inner{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header>
+  <nav class="wrap nav">
+    <a href="index.html" class="wordmark">Elzanne Amao</a>
+    <div class="nav-links">
+      <a href="index.html#work">Experience</a>
+      <a href="index.html#engagements">Services</a>
+      <a href="index.html#work" class="active">Case Studies</a>
+      <a href="index.html#writing">Writing</a>
+      <a href="about.html">About</a>
+      <button class="btn-cta">Connect</button>
+    </div>
+    <div class="menu-icon">Menu</div>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="wrap cs-hero">
+    <span class="eyebrow reveal">Curriculum Strategy &amp; Content Design · Inscape</span>
+    <h1 class="reveal">Restructuring a BA degree for distance delivery</h1>
+    <p class="lead reveal">In March 2025, I was brought in as a contractor to help Inscape map its BA in Digital Marketing and Communication for distance delivery. The institute had received SAQA approval to deliver the degree in an asynchronous block-module format and needed someone to translate the existing in-person degree into the new structure.</p>
+  </section>
+
+  <!-- Featured image -->
+  <section class="wrap feature">
+    <div class="frame reveal">
+      <img alt="A wide, light-filled collaborative workspace with a central wooden table covered in curriculum maps — academic and premium, in creams, forest greens and warm greys."
+           src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB76eBYz-Y6TBxcVpZ30lYhW4iDjL2XACxKIlB0Ezg-63WL0X-2H6j72hYb-icz9ZJCtrO7-ey5JER9DFjHy-Ufxb2bgy4VJlKHaM0SyTKU-8-dm_ofgKVdgKCwX6CZiHbGFHMVHWVSqNtNUBGLd_oqJI43xoFQzMf5OOXxtFkkoDrzxDYyJA5VQTRg6HQ1qE2Zhef4mejrEEfGA-w2d0eK7NuPxHwEifFjXn1DfccG2YSmKNLkISugwWqLa6xnjhA86kt3JmPmIoV">
+    </div>
+  </section>
+
+  <!-- The Structural Reality -->
+  <section class="wrap cs-section">
+    <div class="cs-grid">
+      <div class="cs-head reveal"><h2 class="section-head">The Structural Reality</h2><div class="accent-line"></div></div>
+      <div class="cs-body reveal">
+        <p class="lead">The brief, as scoped, was project-management adjacent: take the existing subjects, re-map them for the distance format, get the content ready for development. The reality, once I started looking at the source material, was different.</p>
+        <p class="note">The first thing that became visible was repetition. The degree had been designed across multiple writers, with subjects shared across other degrees in the institute's offering. Foundational concepts — SWOT analysis being a small but representative example — appeared in three or four places across the three years with no apparent coordination. Some of this was unavoidable cross-faculty content that students received regardless of which degree they enrolled in. Some of it was just that no one had looked at the whole degree as a single learning journey.</p>
+        <blockquote class="pull"><p>"There were stacks of subjects, each internally coherent, that didn't talk to each other."</p></blockquote>
+        <p class="note">The second thing that became visible was that the brief was downstream of a structural problem. You couldn't meaningfully restructure the degree for distance delivery without first reviewing what the degree was actually trying to produce. The exit-level outcomes — the SAQA-approved statements of what a graduate should know and be able to do — needed a fresh look before any subject-level mapping made sense. I worked through this with the team, adjusted the exit-level outcomes within what SAQA would allow, and then re-mapped subjects against the revised outcomes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mapping for Distance -->
+  <section class="wrap cs-section">
+    <div class="cs-grid">
+      <div class="cs-head reveal"><h2 class="section-head">Mapping for Distance</h2><div class="accent-line"></div></div>
+      <div class="cs-body reveal">
+        <p class="lead" style="margin-bottom:32px;">The institute had already decided to consolidate the subject offering for the distance version. My job was to make that consolidation real at the unit level: deciding what content lived where, in what sequence, with what learning outcomes, and how each subject scaffolded into the next. Each subject runs across three years; each year contains six modules; each module is six weeks; each week is one unit.</p>
+        <div class="pillars">
+          <div class="pillar"><h3>Foundations</h3><p>Marketing Studies and Communication Studies, two formerly separate subjects, collapsed into one integrated first-year subject.</p></div>
+          <div class="pillar"><h3>Tools</h3><p>Formerly Computer Applications — the technical stack the digital professional actually works in.</p></div>
+          <div class="pillar"><h3>Practice</h3><p>Digital Marketing, with research, capstone, and project work feeding in — studio-based application.</p></div>
+          <div class="pillar"><h3>Industry</h3><p>Media Studies and Consumer Behaviour, feeding into the business and context of the field.</p></div>
+        </div>
+        <p class="note" style="margin-top:32px;">For Foundations 1, that meant translating two formerly separate first-year subjects into six modules — three on marketing principles, three on communication principles — and then breaking each module into six weekly units with focus topics, learning activities, and content-scope guidelines.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Three-Check Structure -->
+  <section class="three-check">
+    <div class="wrap">
+      <div class="reveal"><h2 class="section-head">The Three-Check Structure</h2><div class="accent-line"></div></div>
+      <p class="tc-intro reveal">The degree's pedagogical paradigm is design thinking, its intended graduate finishes around 2030, and AI is both a topic students need to understand and a tool they will use throughout their studies. The problem was how to bake those three considerations into every unit, consistently, in a way that survived contact with multiple content developers writing in parallel. So I attached three checks to every unit in the brief, sitting alongside the content scope and learning outcomes as something a developer had to actively answer.</p>
+      <div class="checks">
+        <div class="check reveal">
+          <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 1 4 10.5c-.8.7-1 1.2-1 2H9c0-.8-.2-1.3-1-2A6 6 0 0 1 12 3Z"/></svg></div>
+          <h4>Design Thinking Check</h4>
+          <p>Each unit must include a moment of student ideation or prototyping before formal models are introduced.</p>
+        </div>
+        <div class="check reveal">
+          <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9Z"/></svg></div>
+          <h4>Real-World Check</h4>
+          <p>Each unit must carry at least one South African industry example.</p>
+        </div>
+        <div class="check reveal">
+          <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l1.8 4.7L18.5 9l-4.7 1.8L12 15.5l-1.8-4.7L5.5 9l4.7-1.3L12 3Z"/><path d="M18 16l.8 2.2L21 19l-2.2.8L18 22l-.8-2.2L15 19l2.2-.8L18 16Z"/></svg></div>
+          <h4>Future-Proof Check</h4>
+          <p>Each unit must address how AI, digital transformation, or sustainability shapes contemporary practice in that subject area.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI as a Thinking Tool -->
+  <section class="wrap cs-section" style="padding-top:96px;">
+    <div class="cs-grid">
+      <div class="cs-head reveal"><h2 class="section-head">AI as a Thinking Tool</h2><div class="accent-line"></div></div>
+      <div class="cs-body reveal">
+        <p class="lead">The same logic showed up at the activity level. One of the early units in Foundations 1 includes an activity where students ask ChatGPT to write a one-sentence definition of marketing, then critique what the AI produced — what was left out, what assumptions it made, what they would have included instead. A student who outsources thinking to AI fails this activity, because they have nothing to critique with.</p>
+        <div class="moss-callout">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          <p>"The point isn't to teach students about AI. It's to make AI use part of the learning task in a way that requires the student to bring their own developing judgement to the output."</p>
+        </div>
+        <p class="note">I built the structural version of the subject inside Articulate Rise — the LMS architecture, the module and unit headings, the activity placements — so the content developers received a working scaffold rather than just a document. For the theory recaps within each unit, I used NotebookLM to generate audio and video summaries of the lesson content. The team had reservations about polish; the call I made was that universal modality coverage — every unit gets the audio option for students who prefer it — was worth more than selective high-production coverage on a handful of units. The summaries stayed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fictional Brands -->
+  <section class="wrap cs-section">
+    <div class="cs-grid">
+      <div class="cs-head reveal"><h2 class="section-head">Fictional Brands for Real Learning</h2><div class="accent-line"></div></div>
+      <div class="cs-body reveal">
+        <div class="fb-img">
+          <img alt="A grid of minimalist branding mockups for fictional companies in forest green, cream and rose clay — presented like a portfolio review."
+               src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-dy_k7tcRe60vDA5vHM1Zf6U44IrcNABThpaurFE5SLpbdwqaBqvUwsbYdm6EjMDWlRjCMvGIiSG_b0eTq6kamTmYqV-2W4e28O28UN7PXz-_IT_qCdh23fHJfbsZ19_ow16GIwlLwLfWpmyb3PxFi2uWJOIJBhfakSnp-NqNQmVnuBgYu0aqHy6dphOj5_o05HKTCrvGsNbnrkp0L9sWx_J7CKxoKQa-F2UF7MhVg0Cnaw9P9cyYiiVSG3GVPdL7KONkCQY3L7Ou">
+        </div>
+        <p class="note">From January 2026, I picked up the content development for the first half of Foundations 1 — Modules 1 through 3 — as the bridge between the design phase and the team that would carry the remaining modules. A degree being written in 2026 for students graduating in 2030 has a content-dating problem: every named campaign, every linked video, every reference to a current South African brand carries the risk of being stale or broken by the time students encounter it. The methodology I developed was to build a small set of fictional South African businesses — a fast-casual chicken chain, a coastal lodge group, a digital media company, a Cape Town AI startup — as running case studies across the modules. Each was specified in enough detail to feel grounded, without anchoring the content to a real-world entity that could change or disappear. Real brand references stayed where they served the example better than a fiction would, but the load-bearing case studies were fictional by design.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- The 2030 Bet -->
+  <section class="wrap cs-section conclusion">
+    <div class="cs-grid">
+      <div class="cs-head reveal"><h2 class="section-head">The 2030 Bet</h2><div class="accent-line"></div></div>
+      <div class="cs-body reveal">
+        <p class="q">I've been writing curriculum content in 2026 for someone who will enter the workplace in 2030.</p>
+        <p class="note">My contracted work on Foundations 1–3 concludes in June 2026. The structure was adopted across the rest of the subjects, content development for the modules I'm not writing is underway with other developers, and the degree is being marketed to its first distance cohort.</p>
+        <p class="note" style="margin-top:24px;">Every decision about what to teach about AI — what to include as a topic, how to design assessments around tool use, what skills to scaffold first — is a bet about what 2030 will look like. The bets are visible in the structure. Whether they're the right ones is a question that will only resolve in five years, and the work of revising them as the landscape moves is part of what AI-integrated curriculum design now means.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="fname">Elzanne Amao</span>
+    <div class="footer-mid">
+      <a class="back" href="index.html#work"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M19 12H5m0 0 6 6m-6-6 6-6"/></svg>Back to portfolio</a>
+      <a href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="#">LinkedIn</a>
+    </div>
+    <span class="footer-copy">© 2026 Elzanne Amao. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const els = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.1 });
+      els.forEach(el => io.observe(el));
+    } else { els.forEach(el => el.classList.add('in')); }
+  });
+  // Scroll progress
+  const bar = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    bar.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + '%';
+  }, { passive: true });
+</script>
+</body>
+</html>

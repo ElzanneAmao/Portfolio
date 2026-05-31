@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  EDITING NOTES — about.html
+  ============================================================
+  HOW TO EDIT TEXT:
+    Change only the words BETWEEN tags (e.g. <h1>About</h1> ->
+    edit "About" only). Don't touch the tags, quotes, or class="..."
+    parts. Keep a backup of the folder before editing.
+
+  KEEP FILES TOGETHER in one folder or the page links break.
+
+  PLACEHOLDERS TO REPLACE ON THIS PAGE:
+    - EMAIL (two spots, both in the "Get in touch" section):
+        1. the visible text  [ add your email address ]
+        2. the link  href="mailto:"  -> add your address after the
+           colon, e.g. href="mailto:you@domain.com"
+    - LINKEDIN: the handle "/in/elzanneamao" and its href="#".
+      Put your real profile URL in the href and update the text.
+    - HEADSHOT: the "Add headshot" box. Replace that
+      <div class="portrait">...</div> with
+      <img src="your-photo.jpg" alt="Elzanne Amao" style="width:100%">
+    - "Think Orion" in the text links to the case study already.
+
+  LINKS: edit the value inside href="...".
+  ============================================================
+-->
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Elzanne Amao</title>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --moss:#2c3830;
+    --sage:#7a8c6e;
+    --gold:#a8a44c;
+    --seaglass:#b8cdd4;
+    --coolwhite:#f1f4f2;
+    --white:#ffffff;
+    --hairline:#dde2dd;
+    --serif:"Cormorant Garamond",Georgia,serif;
+    --sans:"DM Sans",system-ui,sans-serif;
+    --container:1280px;
+    --margin:64px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--white);color:var(--moss);font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  ::selection{background:var(--seaglass);color:var(--moss);}
+  a{color:inherit;}
+  .wrap{max-width:var(--container);margin-inline:auto;padding-inline:var(--margin);}
+
+  /* ---------- Header ---------- */
+  header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--hairline);}
+  .nav{display:flex;justify-content:space-between;align-items:center;height:80px;}
+  .wordmark{font-family:var(--serif);font-weight:500;font-size:26px;letter-spacing:.01em;color:var(--moss);text-decoration:none;}
+  .nav-links{display:flex;align-items:center;gap:32px;}
+  .nav-links a{font-family:var(--sans);font-size:15px;font-weight:400;color:var(--sage);text-decoration:none;padding-bottom:4px;transition:color .3s ease;}
+  .nav-links a:hover{color:var(--moss);}
+  .nav-links a.active{color:var(--moss);border-bottom:2px solid var(--gold);}
+  .btn-cta{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;background:var(--gold);color:var(--moss);border:none;padding:11px 22px;cursor:pointer;transition:opacity .3s ease;}
+  .btn-cta:hover{opacity:.88;}
+  .menu-icon{display:none;font-family:var(--sans);font-weight:500;color:var(--moss);}
+
+  .eyebrow{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--sage);}
+  .section-head{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.1;color:var(--moss);}
+  .accent-line{width:72px;height:2px;background:var(--gold);margin-top:18px;}
+
+  /* ---------- About hero ---------- */
+  .about-hero{padding-top:88px;padding-bottom:40px;}
+  .about-hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(3.5rem,8vw,6rem);line-height:1;letter-spacing:-0.01em;color:var(--moss);margin-top:14px;}
+
+  .about-intro{display:grid;grid-template-columns:1.4fr 1fr;gap:64px;padding-bottom:96px;}
+  .about-intro .lead{font-family:var(--sans);font-weight:300;font-size:20px;line-height:1.7;color:var(--moss);max-width:46ch;}
+  .meta-list{display:flex;flex-direction:column;gap:28px;border-left:1px solid var(--hairline);padding-left:32px;}
+  .meta-list .label{display:block;font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--sage);margin-bottom:6px;}
+  .meta-list .value{font-family:var(--sans);font-weight:400;font-size:16px;color:var(--moss);}
+
+  /* ---------- Philosophy ---------- */
+  .philosophy{padding-bottom:96px;}
+  .phil-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:64px;align-items:start;}
+  .portrait{aspect-ratio:4/5;border:1px solid var(--hairline);background:var(--coolwhite);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--sage);}
+  .portrait svg{width:54px;height:54px;}
+  .portrait span{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;}
+  .phil-text p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:var(--moss);}
+  .phil-text p + p{margin-top:24px;}
+  .phil-text .inline-link{color:var(--moss);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:1px;transition:color .3s ease;}
+  .phil-text .inline-link:hover{color:var(--sage);}
+
+  /* ---------- Expertise cards (cool white panel) ---------- */
+  .expertise{background:var(--coolwhite);padding-block:96px;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+  .card{border:1px solid var(--hairline);background:transparent;padding:36px 30px;}
+  .card .icon{color:var(--sage);margin-bottom:24px;}
+  .card .icon svg{width:30px;height:30px;}
+  .card h3{font-family:var(--serif);font-weight:500;font-size:1.55rem;line-height:1.15;color:var(--moss);margin-bottom:14px;}
+  .card p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.65;color:var(--moss);}
+
+  /* ---------- Get in touch (Deep Moss) ---------- */
+  .contact{background:var(--moss);padding-block:96px;text-align:center;color:var(--coolwhite);}
+  .contact .eyebrow{color:var(--seaglass);}
+  .contact h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,4.5vw,3.4rem);color:var(--coolwhite);margin-top:14px;margin-bottom:56px;}
+  .contact-row{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;}
+  .contact-item{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--coolwhite);font-family:var(--sans);font-size:16px;font-weight:300;position:relative;padding-bottom:4px;}
+  .contact-item svg{width:18px;height:18px;color:var(--gold);}
+  .contact-item::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--seaglass);transform:scaleX(0);transform-origin:right;transition:transform .35s ease;}
+  .contact-item:hover::after{transform:scaleX(1);transform-origin:left;}
+
+  /* ---------- Footer (light strip) ---------- */
+  footer{background:var(--white);border-top:1px solid var(--hairline);padding-block:32px;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  .footer-inner .fname{font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--moss);}
+  .footer-mid{display:flex;gap:24px;}
+  .footer-mid a{font-family:var(--sans);font-size:14px;color:var(--sage);text-decoration:none;transition:color .3s ease;}
+  .footer-mid a:hover{color:var(--moss);}
+  .footer-copy{font-family:var(--sans);font-size:13px;color:var(--sage);}
+
+  /* ---------- Motion ---------- */
+  .js .reveal{opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1s ease;}
+  .js .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none;}}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    :root{--margin:20px;}
+    .nav-links{display:none;}
+    .menu-icon{display:block;}
+    .about-hero{padding-top:56px;}
+    .about-intro{grid-template-columns:1fr;gap:32px;padding-bottom:64px;}
+    .meta-list{border-left:none;border-top:1px solid var(--hairline);padding-left:0;padding-top:28px;}
+    .philosophy{padding-bottom:64px;}
+    .phil-grid{grid-template-columns:1fr;gap:36px;}
+    .portrait{max-width:320px;}
+    .expertise,.contact{padding-block:64px;}
+    .cards{grid-template-columns:1fr;}
+    .contact-row{flex-direction:column;gap:28px;align-items:center;}
+    .footer-inner{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav">
+    <a href="index.html" class="wordmark">Elzanne Amao</a>
+    <div class="nav-links">
+      <a href="index.html#work">Experience</a>
+      <a href="index.html#engagements">Services</a>
+      <a href="index.html#work">Case Studies</a>
+      <a href="index.html#writing">Writing</a>
+      <a href="about.html" class="active">About</a>
+      <button class="btn-cta">Connect</button>
+    </div>
+    <div class="menu-icon">Menu</div>
+  </nav>
+</header>
+
+<main>
+  <!-- About hero -->
+  <section class="wrap about-hero">
+    <span class="eyebrow reveal">Biography</span>
+    <h1 class="reveal">About</h1>
+  </section>
+
+  <section class="wrap about-intro">
+    <p class="lead reveal">I'm a strategist working with business owners, founders, and leadership teams on the content and communication systems they're building around AI. My background is in strategic communication — the discipline that studies how organisations build meaning, trust, and influence with the people they serve. I hold a Master's in Strategic Communication from the University of Johannesburg, and most of my recent work has been on what changes about all three when AI enters the conversation.</p>
+    <div class="meta-list reveal">
+      <div>
+        <span class="label">Current Role</span>
+        <span class="value">Strategic Lead, Content &amp; AI Workflows · Think Orion</span>
+      </div>
+      <div>
+        <span class="label">Education</span>
+        <span class="value">MA Strategic Communication, University of Johannesburg</span>
+      </div>
+      <div>
+        <span class="label">Based in</span>
+        <span class="value">Cape Town, South Africa</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="wrap philosophy">
+    <div class="phil-grid">
+      <div class="portrait reveal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span>Add headshot</span>
+      </div>
+      <div class="phil-text">
+        <div class="reveal" style="margin-bottom:24px;">
+          <h2 class="section-head">The throughline</h2>
+          <div class="accent-line"></div>
+        </div>
+        <p class="reveal">I've spent sixteen years working across education, technology, communications, and hospitality, in roles that have included content strategist, marketing manager, lecturer, programme manager, and curriculum designer. The throughline isn't an industry; it's a kind of work. I tend to be brought in when an organisation needs someone who can hold both the strategic question and the operational reality at the same time, and translate between the two clearly enough that the people on either side can act.</p>
+        <p class="reveal">Currently I'm the strategic lead on content and AI-integrated workflows at <a class="inline-link" href="think-orion-case-study.html">Think Orion</a>, a small education marketing agency working with university and consulting-firm clients across multiple regions. The role spans onboarding research and system design, email strategy across the programme portfolio, organic social and campaign work for senior management consulting clients, and the agency's internal AI development. Alongside that, I'm building a consulting practice for small and mid-sized businesses thinking through their own AI integration.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get in touch -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <span class="eyebrow reveal">Partnerships</span>
+      <h2 class="reveal" style="margin-bottom:20px;">Get in touch</h2>
+      <p class="reveal" style="font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;color:var(--seaglass);max-width:56ch;margin:0 auto 48px;">I write about meaning, markets, and the machines now in the conversation. If you'd like to work together, the best way to reach me is by email.</p>
+      <div class="contact-row reveal">
+        <a class="contact-item" href="mailto:">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14"/><path d="m3 6 9 7 9-7"/></svg>
+          [ add your email address ]
+        </a>
+        <a class="contact-item" href="#">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4"/></svg>
+          LinkedIn: /in/elzanneamao
+        </a>
+        <a class="contact-item" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 5h16M4 5v14l8-4 8 4V5M4 9h16"/></svg>
+          elzanneamao.substack.com
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span class="fname">Elzanne Amao</span>
+    <div class="footer-mid">
+      <a href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Substack</a>
+      <a href="#">LinkedIn</a>
+    </div>
+    <span class="footer-copy">© 2026 Elzanne Amao. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const els = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+      }, { threshold: 0.1 });
+      els.forEach(el => io.observe(el));
+    } else {
+      els.forEach(el => el.classList.add('in'));
+    }
+  });
+</script>
+</body>
+</html>
