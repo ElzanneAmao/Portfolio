@@ -189,7 +189,9 @@
   @media (max-width:860px){
     :root{--margin:20px;}
     .nav-links{display:none;}
-    .menu-icon{display:block;}
+    .nav-links.open{display:flex;flex-direction:column;align-items:flex-start;position:fixed;top:80px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--hairline);padding:24px 20px;gap:20px;z-index:49;}
+    .nav-links.open .btn-cta{margin-top:4px;}
+    .menu-icon{display:block;cursor:pointer;}
     .hero{padding-top:56px;padding-bottom:64px;}
     .hero-grid{grid-template-columns:1fr;gap:40px;}
     .portrait{max-width:320px;}
@@ -399,6 +401,17 @@
     // Newsletter button → Substack
     document.getElementById('joinBtn').addEventListener('click', () => {
       window.open('https://elzanneamao.substack.com', '_blank', 'noopener');
+    });
+
+    // Mobile menu toggle
+    const menuIcon = document.querySelector('.menu-icon');
+    const navLinks = document.querySelector('.nav-links');
+    menuIcon.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      menuIcon.textContent = navLinks.classList.contains('open') ? 'Close' : 'Menu';
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => { navLinks.classList.remove('open'); menuIcon.textContent = 'Menu'; });
     });
   });
 </script>
