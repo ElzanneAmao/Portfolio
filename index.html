@@ -71,7 +71,7 @@
   .nav-links{display:flex;align-items:center;gap:32px;}
   .nav-links a{font-family:var(--sans);font-size:15px;font-weight:400;color:var(--sage);text-decoration:none;padding-bottom:4px;transition:color .3s ease;}
   .nav-links a:hover{color:var(--moss);}
-  .btn-cta{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;background:var(--gold);color:var(--moss);border:none;padding:11px 22px;cursor:pointer;transition:opacity .3s ease;}
+  .btn-cta{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;background:var(--gold);color:var(--moss);border:none;padding:11px 22px;cursor:pointer;transition:opacity .3s ease;display:inline-block;text-decoration:none;}
   .btn-cta:hover{opacity:.88;}
   .menu-icon{display:none;font-family:var(--sans);font-weight:500;color:var(--moss);}
 
@@ -170,6 +170,17 @@
   .writing .news button{border:none;background:var(--gold);color:var(--moss);font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;padding:0 22px;cursor:pointer;transition:opacity .3s ease;}
   .writing .news button:hover{opacity:.9;}
 
+  /* ---------- Contact (Deep Moss) ---------- */
+  .contact{background:var(--moss);padding-block:96px;text-align:center;color:var(--coolwhite);}
+  .contact .eyebrow{color:var(--seaglass);}
+  .contact h2{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,4.5vw,3.4rem);color:var(--coolwhite);margin-top:14px;margin-bottom:20px;}
+  .contact p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;color:var(--seaglass);max-width:56ch;margin:0 auto 48px;}
+  .contact-row{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;}
+  .contact-item{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--coolwhite);font-family:var(--sans);font-size:16px;font-weight:300;position:relative;padding-bottom:4px;}
+  .contact-item svg{width:18px;height:18px;color:var(--gold);}
+  .contact-item::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--seaglass);transform:scaleX(0);transform-origin:right;transition:transform .35s ease;}
+  .contact-item:hover::after{transform:scaleX(1);transform-origin:left;}
+
   /* ---------- Footer (light strip) ---------- */
   footer{background:var(--white);border-top:1px solid var(--hairline);padding-block:32px;}
   .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
@@ -201,6 +212,7 @@
     .work-grid{grid-template-columns:1fr;gap:40px;}
     .car-btn.prev{left:-4px;}
     .car-btn.next{right:-4px;}
+    .contact-row{flex-direction:column;gap:28px;align-items:center;}
     .footer-inner{flex-direction:column;align-items:flex-start;}
   }
 </style>
@@ -211,11 +223,11 @@
   <nav class="wrap nav">
     <a href="index.html" class="wordmark">Elzanne Amao</a>
     <div class="nav-links">
-      <a href="#engagements">Services</a>
+      <a href="#services">Services</a>
       <a href="#work">Case Studies</a>
       <a href="#writing">Writing</a>
       <a href="about.html">About</a>
-      <button class="btn-cta">Connect</button>
+      <a href="#contact" class="btn-cta">Contact Me</a>
     </div>
     <div class="menu-icon">Menu</div>
   </nav>
@@ -229,7 +241,7 @@
         <h1 class="tagline reveal">Helping companies think clearly about what AI is doing to their brand and their audience.</h1>
         <p class="intro reveal">I'm a strategist based in Cape Town. I work with business owners, founders, and leadership teams at small and mid-sized businesses on what AI is doing to how their customers find them, how they experience the company, and whether they come back.</p>
         <div class="actions reveal">
-          <a class="btn btn-primary" href="#engagements">View my services</a>
+          <a class="btn btn-primary" href="#services">View my services</a>
           <a class="btn btn-outline" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Read my Substack</a>
         </div>
       </div>
@@ -247,10 +259,10 @@
   </section>
 
   <!-- What I do -->
-  <section id="engagements" class="engagements">
+  <section id="services" class="engagements">
     <div class="wrap">
       <div class="head-block reveal">
-        <h2 class="section-head">What I do</h2>
+        <h2 class="section-head">Services</h2>
         <div class="accent-line"></div>
       </div>
       <div class="whatido-intro">
@@ -263,22 +275,22 @@
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="4" y="3" width="16" height="18"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
           <h3>AI content operations audit</h3>
           <p>A diagnostic engagement that looks at your AI-integrated content function as it is now and produces a clear written read on what it does well, what it doesn't, where the humans need to stay in the loop, and where the highest-leverage changes are. The deliverable is a written audit you can use to make decisions — whether or not those decisions involve more work with me. The sensible starting point if you know something isn't working but aren't sure what.</p>
-          <a class="inquire" href="about.html#contact">Inquire <span class="arrow">&rarr;</span></a>
+          <a class="inquire" href="#contact">Inquire <span class="arrow">&rarr;</span></a>
         </div>
         <div class="card reveal">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.5 8 11 16M16.5 8 13 16M8 6h8"/></svg></div>
           <h3>AI-integrated content system design</h3>
           <p>A build engagement that designs or rebuilds your content operations system, including the human-in-the-loop architecture that determines what AI handles and where your team still needs to stay involved. This is the deeper engagement. It usually follows an audit, but it can stand alone if you already know what you want built.</p>
-          <a class="inquire" href="about.html#contact">Inquire <span class="arrow">&rarr;</span></a>
+          <a class="inquire" href="#contact">Inquire <span class="arrow">&rarr;</span></a>
         </div>
         <div class="card reveal">
           <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3a6 6 0 0 1 4 10.5c-.8.7-1 1.2-1 2v.5H9v-.5c0-.8-.2-1.3-1-2A6 6 0 0 1 12 3Z"/><path d="M9.5 20h5M10.5 22h3"/></svg></div>
           <h3>AI advisory for SME leadership</h3>
           <p>A retainer-style engagement for leaders who need a thinking partner on AI decisions but don't need a full-time strategist. Monthly check-ins, async availability for the questions that come up between them, and a quarterly written read on how your AI integration is holding up against the business you're actually trying to build. Three months minimum.</p>
-          <a class="inquire" href="about.html#contact">Inquire <span class="arrow">&rarr;</span></a>
+          <a class="inquire" href="#contact">Inquire <span class="arrow">&rarr;</span></a>
         </div>
       </div>
-      <p class="eng-note reveal">If none of these is quite the fit but you think the work might be useful, the right move is to <a href="about.html#contact">email me</a> and describe what you're working on. I'd rather have a conversation than fit your situation into a pre-defined package.</p>
+      <p class="eng-note reveal">If none of these is quite the fit but you think the work might be useful, the right move is to <a href="#contact">email me</a> and describe what you're working on. I'd rather have a conversation than fit your situation into a pre-defined package.</p>
     </div>
   </section>
 
@@ -343,6 +355,25 @@
       <h2 class="reveal">Recent Writing</h2>
       <p class="reveal">I write regularly about AI's real-world implications — AI policy, the future of knowledge work, and what happens when systems don't account for the humans inside them.</p>
       <a class="btn btn-gold reveal" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <span class="eyebrow reveal">Work with me</span>
+      <h2 class="reveal">Get in touch</h2>
+      <p class="reveal">I offer three engagements — an AI content operations audit, AI-integrated content system design, and AI advisory for SME leadership. If you'd like to explore any of these, the best way to reach me is by email.</p>
+      <div class="contact-row reveal">
+        <a class="contact-item" href="mailto:elzanne.amao@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14"/><path d="m3 6 9 7 9-7"/></svg>
+          elzanne.amao@gmail.com
+        </a>
+        <a class="contact-item" href="https://www.linkedin.com/in/elzanneamao" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="3" width="18" height="18"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4"/></svg>
+          LinkedIn: /in/elzanneamao
+        </a>
+      </div>
     </div>
   </section>
 </main>
