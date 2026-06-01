@@ -60,8 +60,8 @@
   .nav{display:flex;justify-content:space-between;align-items:center;height:80px;}
   .wordmark{font-family:var(--serif);font-weight:500;font-size:26px;letter-spacing:.01em;color:var(--moss);text-decoration:none;}
   .nav-links{display:flex;align-items:center;gap:32px;}
-  .nav-links a{font-family:var(--sans);font-size:15px;font-weight:400;color:var(--sage);text-decoration:none;padding-bottom:4px;transition:color .3s ease;}
-  .nav-links a:hover{color:var(--moss);}
+  .nav-links a:not(.btn-cta){font-family:var(--sans);font-size:15px;font-weight:400;color:var(--sage);text-decoration:none;padding-bottom:4px;transition:color .3s ease;}
+  .nav-links a:not(.btn-cta):hover{color:var(--moss);}
   .nav-links a.active{color:var(--moss);border-bottom:2px solid var(--gold);}
   .btn-cta{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;background:var(--gold);color:var(--white);border:none;padding:11px 22px;cursor:pointer;transition:opacity .3s ease;display:inline-flex;align-items:center;justify-content:center;line-height:1;text-decoration:none;}
   .btn-cta:hover{opacity:.88;}

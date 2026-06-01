@@ -94,15 +94,8 @@
   .nav-links{
     display:flex;align-items:center;gap:32px;
   }
-  .nav-links a{
-    font-family:var(--sans);
-    font-size:15px;font-weight:400;
-    color:var(--sage);
-    text-decoration:none;
-    padding-bottom:4px;
-    transition:color .3s ease;
-  }
-  .nav-links a:hover{color:var(--moss);}
+  .nav-links a:not(.btn-cta){font-family:var(--sans);font-size:15px;font-weight:400;color:var(--sage);text-decoration:none;padding-bottom:4px;transition:color .3s ease;}
+  .nav-links a:not(.btn-cta):hover{color:var(--moss);}
   .nav-links a.active{
     color:var(--moss);
     border-bottom:2px solid var(--gold);
