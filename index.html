@@ -104,7 +104,8 @@
   .eng-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:56px;}
   .eng-top .intro{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;color:var(--moss);max-width:46ch;justify-self:end;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-  .card{border:1px solid var(--hairline);border-left:3px solid var(--gold);background:transparent;padding:36px 30px;display:flex;flex-direction:column;}
+  .card{border:1px solid var(--hairline);border-left:3px solid var(--gold);background:transparent;padding:36px 30px;display:flex;flex-direction:column;transition:background .25s ease,box-shadow .25s ease,border-color .25s ease;}
+  .card:hover{background:rgba(168,164,76,0.06);box-shadow:0 8px 32px rgba(44,56,48,0.1);border-color:var(--gold);}
   .card h3{font-family:var(--serif);font-weight:500;font-size:1.75rem;line-height:1.15;color:var(--moss);margin-bottom:16px;}
   .card p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.65;color:var(--moss);flex:1;}
   .card .inquire{margin-top:28px;font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--moss);text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
@@ -143,17 +144,9 @@
   .dot{width:8px;height:8px;background:var(--hairline);border:none;cursor:pointer;padding:0;transition:background .3s ease;}
   .dot.active{background:var(--gold);}
 
-  /* ---------- Statement band ---------- */
-  .statement{padding-block:88px;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
-  .statement .accent-line{margin-bottom:28px;}
-  .statement p{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.28;color:var(--moss);max-width:920px;}
-  .statement p .soft{color:var(--sage);}
-
   /* ---------- What I do intro ---------- */
   .whatido-intro{max-width:760px;margin-bottom:48px;}
   .whatido-intro p{font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.75;color:var(--moss);}
-  .whatido-intro p + p{margin-top:20px;}
-  .three-ways{margin-top:40px;font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);}
   .eng-note{margin-top:44px;max-width:720px;font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;color:var(--moss);}
   .eng-note a{color:var(--moss);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:1px;transition:color .3s ease;}
   .eng-note a:hover{color:var(--sage);}
@@ -245,12 +238,6 @@
     </div>
   </section>
 
-  <!-- Statement -->
-  <section class="wrap statement">
-    <div class="accent-line reveal"></div>
-    <p class="reveal">Most of the marketing conversation about AI is about producing more, faster. <span class="soft">Almost none of it is about what that's doing to the trust a business has spent years building with the people it serves.</span></p>
-  </section>
-
   <!-- What I do -->
   <section id="services" class="engagements">
     <div class="wrap">
@@ -260,23 +247,22 @@
       </div>
       <div class="whatido-intro">
         <p class="reveal">Work is moving faster since your team started using AI. But you don't have a clear picture of what the system as a whole is producing, what it can't produce, and where your team still needs to be the one making the call. My starting point is always diagnostic: I help you understand what's happening before I propose changes. The goal is a content operation where AI does what it's good at, your team does what it's good at, and the output sounds like your brand.</p>
-        <p class="three-ways reveal">There are three ways an engagement usually starts</p>
       </div>
       <div class="cards">
         <div class="card reveal">
           <h3>AI content operations audit</h3>
           <p>If you can tell something is off with your content since AI entered the workflow but you're not sure what, this is where to start. I produce a written read on what's working, what isn't, and where the highest-leverage changes are. The deliverable is yours to use whether or not you do more work with me.</p>
-          <a class="inquire" href="#contact">Inquire <span class="arrow">&rarr;</span></a>
+          <a class="inquire" href="#contact">Enquire <span class="arrow">&rarr;</span></a>
         </div>
         <div class="card reveal">
           <h3>AI-integrated content system design</h3>
           <p>If you know what needs to change and you need someone to design the system, this is the build engagement. I design or rebuild your content operation so your team knows what AI handles, what they handle, and how the pieces fit together. Usually follows an audit, but can stand alone.</p>
-          <a class="inquire" href="#contact">Inquire <span class="arrow">&rarr;</span></a>
+          <a class="inquire" href="#contact">Enquire <span class="arrow">&rarr;</span></a>
         </div>
         <div class="card reveal">
           <h3>AI advisory for SME leadership</h3>
           <p>If you don't need a project but you do need someone to think with, this is a retainer. Monthly check-ins, async availability between them, and a quarterly written read on how your AI integration is holding up against the business you're building. Three months minimum.</p>
-          <a class="inquire" href="#contact">Inquire <span class="arrow">&rarr;</span></a>
+          <a class="inquire" href="#contact">Enquire <span class="arrow">&rarr;</span></a>
         </div>
       </div>
       <p class="eng-note reveal">If you're not sure which of these fits, that's fine. <a href="#contact">Email me</a> and describe what you're working on — I'd rather have a conversation than fit your situation into a pre-defined package.</p>
