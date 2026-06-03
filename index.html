@@ -54,7 +54,7 @@
     --margin:64px;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;scroll-padding-top:80px;}
   body{
     background:var(--white);
     color:var(--moss);
@@ -161,6 +161,9 @@
   .writing p{font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.7;color:var(--moss);max-width:52ch;margin:24px auto 40px;}
   .writing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px;text-align:left;}
   .writing-card{display:flex;flex-direction:column;text-decoration:none;border:1px solid var(--hairline);border-left:3px solid var(--seaglass);padding:28px 24px;background:var(--white);transition:box-shadow .25s ease,border-color .25s ease,background .25s ease;}
+  .card-img{aspect-ratio:16/9;overflow:hidden;margin:-28px -24px 24px;background:var(--coolwhite);}
+  .card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+  .writing-card:hover .card-img img{transform:scale(1.03);}
   .writing-card:hover{box-shadow:0 4px 20px rgba(44,56,48,0.08);border-color:var(--seaglass);background:rgba(184,205,212,0.06);}
   .writing-card h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;line-height:1.2;color:var(--moss);margin-bottom:12px;}
   .writing-card p{font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.65;color:var(--moss);margin-bottom:20px;flex:1;}
@@ -190,7 +193,7 @@
 
   /* ---------- Nav dropdown ---------- */
   .nav-item{position:relative;display:flex;align-items:center;}
-  .dropdown-menu{display:none;position:absolute;top:100%;padding-top:10px;left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--hairline);min-width:260px;z-index:100;box-shadow:0 8px 24px rgba(44,56,48,0.12);}
+  .dropdown-menu{display:none;position:absolute;top:100%;padding-top:10px;right:0;left:auto;transform:none;background:var(--white);border:1px solid var(--hairline);min-width:200px;z-index:100;box-shadow:0 8px 24px rgba(44,56,48,0.12);}
   .nav-dropdown:hover .dropdown-menu{display:block;}
   .nav-links .dropdown-menu a{display:block;padding:12px 20px;font-size:14px;font-weight:400;color:var(--sage);text-decoration:none;transition:color .2s ease,background .2s ease;}
   .nav-links .dropdown-menu a:not(:last-child){border-bottom:1px solid var(--hairline);}
@@ -363,16 +366,19 @@
       <p class="reveal">I write regularly about AI's real-world implications — AI policy, the future of knowledge work, and what happens when systems don't account for the humans inside them.</p>
       <div class="writing-cards">
         <a class="writing-card reveal" href="https://elzanneamao.substack.com/p/south-africas-draft-ai-policy-withdrawn" target="_blank" rel="noopener">
+          <div class="card-img"><img src="https://substackcdn.com/image/fetch/$s_!j-oM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F08beb154-77ee-4610-98fb-ba666e414a81_730x550.png" alt="South Africa AI Policy article" loading="lazy"></div>
           <h3>South Africa's Draft AI Policy: Withdrawn for the Wrong Reason?</h3>
           <p>The fabricated citations made the headlines, but the document had deeper structural problems. On what the withdrawal means, what the commentary reveals, and where the conversation goes from here.</p>
           <span class="read-link">Read on Substack <span class="arrow">→</span></span>
         </a>
         <a class="writing-card reveal" href="https://elzanneamao.substack.com/p/did-i-just-press-buttons-all-day" target="_blank" rel="noopener">
+          <div class="card-img"><img src="https://substackcdn.com/image/fetch/$s_!hDVe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3eb367a2-b3c9-467e-a6c5-1bffe206914e_730x550.png" alt="Did I Just Press Buttons All Day article" loading="lazy"></div>
           <h3>Did I Just Press Buttons All Day?</h3>
           <p>On what it means to spend a working day collaborating with AI, and whether the work that comes out of it counts.</p>
           <span class="read-link">Read on Substack <span class="arrow">→</span></span>
         </a>
         <a class="writing-card reveal" href="https://elzanneamao.substack.com/p/how-social-media-spent-more-than" target="_blank" rel="noopener">
+          <div class="card-img"><img src="https://substackcdn.com/image/fetch/$s_!hDVe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3eb367a2-b3c9-467e-a6c5-1bffe206914e_730x550.png" alt="How Social Media Spent a Decade Reinventing 1960s Advertising article" loading="lazy"></div>
           <h3>How Social Media Spent More Than a Decade Reinventing 1960s Advertising</h3>
           <p>On how digital marketing circled back to principles the ad industry figured out sixty years ago, and what that means for where we go next.</p>
           <span class="read-link">Read on Substack <span class="arrow">→</span></span>
