@@ -86,8 +86,7 @@
   /* Featured image */
   .feature{margin-bottom:96px;}
   .feature .frame{aspect-ratio:21/9;overflow:hidden;border:1px solid var(--hairline);background:var(--coolwhite);}
-  .feature img{width:100%;height:100%;object-fit:cover;filter:grayscale(100%);transition:filter .7s ease;display:block;}
-  .feature .frame:hover img{filter:grayscale(0%);}
+  .feature img{width:100%;height:100%;object-fit:cover;display:block;}
 
   /* ---------- Editorial sticky-sidebar sections ---------- */
   .cs-section{padding-bottom:96px;}
@@ -108,7 +107,8 @@
 
   /* Pillar cards (2x2) */
   .pillars{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px;}
-  .pillar{border:1px solid var(--hairline);padding:28px;}
+  .pillar{border:1px solid var(--hairline);border-left:3px solid var(--gold);padding:28px;transition:box-shadow .25s ease,background .25s ease;}
+  .pillar:hover{background:rgba(168,164,76,0.05);box-shadow:0 4px 16px rgba(44,56,48,0.08);}
   .pillar h3{font-family:var(--serif);font-weight:500;font-size:1.4rem;color:var(--moss);margin-bottom:10px;}
   .pillar p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.6;color:var(--moss);}
 
@@ -122,10 +122,6 @@
   .check .badge svg{width:26px;height:26px;}
   .check h4{font-family:var(--serif);font-weight:500;font-size:1.4rem;color:var(--moss);margin-bottom:12px;}
   .check p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.6;color:var(--moss);max-width:34ch;margin-inline:auto;}
-
-  /* Fictional brands image */
-  .fb-img{aspect-ratio:16/9;overflow:hidden;border:1px solid var(--hairline);background:var(--coolwhite);margin-bottom:28px;}
-  .fb-img img{width:100%;height:100%;object-fit:cover;display:block;}
 
   /* Conclusion */
   .conclusion .q{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.5rem,2.6vw,1.9rem);line-height:1.3;color:var(--moss);margin-bottom:24px;}
@@ -153,8 +149,8 @@
   .slide blockquote{background:none;padding:0;margin-bottom:0;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.42;color:var(--moss);max-width:54ch;}
   .slide .attr{margin-top:28px;font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--moss);}
   .slide .attr .role{display:block;font-weight:300;text-transform:none;letter-spacing:0;font-size:14px;margin-top:6px;color:var(--sage);}
-  .car-btn{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:28px;color:var(--sage);font-family:var(--serif);line-height:1;padding:8px;transition:color .3s ease;}
-  .car-btn:hover{color:var(--moss);}
+  .car-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--white);border:1px solid var(--hairline);cursor:pointer;color:var(--sage);padding:10px;display:flex;align-items:center;justify-content:center;transition:color .3s ease,border-color .3s ease;z-index:2;}
+  .car-btn:hover{color:var(--moss);border-color:var(--sage);}
   .car-btn.prev{left:-8px;}
   .car-btn.next{right:-8px;}
   .dots{display:flex;gap:10px;justify-content:center;margin-top:36px;}
@@ -171,6 +167,14 @@
   .footer-mid .back{display:inline-flex;align-items:center;gap:8px;color:var(--moss);font-weight:500;}
   .footer-copy{font-family:var(--sans);font-size:13px;color:var(--sage);}
 
+  /* ---------- Nav dropdown ---------- */
+  .nav-item{position:relative;display:flex;align-items:center;}
+  .dropdown-menu{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--hairline);min-width:260px;z-index:100;box-shadow:0 8px 24px rgba(44,56,48,0.12);}
+  .nav-dropdown:hover .dropdown-menu{display:block;}
+  .nav-links .dropdown-menu a{display:block;padding:12px 20px;font-size:14px;font-weight:400;color:var(--sage);text-decoration:none;transition:color .2s ease,background .2s ease;}
+  .nav-links .dropdown-menu a:not(:last-child){border-bottom:1px solid var(--hairline);}
+  .nav-links .dropdown-menu a:hover{color:var(--moss);background:var(--coolwhite);}
+
   /* ---------- Motion ---------- */
   .js .reveal{opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1s ease;}
   .js .reveal.in{opacity:1;transform:translateY(0);}
@@ -183,6 +187,11 @@
     .nav-links.open{display:flex;flex-direction:column;align-items:flex-start;position:fixed;top:80px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--hairline);padding:24px 20px;gap:20px;z-index:49;}
     .nav-links.open .btn-cta{margin-top:4px;}
     .menu-icon{display:block;cursor:pointer;}
+    .nav-item{position:static;}
+    .dropdown-menu{position:static;transform:none;box-shadow:none;min-width:auto;display:none;border:none;background:transparent;padding-left:8px;}
+    .nav-links.open .dropdown-menu{display:block;}
+    .nav-links .dropdown-menu a{padding:6px 4px;font-size:13px;}
+    .nav-links .dropdown-menu a:not(:last-child){border-bottom:none;}
     .cs-hero{padding-top:48px;}
     .feature{margin-bottom:56px;}
     .cs-section{padding-bottom:56px;}
@@ -204,7 +213,13 @@
     <a href="index.html" class="wordmark"><img src="images/logo-olive.png" alt="Elzanne Amao" class="site-logo"></a>
     <div class="nav-links">
       <a href="index.html#services">Services</a>
-      <a href="index.html#work" class="active">Case Studies</a>
+      <div class="nav-item nav-dropdown">
+        <a href="index.html#work" class="active">Case Studies</a>
+        <div class="dropdown-menu">
+          <a href="think-orion-case-study.html">Think Orion</a>
+          <a href="inscape-case-study.html">Inscape</a>
+        </div>
+      </div>
       <a href="index.html#writing">Writing</a>
       <a href="about.html">About</a>
       <a href="#contact" class="btn-cta">Contact Me</a>
@@ -293,7 +308,6 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
           <p>"The point isn't to teach students about AI. It's to make AI use part of the learning task in a way that requires the student to bring their own developing judgement to the output."</p>
         </div>
-        <p class="note">I built the structural version of the subject inside Articulate Rise — the LMS architecture, the module and unit headings, the activity placements — so the content developers received a working scaffold rather than just a document. For the theory recaps within each unit, I used NotebookLM to generate audio and video summaries of the lesson content. The team had reservations about polish; the call I made was that universal modality coverage — every unit gets the audio option for students who prefer it — was worth more than selective high-production coverage on a handful of units. The summaries stayed.</p>
       </div>
     </div>
   </section>
@@ -303,10 +317,6 @@
     <div class="cs-grid">
       <div class="cs-head reveal"><h2 class="section-head">Fictional Brands for Real Learning</h2><div class="accent-line"></div></div>
       <div class="cs-body reveal">
-        <div class="fb-img">
-          <img alt="A grid of minimalist branding mockups for fictional companies in forest green, cream and rose clay — presented like a portfolio review."
-               src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-dy_k7tcRe60vDA5vHM1Zf6U44IrcNABThpaurFE5SLpbdwqaBqvUwsbYdm6EjMDWlRjCMvGIiSG_b0eTq6kamTmYqV-2W4e28O28UN7PXz-_IT_qCdh23fHJfbsZ19_ow16GIwlLwLfWpmyb3PxFi2uWJOIJBhfakSnp-NqNQmVnuBgYu0aqHy6dphOj5_o05HKTCrvGsNbnrkp0L9sWx_J7CKxoKQa-F2UF7MhVg0Cnaw9P9cyYiiVSG3GVPdL7KONkCQY3L7Ou">
-        </div>
         <p class="note">From January 2026, I picked up the content development for the first half of Foundations 1 — Modules 1 through 3 — as the bridge between the design phase and the team that would carry the remaining modules. A degree being written in 2026 for students graduating in 2030 has a content-dating problem: every named campaign, every linked video, every reference to a current South African brand carries the risk of being stale or broken by the time students encounter it. The methodology I developed was to build a small set of fictional South African businesses — a fast-casual chicken chain, a coastal lodge group, a digital media company, a Cape Town AI startup — as running case studies across the modules. Each was specified in enough detail to feel grounded, without anchoring the content to a real-world entity that could change or disappear. Real brand references stayed where they served the example better than a fiction would, but the load-bearing case studies were fictional by design.</p>
       </div>
     </div>
@@ -332,8 +342,8 @@
         <div class="accent-line" style="margin:18px auto 0;width:72px;"></div>
       </div>
       <div class="carousel reveal">
-        <button class="car-btn prev" aria-label="Previous">&#8249;</button>
-        <button class="car-btn next" aria-label="Next">&#8250;</button>
+        <button class="car-btn prev" aria-label="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="car-btn next" aria-label="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
         <div class="slides">
           <div class="slide active">
             <blockquote>"Calm and collected, Elzanne probed with clarity and intent, helping me to hear myself with the same clarity, confidence, and authority to stick to our brand WHY. The result was a breathtaking brand identity, an interpretation of our vision."</blockquote>
@@ -341,11 +351,11 @@
           </div>
           <div class="slide">
             <blockquote>"Elzanne deeply comprehends that content is not solely about aesthetics and emotions, but equally about structure and purpose. Her ability to combine the artistic and analytical aspects of writing is a testament to her holistic approach."</blockquote>
-            <div class="attr">Haddas Shem Tov<span class="role">Creative Director, eTeacher Group · Direct manager, 2023</span></div>
+            <div class="attr">Haddas Shem Tov<span class="role">Creative Director, eTeacher Group · Direct manager, 2021 - 2023</span></div>
           </div>
           <div class="slide">
             <blockquote>"Elzanne played a key role in establishing a new approach to delivering Commerce degrees in block mode rather than traditional semester mode. She skillfully planned and managed this programme, which paved the way for rolling out block mode across all our degree programmes."</blockquote>
-            <div class="attr">Janie Steyn<span class="role">Head of Programme, Commerce &amp; Law, Pearson Institute of Higher Education · Direct manager, 2020</span></div>
+            <div class="attr">Janie Steyn<span class="role">Head of Programme, Commerce &amp; Law, Pearson Institute of Higher Education · Direct manager, 2017 - 2019</span></div>
           </div>
         </div>
         <div class="dots"></div>

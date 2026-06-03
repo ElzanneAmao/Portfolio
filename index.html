@@ -140,8 +140,8 @@
   .slide blockquote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.42;color:var(--moss);max-width:54ch;}
   .slide .attr{margin-top:28px;font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--moss);}
   .slide .attr .role{display:block;font-weight:300;text-transform:none;letter-spacing:0;font-size:14px;margin-top:6px;color:var(--sage);}
-  .car-btn{position:absolute;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:28px;color:var(--sage);font-family:var(--serif);line-height:1;padding:8px;transition:color .3s ease;}
-  .car-btn:hover{color:var(--moss);}
+  .car-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--white);border:1px solid var(--hairline);cursor:pointer;color:var(--sage);padding:10px;display:flex;align-items:center;justify-content:center;transition:color .3s ease,border-color .3s ease;z-index:2;}
+  .car-btn:hover{color:var(--moss);border-color:var(--sage);}
   .car-btn.prev{left:-8px;}
   .car-btn.next{right:-8px;}
   .dots{display:flex;gap:10px;justify-content:center;margin-top:36px;}
@@ -156,9 +156,17 @@
   .eng-note a:hover{color:var(--sage);}
 
   /* ---------- Recent Writing ---------- */
-  .writing{background:var(--coolwhite);padding-block:96px;text-align:center;}
+  .writing{background:var(--white);padding-block:96px;text-align:center;border-top:1px solid var(--hairline);}
   .writing h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.4vw,2.8rem);color:var(--moss);}
   .writing p{font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.7;color:var(--moss);max-width:52ch;margin:24px auto 40px;}
+  .writing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px;text-align:left;}
+  .writing-card{display:flex;flex-direction:column;text-decoration:none;border:1px solid var(--hairline);padding:28px 24px;background:var(--white);transition:box-shadow .25s ease,border-color .25s ease;}
+  .writing-card:hover{box-shadow:0 4px 20px rgba(44,56,48,0.08);border-color:var(--sage);}
+  .writing-card h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;line-height:1.2;color:var(--moss);margin-bottom:12px;}
+  .writing-card p{font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.65;color:var(--moss);margin-bottom:20px;flex:1;}
+  .writing-card .read-link{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--moss);display:inline-flex;align-items:center;gap:6px;margin-top:auto;}
+  .writing-card .read-link .arrow{color:var(--gold);transition:transform .3s ease;}
+  .writing-card:hover .read-link .arrow{transform:translateX(4px);}
 
   /* ---------- Contact (Deep Moss) ---------- */
   .contact{background:var(--moss);padding-block:96px;text-align:center;color:var(--coolwhite);}
@@ -179,6 +187,14 @@
   .footer-mid a{font-family:var(--sans);font-size:14px;color:var(--sage);text-decoration:none;transition:color .3s ease;}
   .footer-mid a:hover{color:var(--moss);}
   .footer-copy{font-family:var(--sans);font-size:13px;color:var(--sage);}
+
+  /* ---------- Nav dropdown ---------- */
+  .nav-item{position:relative;display:flex;align-items:center;}
+  .dropdown-menu{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--hairline);min-width:260px;z-index:100;box-shadow:0 8px 24px rgba(44,56,48,0.12);}
+  .nav-dropdown:hover .dropdown-menu{display:block;}
+  .nav-links .dropdown-menu a{display:block;padding:12px 20px;font-size:14px;font-weight:400;color:var(--sage);text-decoration:none;transition:color .2s ease,background .2s ease;}
+  .nav-links .dropdown-menu a:not(:last-child){border-bottom:1px solid var(--hairline);}
+  .nav-links .dropdown-menu a:hover{color:var(--moss);background:var(--coolwhite);}
 
   /* ---------- Motion ---------- */
   .js .reveal{opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1s ease;}
@@ -202,6 +218,12 @@
     .work-grid{grid-template-columns:1fr;gap:40px;}
     .car-btn.prev{left:-4px;}
     .car-btn.next{right:-4px;}
+    .nav-item{position:static;}
+    .dropdown-menu{position:static;transform:none;box-shadow:none;min-width:auto;display:none;border:none;background:transparent;padding-left:8px;}
+    .nav-links.open .dropdown-menu{display:block;}
+    .nav-links .dropdown-menu a{padding:6px 4px;font-size:13px;}
+    .nav-links .dropdown-menu a:not(:last-child){border-bottom:none;}
+    .writing-cards{grid-template-columns:1fr;gap:20px;}
     .contact-row{flex-direction:column;gap:28px;align-items:center;}
     .footer-inner{flex-direction:column;align-items:flex-start;}
   }
@@ -214,7 +236,13 @@
     <a href="index.html" class="wordmark"><img src="images/logo-olive.png" alt="Elzanne Amao" class="site-logo"></a>
     <div class="nav-links">
       <a href="#services">Services</a>
-      <a href="#work">Case Studies</a>
+      <div class="nav-item nav-dropdown">
+        <a href="#work">Case Studies</a>
+        <div class="dropdown-menu">
+          <a href="think-orion-case-study.html">Think Orion</a>
+          <a href="inscape-case-study.html">Inscape</a>
+        </div>
+      </div>
       <a href="#writing">Writing</a>
       <a href="about.html">About</a>
       <a href="#contact" class="btn-cta">Contact Me</a>
@@ -307,8 +335,8 @@
         <div class="accent-line"></div>
       </div>
       <div class="carousel reveal">
-        <button class="car-btn prev" aria-label="Previous">&#8249;</button>
-        <button class="car-btn next" aria-label="Next">&#8250;</button>
+        <button class="car-btn prev" aria-label="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="car-btn next" aria-label="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
         <div class="slides">
         <div class="slide active">
             <blockquote>"Calm and collected, Elzanne probed with clarity and intent, helping me to hear myself with the same clarity, confidence, and authority to stick to our brand WHY. The result was a breathtaking brand identity, an interpretation of our vision."</blockquote>
@@ -316,11 +344,11 @@
           </div>
           <div class="slide">
             <blockquote>"Elzanne deeply comprehends that content is not solely about aesthetics and emotions, but equally about structure and purpose. Her ability to combine the artistic and analytical aspects of writing is a testament to her holistic approach."</blockquote>
-            <div class="attr">Haddas Shem Tov<span class="role">Creative Director, eTeacher Group · Direct manager, 2023</span></div>
+            <div class="attr">Haddas Shem Tov<span class="role">Creative Director, eTeacher Group · Direct manager, 2021 - 2023</span></div>
           </div>
           <div class="slide">
             <blockquote>"Elzanne played a key role in establishing a new approach to delivering Commerce degrees in block mode rather than traditional semester mode. She skillfully planned and managed this programme, which paved the way for rolling out block mode across all our degree programmes."</blockquote>
-            <div class="attr">Janie Steyn<span class="role">Head of Programme, Commerce &amp; Law, Pearson Institute of Higher Education · Direct manager, 2020</span></div>
+            <div class="attr">Janie Steyn<span class="role">Head of Programme, Commerce &amp; Law, Pearson Institute of Higher Education · Direct manager, 2017 - 2019</span></div>
           </div>
         </div>
         <div class="dots"></div>
@@ -333,7 +361,26 @@
     <div class="wrap">
       <h2 class="reveal">Recent Writing</h2>
       <p class="reveal">I write regularly about AI's real-world implications — AI policy, the future of knowledge work, and what happens when systems don't account for the humans inside them.</p>
-      <a class="btn btn-gold reveal" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a>
+      <div class="writing-cards">
+        <a class="writing-card reveal" href="https://elzanneamao.substack.com/p/south-africas-draft-ai-policy-withdrawn" target="_blank" rel="noopener">
+          <h3>South Africa's Draft AI Policy: Withdrawn for the Wrong Reason?</h3>
+          <p>The fabricated citations made the headlines, but the document had deeper structural problems. On what the withdrawal means, what the commentary reveals, and where the conversation goes from here.</p>
+          <span class="read-link">Read on Substack <span class="arrow">→</span></span>
+        </a>
+        <a class="writing-card reveal" href="https://elzanneamao.substack.com/p/did-i-just-press-buttons-all-day" target="_blank" rel="noopener">
+          <h3>Did I Just Press Buttons All Day?</h3>
+          <p>On what it means to spend a working day collaborating with AI, and whether the work that comes out of it counts.</p>
+          <span class="read-link">Read on Substack <span class="arrow">→</span></span>
+        </a>
+        <a class="writing-card reveal" href="https://elzanneamao.substack.com/p/how-social-media-spent-more-than" target="_blank" rel="noopener">
+          <h3>How Social Media Spent More Than a Decade Reinventing 1960s Advertising</h3>
+          <p>On how digital marketing circled back to principles the ad industry figured out sixty years ago, and what that means for where we go next.</p>
+          <span class="read-link">Read on Substack <span class="arrow">→</span></span>
+        </a>
+      </div>
+      <div style="margin-top:40px;">
+        <a class="btn btn-gold reveal" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a>
+      </div>
     </div>
   </section>
 

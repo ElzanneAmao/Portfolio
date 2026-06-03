@@ -123,6 +123,14 @@
   .footer-mid a:hover{color:var(--moss);}
   .footer-copy{font-family:var(--sans);font-size:13px;color:var(--sage);}
 
+  /* ---------- Nav dropdown ---------- */
+  .nav-item{position:relative;display:flex;align-items:center;}
+  .dropdown-menu{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--hairline);min-width:260px;z-index:100;box-shadow:0 8px 24px rgba(44,56,48,0.12);}
+  .nav-dropdown:hover .dropdown-menu{display:block;}
+  .nav-links .dropdown-menu a{display:block;padding:12px 20px;font-size:14px;font-weight:400;color:var(--sage);text-decoration:none;transition:color .2s ease,background .2s ease;}
+  .nav-links .dropdown-menu a:not(:last-child){border-bottom:1px solid var(--hairline);}
+  .nav-links .dropdown-menu a:hover{color:var(--moss);background:var(--coolwhite);}
+
   /* ---------- Motion ---------- */
   .js .reveal{opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1s ease;}
   .js .reveal.in{opacity:1;transform:translateY(0);}
@@ -135,6 +143,11 @@
     .nav-links.open{display:flex;flex-direction:column;align-items:flex-start;position:fixed;top:80px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--hairline);padding:24px 20px;gap:20px;z-index:49;}
     .nav-links.open .btn-cta{margin-top:4px;}
     .menu-icon{display:block;cursor:pointer;}
+    .nav-item{position:static;}
+    .dropdown-menu{position:static;transform:none;box-shadow:none;min-width:auto;display:none;border:none;background:transparent;padding-left:8px;}
+    .nav-links.open .dropdown-menu{display:block;}
+    .nav-links .dropdown-menu a{padding:6px 4px;font-size:13px;}
+    .nav-links .dropdown-menu a:not(:last-child){border-bottom:none;}
     .about-hero{padding-top:56px;}
     .about-intro{grid-template-columns:1fr;gap:32px;padding-bottom:64px;}
     .meta-list{border-left:none;border-top:1px solid var(--hairline);padding-left:0;padding-top:28px;}
@@ -155,7 +168,13 @@
     <a href="index.html" class="wordmark"><img src="images/logo-olive.png" alt="Elzanne Amao" class="site-logo"></a>
     <div class="nav-links">
       <a href="index.html#services">Services</a>
-      <a href="index.html#work">Case Studies</a>
+      <div class="nav-item nav-dropdown">
+        <a href="index.html#work">Case Studies</a>
+        <div class="dropdown-menu">
+          <a href="think-orion-case-study.html">Think Orion</a>
+          <a href="inscape-case-study.html">Inscape</a>
+        </div>
+      </div>
       <a href="index.html#writing">Writing</a>
       <a href="about.html" class="active">About</a>
       <a href="#contact" class="btn-cta">Contact Me</a>
