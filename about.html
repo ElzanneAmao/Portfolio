@@ -61,7 +61,8 @@
   /* ---------- Header ---------- */
   header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--hairline);}
   .nav{display:flex;justify-content:space-between;align-items:center;height:80px;}
-  .wordmark{font-family:var(--serif);font-weight:500;font-size:26px;letter-spacing:.01em;color:var(--moss);text-decoration:none;}
+  .wordmark{text-decoration:none;display:inline-flex;align-items:center;}
+  .site-logo{height:40px;width:auto;display:block;}
   .nav-links{display:flex;align-items:center;gap:32px;}
   .nav-links a:not(.btn-cta){font-family:var(--sans);font-size:15px;font-weight:400;color:var(--sage);text-decoration:none;padding-bottom:4px;transition:color .3s ease;}
   .nav-links a:not(.btn-cta):hover{color:var(--moss);}
@@ -151,7 +152,7 @@
 
 <header>
   <nav class="wrap nav">
-    <a href="index.html" class="wordmark">Elzanne Amao</a>
+    <a href="index.html" class="wordmark"><img src="images/logo-olive.png" alt="Elzanne Amao" class="site-logo"></a>
     <div class="nav-links">
       <a href="index.html#services">Services</a>
       <a href="index.html#work">Case Studies</a>
