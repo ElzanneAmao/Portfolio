@@ -110,10 +110,10 @@
   .cta-band .eyebrow{color:var(--seaglass);}
   .cta-band h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3vw,2.6rem);color:var(--white);margin-bottom:16px;}
   .cta-band p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;color:rgba(184,205,212,.85);max-width:48ch;margin:0 auto 32px;}
-  .btn-cta-light{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;background:var(--seaglass);color:var(--moss);padding:14px 28px;display:inline-flex;align-items:center;text-decoration:none;transition:opacity .3s ease;}
-  .btn-cta-light:hover{opacity:.88;}
-  .cta-email{font-family:var(--sans);font-size:14px;font-weight:300;color:rgba(184,205,212,.6);margin-top:16px;}
-  .cta-email a{color:rgba(184,205,212,.6);text-decoration:underline;}
+  .contact-item{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--coolwhite);font-family:var(--sans);font-size:16px;font-weight:300;position:relative;padding-bottom:4px;}
+  .contact-item svg{width:18px;height:18px;color:var(--seaglass);}
+  .contact-item::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--seaglass);transform:scaleX(0);transform-origin:right;transition:transform .35s ease;}
+  .contact-item:hover::after{transform:scaleX(1);transform-origin:left;}
 
   /* Related */
   .related{background:var(--coolwhite);padding:72px 0;}
@@ -289,8 +289,10 @@
     <span class="eyebrow">Get in touch</span>
     <h2>Ready to build something that works?</h2>
     <p>Tell me where you are in the process and what your content operation looks like right now. I'll let you know whether this is the right next step.</p>
-    <a href="mailto:elzanne.amao@gmail.com" class="btn-cta-light">Email me</a>
-    <p class="cta-email">or copy: <a href="mailto:elzanne.amao@gmail.com">elzanne.amao@gmail.com</a></p>
+    <a class="contact-item" href="mailto:elzanne.amao@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3" y="5" width="18" height="14"/><path d="m3 6 9 7 9-7"/></svg>
+      elzanne.amao@gmail.com
+    </a>
   </div>
 </div>
 
