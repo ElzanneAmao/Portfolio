@@ -87,6 +87,16 @@
   .service-box{border:1px solid var(--hairline);border-left:3px solid var(--seaglass);padding:32px 36px;}
   .service-box p{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;color:var(--moss);margin:0;}
 
+  /* Audience list */
+  .audience-list{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:16px;}
+  .audience-list li{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:var(--moss);padding-left:20px;position:relative;}
+  .audience-list li::before{content:"";position:absolute;left:0;top:12px;width:6px;height:6px;border-radius:50%;background:var(--seaglass);}
+  .audience-standalone{font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.7;color:var(--sage);margin-top:28px;}
+
+  /* Methodology note */
+  .methodology{margin-top:48px;padding-top:28px;border-top:1px solid var(--hairline);}
+  .methodology p{font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.7;color:var(--sage);}
+
   /* CTA band */
   .cta-band{background:var(--moss);padding:80px 0;text-align:center;}
   .cta-band .eyebrow{color:var(--seaglass);}
@@ -248,22 +258,20 @@
     <section>
       <span class="eyebrow">The deliverable</span>
       <h2>What you receive</h2>
-      <div class="service-box">
-        <p>A written report of about ten pages, specific to your business. It leads with the most pressing finding (not a generic overview), includes a competitor positioning review with messaging angles you can actually use, and is clear about what you can fix yourself and what would need outside help. Written so you can act on it or hand it to your leadership team and have it make sense to them too.</p>
-      </div>
+      <p>A written report of about ten pages, specific to your business. It leads with the most pressing finding (not a generic overview), includes a competitor positioning review with messaging angles you can actually use, and is clear about what you can fix yourself and what would need outside help. Written so you can act on it or hand it to your leadership team and have it make sense to them too.</p>
     </section>
     <section>
       <h2>Who this is for</h2>
-      <div class="service-box">
-        <p>Founders, owner-operators, and marketing leads at small-to-medium businesses who can tell the content has changed since AI entered the picture but haven't had the time (or the outside perspective) to figure out where it went wrong. If you're reading this page, you probably already have a sense that something needs to be assessed.</p>
-        <p style="margin-top:16px;">The audit is standalone. You take the report and decide what to do with it. No strings.</p>
-      </div>
+      <ul class="audience-list">
+        <li>Founders and owner-operators who can tell the content has changed since AI entered the picture but haven't had the time to figure out where it went wrong</li>
+        <li>Marketing leads at small-to-medium businesses who need an outside perspective on what's actually happening across channels</li>
+        <li>Leadership teams about to make a decision on AI tooling and want an honest read on the current state first</li>
+      </ul>
+      <p class="audience-standalone">The audit is standalone — you take the report and decide what to do with it.</p>
     </section>
-    <section>
-      <div class="service-box" style="border-left-color:var(--sage);">
-        <p style="font-size:15px;line-height:1.7;">This methodology was developed through extensive work in multichannel content operations, education marketing, and multi-brand content strategy. Pricing is scoped per engagement and discussed after an initial conversation.</p>
-      </div>
-    </section>
+    <div class="methodology">
+      <p>This methodology was developed through extensive work in multichannel content operations, education marketing, and multi-brand content strategy. Pricing is scoped per engagement and discussed after an initial conversation.</p>
+    </div>
   </div>
 </div>
 
