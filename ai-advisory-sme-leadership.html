@@ -52,14 +52,16 @@
   .eyebrow{font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--sage);display:block;margin-bottom:16px;}
 
   /* Hero */
-  .service-hero{background:var(--coolwhite);padding:56px 0 0;}
+  .service-hero{background:var(--coolwhite);padding:0;}
   .breadcrumb{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--sage);margin-bottom:28px;}
   .breadcrumb a{color:var(--sage);text-decoration:none;transition:color .2s ease;}
   .breadcrumb a:hover{color:var(--moss);}
-  .hero-grid{display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:start;padding-bottom:48px;}
+  .hero-flush{display:grid;grid-template-columns:1fr 440px;align-items:stretch;}
+  .hero-flush-left{padding:56px 48px 48px 40px;}
+  .hero-flush-right{overflow:hidden;}
+  .hero-flush-right .hero-img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:unset;border:none;background:none;min-height:320px;}
   .hero-text h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,4.5vw,3.4rem);line-height:1.1;color:var(--moss);margin-bottom:20px;}
   .hero-subtitle{font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.75;color:var(--moss);}
-  .hero-img{aspect-ratio:3/2;background:var(--white);border:1px solid var(--hairline);width:100%;object-fit:cover;display:block;}
 
   /* Meta strip */
   .meta-strip{display:flex;gap:48px;flex-wrap:wrap;padding:28px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
@@ -131,8 +133,9 @@
     .nav-links .dropdown-menu a{padding:6px 4px;font-size:13px;}
     .nav-links .dropdown-menu a:not(:last-child){border-bottom:none;}
     .wrap,.narrow{padding:0 20px;}
-    .service-hero{padding:40px 0 0;}
-    .hero-grid{grid-template-columns:1fr;gap:32px;padding-bottom:40px;}
+    .hero-flush{grid-template-columns:1fr;}
+    .hero-flush-left{padding:40px 20px 32px;}
+    .hero-flush-right .hero-img{min-height:240px;height:240px;}
     .phase-bento{grid-template-columns:1fr;}
     .related-grid{grid-template-columns:1fr;}
     .meta-strip{gap:24px;}
@@ -174,16 +177,20 @@
 </header>
 
 <section class="service-hero">
-  <div class="wrap">
-    <div class="breadcrumb"><a href="index.html#services">Services</a> &nbsp;/&nbsp; AI Advisory for SME Leadership</div>
-    <div class="hero-grid">
+  <div class="hero-flush">
+    <div class="hero-flush-left">
+      <div class="breadcrumb"><a href="index.html#services">Services</a> &nbsp;/&nbsp; AI Advisory for SME Leadership</div>
       <div class="hero-text">
         <span class="eyebrow">Ongoing advisory</span>
         <h1>AI advisory for SME leadership</h1>
         <p class="hero-subtitle">AI has made it easy for your competitors to sound exactly like you. It's also made it easy for you to sound exactly like them. The difference between the two is a strategic communications problem, and it compounds over time if nobody's watching it.</p>
       </div>
+    </div>
+    <div class="hero-flush-right">
       <img src="images/hero-advisory.jpg.png" alt="AI advisory for SME leadership" class="hero-img">
     </div>
+  </div>
+  <div class="wrap">
     <div class="meta-strip">
       <div class="meta-item"><span class="meta-label">Engagement type</span><span class="meta-value">Ongoing advisory</span></div>
       <div class="meta-item"><span class="meta-label">Minimum term</span><span class="meta-value">Three months</span></div>
