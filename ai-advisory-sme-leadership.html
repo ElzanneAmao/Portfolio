@@ -71,25 +71,22 @@
   .section-white{background:var(--white);padding:72px 0;}
   .section-pale{background:var(--coolwhite);padding:72px 0;}
 
-  /* Section headings (for pale section) */
+  /* Section headings and body */
+  .section-white h2,.section-pale h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,2.5vw,2.2rem);line-height:1.2;color:var(--moss);margin-bottom:20px;}
+  .section-white p,.section-pale p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:var(--moss);margin-bottom:16px;}
+  .section-white p:last-child,.section-pale p:last-child{margin-bottom:0;}
   .section-heading{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,2.5vw,2.2rem);line-height:1.2;color:var(--moss);margin-bottom:32px;}
 
-  /* Bento split */
-  .bento-split{display:grid;grid-template-columns:7fr 5fr;gap:24px;}
-  .bento-light{border:1px solid var(--hairline);padding:40px;}
-  .bento-dark{background:var(--moss);padding:40px;}
-  .bento-light h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2vw,1.9rem);color:var(--moss);margin-bottom:16px;line-height:1.2;}
-  .bento-light p{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;color:var(--moss);margin-bottom:16px;}
-  .bento-light p:last-child{margin-bottom:0;}
-  .bento-dark .eyebrow{color:var(--seaglass);}
-  .bento-dark h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.5rem,2vw,1.9rem);color:var(--white);margin-bottom:16px;line-height:1.2;}
-  .bento-dark p{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;color:rgba(255,255,255,.78);margin-bottom:16px;}
-  .bento-dark p:last-child{margin-bottom:0;}
-
-  /* 3-col includes */
-  .includes-3{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding-top:40px;border-top:1px solid var(--hairline);}
-  .include-item h3{font-family:var(--sans);font-size:15px;font-weight:500;color:var(--moss);margin-bottom:10px;}
-  .include-item p{font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.65;color:var(--moss);}
+  /* Phase cards */
+  .phase-bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+  .phase-card{border:1px solid var(--hairline);padding:32px 28px;background:var(--white);position:relative;overflow:hidden;transition:background .3s ease,border-color .3s ease;}
+  .phase-card:hover{background:var(--seaglass);border-color:var(--seaglass);}
+  .phase-ghost{position:absolute;bottom:-14px;right:10px;font-family:var(--serif);font-size:96px;line-height:1;color:var(--moss);opacity:0;user-select:none;pointer-events:none;transition:opacity .3s ease;}
+  .phase-card:hover .phase-ghost{opacity:.12;}
+  .phase-card .phase-num{font-family:var(--sans);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--sage);display:block;margin-bottom:16px;transition:color .3s ease;}
+  .phase-card:hover .phase-num{color:var(--moss);}
+  .phase-card h3{font-family:var(--serif);font-weight:500;font-size:1.2rem;color:var(--moss);margin-bottom:10px;}
+  .phase-card p{font-size:14px;font-weight:300;line-height:1.65;color:var(--moss);}
 
   /* CTA band */
   .cta-band{background:var(--moss);padding:80px 0;text-align:center;}
@@ -136,14 +133,12 @@
     .wrap,.narrow{padding:0 20px;}
     .service-hero{padding:40px 0 0;}
     .hero-grid{grid-template-columns:1fr;gap:32px;padding-bottom:40px;}
-    .bento-split{grid-template-columns:1fr;}
-    .includes-3{grid-template-columns:1fr;gap:28px;}
+    .phase-bento{grid-template-columns:1fr;}
     .related-grid{grid-template-columns:1fr;}
     .meta-strip{gap:24px;}
     .section-white,.section-pale{padding:48px 0;}
     .cta-band{padding:56px 0;}
     .related{padding:48px 0;}
-    .bento-light,.bento-dark{padding:28px 20px;}
     .footer-inner{flex-direction:column;align-items:flex-start;}
   }
   </style>
@@ -199,36 +194,41 @@
 </section>
 
 <div class="section-white">
-  <div class="wrap">
-    <div class="bento-split">
-      <div class="bento-light">
-        <span class="eyebrow">The work</span>
-        <h2>What this is about</h2>
-        <p>AI keeps changing. New tools, new capabilities, new ways for your content to lose the thing that made it yours. You're running a business and you don't have time to keep track of all of it, let alone figure out what applies to your situation and what doesn't. This advisory gives you scheduled access to someone with a strategic communications background who understands the AI landscape and can help you think through the decisions that affect how your brand shows up.</p>
-      </div>
-      <div class="bento-dark">
-        <span class="eyebrow">The fit</span>
-        <h2>Is this for you</h2>
-        <p>You're a founder doing your own marketing, or leading a small team that does it. AI is part of the workflow and it's working for the most part. Perhaps you've noticed that overreliance on AI content is starting to dilute the trust your audience has in your brand. That's where I come in. With a background in strategic communications and over a decade in content operations, I help you make sure the efficiency AI gives you doesn't come at the cost of the credibility you've built.</p>
-      </div>
-    </div>
+  <div class="narrow">
+    <span class="eyebrow">The work</span>
+    <h2>What this is about</h2>
+    <p>AI keeps changing. New tools, new capabilities, new ways for your content to lose the thing that made it yours. You're running a business and you don't have time to keep track of all of it, let alone figure out what applies to your situation and what doesn't. This advisory gives you scheduled access to someone with a strategic communications background who understands the AI landscape and can help you think through the decisions that affect how your brand shows up.</p>
   </div>
 </div>
 
 <div class="section-pale">
+  <div class="narrow">
+    <span class="eyebrow">The fit</span>
+    <h2>Is this for you</h2>
+    <p>You're a founder doing your own marketing, or leading a small team that does it. AI is part of the workflow and it's working for the most part. Perhaps you've noticed that overreliance on AI content is starting to dilute the trust your audience has in your brand. That's where I come in. With a background in strategic communications and over a decade in content operations, I help you make sure the efficiency AI gives you doesn't come at the cost of the credibility you've built.</p>
+  </div>
+</div>
+
+<div class="section-white">
   <div class="wrap">
     <span class="eyebrow">The details</span>
     <h2 class="section-heading">What the advisory includes</h2>
-    <div class="includes-3">
-      <div class="include-item">
+    <div class="phase-bento">
+      <div class="phase-card">
+        <span class="phase-ghost">01</span>
+        <span class="phase-num">01</span>
         <h3>Monthly calls</h3>
         <p>Two 45-to-60-minute calls per month, scheduled in advance. Time to work through decisions, review the AI operation, and set priorities for the coming weeks.</p>
       </div>
-      <div class="include-item">
+      <div class="phase-card">
+        <span class="phase-ghost">02</span>
+        <span class="phase-num">02</span>
         <h3>Async access</h3>
         <p>Email access between calls for questions, quick decisions, and sanity checks on anything AI-related that comes up between sessions.</p>
       </div>
-      <div class="include-item">
+      <div class="phase-card">
+        <span class="phase-ghost">03</span>
+        <span class="phase-num">03</span>
         <h3>Quarterly review</h3>
         <p>A written assessment at the end of each quarter: what's changed in the operation, what's working, and where to focus next. Written so you can share it with a co-founder or leadership team if needed.</p>
       </div>
