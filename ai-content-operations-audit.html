@@ -56,10 +56,9 @@
   .breadcrumb{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--sage);margin-bottom:28px;}
   .breadcrumb a{color:var(--sage);text-decoration:none;transition:color .2s ease;}
   .breadcrumb a:hover{color:var(--moss);}
-  .hero-grid{display:grid;grid-template-columns:1fr 380px;gap:64px;align-items:start;padding-bottom:48px;}
+  .hero-text{max-width:720px;padding-bottom:48px;}
   .hero-text h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,4.5vw,3.4rem);line-height:1.1;color:var(--moss);margin-bottom:20px;}
   .hero-subtitle{font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.75;color:var(--moss);}
-  .hero-img{aspect-ratio:3/2;background:var(--white);border:1px solid var(--hairline);width:100%;object-fit:cover;display:block;}
 
   /* Meta strip */
   .meta-strip{display:flex;gap:48px;flex-wrap:wrap;padding:28px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
@@ -193,13 +192,10 @@
 <section class="service-hero">
   <div class="wrap">
     <div class="breadcrumb"><a href="index.html#services">Services</a> &nbsp;/&nbsp; AI Content Operations Audit</div>
-    <div class="hero-grid">
-      <div class="hero-text">
-        <span class="eyebrow">Diagnostic engagement</span>
-        <h1>AI content operations audit</h1>
-        <p class="hero-subtitle">Everyone on your team is doing their own thing when it comes to AI content. Good on their initiative. Not great for your brand voice.</p>
-      </div>
-      <img src="images/hero-audit.jpg.png" alt="AI content operations audit" class="hero-img">
+    <div class="hero-text">
+      <span class="eyebrow">Diagnostic engagement</span>
+      <h1>AI content operations audit</h1>
+      <p class="hero-subtitle">Everyone on your team is doing their own thing when it comes to AI content. Good on their initiative. Not great for your brand voice.</p>
     </div>
     <div class="meta-strip">
       <div class="meta-item"><span class="meta-label">Engagement type</span><span class="meta-value">Project (bounded)</span></div>
