@@ -107,16 +107,16 @@
   .eng-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:56px;}
   .eng-top .intro{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;color:var(--moss);max-width:46ch;justify-self:end;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-  .card{border:1px solid var(--hairline);border-left:3px solid var(--seaglass);background:transparent;padding:36px 30px;display:flex;flex-direction:column;transition:background .25s ease,box-shadow .25s ease,border-color .25s ease;overflow:hidden;}
-  .card:hover{background:rgba(184,205,212,0.08);box-shadow:0 8px 32px rgba(44,56,48,0.1);border-color:var(--seaglass);}
+  .card{border:1px solid var(--hairline);border-left:3px solid var(--seaglass);background:transparent;padding:36px 30px;display:flex;flex-direction:column;transition:background .25s ease,border-color .25s ease;overflow:hidden;text-decoration:none;color:inherit;}
+  .card:hover{background:var(--seaglass);border-color:var(--seaglass);}
   .card .card-img{aspect-ratio:3/2;overflow:hidden;margin:-36px -30px 28px;background:var(--coolwhite);}
   .card .card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
   .card:hover .card-img img{transform:scale(1.03);}
   .card h3{font-family:var(--serif);font-weight:500;font-size:1.75rem;line-height:1.15;color:var(--moss);margin-bottom:16px;}
   .card p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.65;color:var(--moss);flex:1;}
-  .card .inquire{margin-top:28px;font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--moss);text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
-  .card .inquire .arrow{color:var(--seaglass);transition:transform .3s ease;}
-  .card .inquire:hover .arrow{transform:translateX(5px);}
+  .card .inquire{margin-top:28px;font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--moss);display:inline-flex;align-items:center;gap:8px;}
+  .card .inquire .arrow{color:var(--seaglass);transition:transform .3s ease,color .3s ease;}
+  .card:hover .inquire .arrow{transform:translateX(5px);color:var(--moss);}
 
   /* ---------- Selected Work ---------- */
   .work{padding-block:96px;}
@@ -294,24 +294,24 @@
         <p class="reveal">My starting point is always diagnostic: I help you understand what's happening before I propose changes. The goal is a content operation where AI and your team each do what they're best at, and the output sounds like your brand.</p>
       </div>
       <div class="cards">
-        <div class="card reveal">
+        <a class="card reveal" href="ai-content-operations-audit.html">
           <div class="card-img"><img src="images/hero-audit.jpg.png" alt="AI content operations audit" loading="lazy"></div>
           <h3>AI content operations audit</h3>
           <p>If you can tell something is off with your content since AI entered the workflow but you're not sure what, this is where to start. I produce a written read on what's working, what isn't, and where the highest-leverage changes are.</p>
-          <a class="inquire" href="ai-content-operations-audit.html">Learn more <span class="arrow">&rarr;</span></a>
-        </div>
-        <div class="card reveal">
+          <span class="inquire">Learn more <span class="arrow">&rarr;</span></span>
+        </a>
+        <a class="card reveal" href="ai-integrated-content-system-design.html">
           <div class="card-img"><img src="images/hero-system-design.jpg.png" alt="AI-integrated content system design" loading="lazy"></div>
           <h3>AI-integrated content system design</h3>
           <p>If you know what needs to change and you need someone to design the system, this is the build engagement. I design or rebuild your content operation so your team knows what AI handles, what they handle, and how the pieces fit together.</p>
-          <a class="inquire" href="ai-integrated-content-system-design.html">Learn more <span class="arrow">&rarr;</span></a>
-        </div>
-        <div class="card reveal">
+          <span class="inquire">Learn more <span class="arrow">&rarr;</span></span>
+        </a>
+        <a class="card reveal" href="ai-advisory-sme-leadership.html">
           <div class="card-img"><img src="images/hero-advisory.jpg.png" alt="AI advisory for SME leadership" loading="lazy"></div>
           <h3>AI advisory for SME leadership</h3>
           <p>If you don't need a project but you do need someone to think with, this is a retainer. Monthly check-ins, async availability between them, and a quarterly written read on how your AI integration is holding up against the business you're building.</p>
-          <a class="inquire" href="ai-advisory-sme-leadership.html">Learn more <span class="arrow">&rarr;</span></a>
-        </div>
+          <span class="inquire">Learn more <span class="arrow">&rarr;</span></span>
+        </a>
       </div>
       <p class="eng-note reveal">If you're not sure which of these fits, that's fine. <a href="#contact">Email me</a> and describe what you're working on.</p>
     </div>
