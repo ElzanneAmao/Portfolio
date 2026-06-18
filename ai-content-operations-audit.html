@@ -75,13 +75,16 @@
   .section-white p:last-child,.section-pale p:last-child{margin-bottom:0;}
   .section-white section + section{margin-top:56px;}
 
-  /* Horizontal process steps */
-  .steps-h{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;margin-top:40px;}
-  .step-h{padding-top:20px;border-top:2px solid var(--hairline);transition:border-top-color .3s ease;}
-  .step-h:hover{border-top-color:var(--seaglass);}
-  .step-ghost{font-family:var(--serif);font-size:56px;line-height:1;color:var(--sage);opacity:.45;display:block;margin-bottom:10px;}
-  .step-h h3{font-family:var(--sans);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--moss);margin-bottom:10px;}
-  .step-h p{font-size:14px;font-weight:300;line-height:1.65;color:var(--moss);}
+  /* Process steps */
+  .phase-bento{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:40px;}
+  .phase-card{border:1px solid var(--hairline);padding:28px 20px;background:var(--white);position:relative;overflow:hidden;transition:background .3s ease,border-color .3s ease;}
+  .phase-card:hover{background:var(--seaglass);border-color:var(--seaglass);}
+  .phase-ghost{position:absolute;bottom:-14px;right:10px;font-family:var(--serif);font-size:96px;line-height:1;color:var(--moss);opacity:0;user-select:none;pointer-events:none;transition:opacity .3s ease;}
+  .phase-card:hover .phase-ghost{opacity:.12;}
+  .phase-card .phase-num{font-family:var(--sans);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--sage);display:block;margin-bottom:16px;transition:color .3s ease;}
+  .phase-card:hover .phase-num{color:var(--moss);}
+  .phase-card h3{font-family:var(--serif);font-weight:500;font-size:1.15rem;color:var(--moss);margin-bottom:10px;}
+  .phase-card p{font-size:13px;font-weight:300;line-height:1.65;color:var(--moss);}
 
   /* Service box */
   .service-box{border:1px solid var(--hairline);border-left:3px solid var(--seaglass);padding:32px 36px;}
@@ -146,7 +149,7 @@
     .wrap,.narrow{padding:0 20px;}
     .service-hero{padding:40px 0 0;}
     .hero-grid{grid-template-columns:1fr;gap:32px;padding-bottom:40px;}
-    .steps-h{grid-template-columns:1fr 1fr;}
+    .phase-bento{grid-template-columns:1fr;}
     .related-grid{grid-template-columns:1fr;}
     .meta-strip{gap:24px;}
     .section-white,.section-pale{padding:48px 0;}
@@ -223,29 +226,34 @@
   <div class="wrap">
     <span class="eyebrow">The process</span>
     <h2>How it works</h2>
-    <div class="steps-h">
-      <div class="step-h">
-        <span class="step-ghost">1</span>
+    <div class="phase-bento">
+      <div class="phase-card">
+        <span class="phase-ghost">01</span>
+        <span class="phase-num">Step 01</span>
         <h3>Intake and access</h3>
         <p>A short onboarding form (~30 min) walks you through what to provide: content samples across channels, team structure, tools in use, and any existing brand documentation.</p>
       </div>
-      <div class="step-h">
-        <span class="step-ghost">2</span>
+      <div class="phase-card">
+        <span class="phase-ghost">02</span>
+        <span class="phase-num">Step 02</span>
         <h3>Discovery call</h3>
         <p>A 60-minute conversation about your business goals, your audiences, how AI ended up in the workflow, and what you think is working and what isn't.</p>
       </div>
-      <div class="step-h">
-        <span class="step-ghost">3</span>
+      <div class="phase-card">
+        <span class="phase-ghost">03</span>
+        <span class="phase-num">Step 03</span>
         <h3>Content and competitor review</h3>
         <p>I review content across channels against your brand standards, map where AI is involved in the workflow, and run a competitor positioning review including at least one alternative competitor you may not have considered.</p>
       </div>
-      <div class="step-h">
-        <span class="step-ghost">4</span>
+      <div class="phase-card">
+        <span class="phase-ghost">04</span>
+        <span class="phase-num">Step 04</span>
         <h3>Findings and recommendations</h3>
         <p>A written report organised by priority, leading with the most pressing finding. Each finding includes what was observed, why it matters, and a recommended change.</p>
       </div>
-      <div class="step-h">
-        <span class="step-ghost">5</span>
+      <div class="phase-card">
+        <span class="phase-ghost">05</span>
+        <span class="phase-num">Step 05</span>
         <h3>Handover call</h3>
         <p>A 60-to-90-minute session to walk through the report and discuss what comes next.</p>
       </div>
@@ -267,7 +275,7 @@
         <li>Marketing leads at small-to-medium businesses who need an outside perspective on what's actually happening across channels</li>
         <li>Leadership teams about to make a decision on AI tooling and want an honest read on the current state first</li>
       </ul>
-      <p class="audience-standalone">The audit is standalone — you take the report and decide what to do with it.</p>
+      <p class="audience-standalone">The audit is a standalone service that you can implement yourself. I can also <a href="ai-integrated-content-system-design.html" style="color:var(--sage);font-weight:400;">help build your content operations</a> so your team can work more effectively with AI.</p>
     </section>
     <div class="methodology">
       <p>This methodology was developed through extensive work in multichannel content operations, education marketing, and multi-brand content strategy. Pricing is scoped per engagement and discussed after an initial conversation.</p>
