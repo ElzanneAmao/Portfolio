@@ -4,6 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Content Operations Audit | Elzanne Amao</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does the audit assess?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The audit covers four areas: a content inventory and channel mapping; a quality and consistency assessment across your active channels checking both structural elements and voice and authenticity; a competitor content analysis covering three to five direct competitors; and a gap analysis identifying where your content operation is falling short, prioritised by business impact."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do I get at the end?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A written report of approximately ten pages, plus a 60-to-90-minute handover call. The report includes an executive summary, a picture of your current content operation, findings organised by priority, a competitor landscape section, and a prioritised list of next steps."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does the audit take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "About two weeks from the discovery call to the handover call. The discovery call is an hour. The content review, competitor analysis, and report writing take three to eight days depending on scope."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does the audit cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The audit is a project fee based on the scope of your content operation — primarily the number of channels, the volume of content, and how many people are involved in producing it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do I need to provide before we start?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Content samples across your active channels, a summary of who produces and approves content, a list of the AI tools in use, and any existing brand documentation. If you don't have documentation, that's noted as a finding in itself."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this just a ChatGPT-generated report?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The audit involves a working session with you, a manual review of your content, and a competitor analysis. The quality and voice assessment is a human judgment call based on 16 years of content strategy and brand communication experience."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if the audit finds that our content is fine?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Then the report says that, with specifics about what's working and why. The audit is a diagnostic — it reports what it finds, not what justifies further work."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens after the audit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The audit is a complete, standalone deliverable. You can act on the recommendations yourself, brief an agency, or bring in another consultant. If the findings point to a need for a structured content system, we can discuss the system design engagement — but there's no obligation to continue."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can't I just audit our own content internally?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can review your content, but the value of an external audit is the perspective. People inside a business develop familiarity that makes it difficult to notice gradual drift. An external assessment catches what internal familiarity obscures, and the competitor analysis provides context you don't have from inside the operation."
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -156,7 +236,25 @@
     .related{padding:48px 0;}
     .service-box{padding:24px 20px;}
     .footer-inner{flex-direction:column;align-items:flex-start;}
+    .faq-band{padding-block:48px;}
   }
+  /* ---------- FAQ ---------- */
+  .faq-band{background:var(--coolwhite);padding-block:72px;}
+  .faq-list{margin-top:32px;}
+  .faq-item{border-top:1px solid var(--hairline);}
+  .faq-item:last-child{border-bottom:1px solid var(--hairline);}
+  .faq-toggle{width:100%;background:none;border:none;padding:20px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;cursor:pointer;text-align:left;font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.5;color:var(--moss);}
+  .faq-q{flex:1;}
+  .faq-icon{width:20px;height:20px;flex-shrink:0;position:relative;margin-top:2px;}
+  .faq-icon::before,.faq-icon::after{content:'';position:absolute;background:var(--sage);transition:transform .3s ease,opacity .3s ease;}
+  .faq-icon::before{width:14px;height:1.5px;top:50%;left:50%;transform:translate(-50%,-50%);}
+  .faq-icon::after{width:1.5px;height:14px;top:50%;left:50%;transform:translate(-50%,-50%);}
+  .faq-item.open .faq-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+  .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-item.open .faq-answer{max-height:800px;}
+  .faq-answer p{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;color:var(--moss);padding-bottom:24px;}
+  .faq-band h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,2.5vw,2.2rem);line-height:1.2;color:var(--moss);margin-bottom:6px;}
+  .faq-band .accent-line{width:56px;height:2px;background:var(--seaglass);margin-bottom:0;}
   </style>
 </head>
 <body>
@@ -279,6 +377,96 @@
   </div>
 </div>
 
+<div class="faq-band">
+  <div class="narrow">
+    <h2>Frequently asked questions</h2>
+    <div class="accent-line"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">What does the audit assess?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>The audit covers four areas. First, a content inventory and channel mapping — what you're producing, where, how frequently, and who's involved. Second, a quality and consistency assessment across your active channels, checking both structural elements (value propositions, calls to action, audience specificity) and voice and authenticity (does this sound like your brand, or could it belong to anyone). Third, a competitor content analysis covering three to five direct competitors and their positioning. Fourth, a gap analysis identifying where your content operation is falling short, prioritised by business impact.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">What do I get at the end?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>A written report of approximately ten pages, plus a 60-to-90-minute handover call to walk through the findings. The report includes an executive summary, a picture of your current content operation, findings organised by priority (each with a specific observation, why it matters, and a recommended change), a competitor landscape section, and a prioritised list of next steps. Recommendations are directional — they tell you what to change and why, with enough specificity to act on.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">How long does it take?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>About two weeks from the discovery call to the handover call. The discovery call is an hour. The content review, competitor analysis, and report writing take three to eight days depending on the scope of your content operation. The handover call follows within a few days of the report being ready.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">How much does it cost?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>The audit is a project fee based on the scope of your content operation — primarily the number of channels, the volume of content, and how many people are involved in producing it. I can give you a specific number after a short conversation about what you're working with.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">What do I need to provide before we start?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Content samples across your active channels (as much history as you have — a year is ideal), a summary of who on your team produces, approves, and publishes content, a list of the AI tools in use and how they're being used, and any existing brand documentation (style guides, tone of voice documents, content briefs). If you don't have documentation, that's noted as a finding in itself.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">Is this just a ChatGPT-generated report?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>No. The audit involves a working session with you, a manual review of your content across channels, and a competitor analysis. AI tools assist with parts of the research, but the quality and voice assessment — which is the core of the audit — is a human judgment call based on 16 years of content strategy and brand communication experience. The report is written for your specific business, not generated from a template.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">What if the audit finds that our content is fine?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Then the report says that, with specifics about what's working and why. The audit is a diagnostic — it reports what it finds, not what justifies further work. If your content is strong and your AI workflow is producing consistent, on-brand output, that's a useful finding too. It means you can invest your time and budget elsewhere.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">What happens after the audit?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>The audit is a complete, standalone deliverable. You can act on the recommendations yourself, brief an agency, or bring in another consultant. If the findings point to a need for a structured content system, we can discuss the system design engagement — but there's no obligation to continue working with me, and the audit report gives you everything you need to move forward independently.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">Can't I just audit our own content internally?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>You can review your content, but the value of an external audit is the perspective. People inside a business develop familiarity with their own content that makes it difficult to notice gradual drift. You read your own website every day — you stop seeing where the tone has shifted or where the messaging has become generic. An external assessment catches what internal familiarity obscures, and the competitor analysis provides context you don't have from inside the operation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="cta-band">
   <div class="narrow">
     <span class="eyebrow">Get in touch</span>
@@ -337,6 +525,14 @@
   window.addEventListener('scroll',()=>{
     const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
     bar.style.width=pct+'%';
+  });
+  document.querySelectorAll('.faq-toggle').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=btn.closest('.faq-item');
+      const isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+      if(!isOpen)item.classList.add('open');
+    });
   });
 </script>
 </body>

@@ -4,6 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI-Integrated Content System Design | Elzanne Amao</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What does the system include?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The deliverable is a documented content operations system including: an end-to-end workflow from brief to publication, a RACI matrix defining who decides what at each stage, one prompt skill document per channel, a tool integration map, a change log, a quick reference guide, and a team training session."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to have done an audit first?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The system design requires an understanding of your brand and where the content is currently falling short. That can come from my audit or from equivalent work done independently. I also run an operational audit as part of the system design engagement itself."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens after handover?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You run it. The system is designed so your team operates it independently. Someone on your team is identified as the skill owner and receives specific training on how to maintain and adjust the system. There is no ongoing dependency on me after handover."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if we change AI tools after you've built the system?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The prompt skill documents are written in markdown, which is platform-agnostic. They work in ChatGPT, Claude, Copilot, Gemini, or any other tool that accepts structured text prompts. If you switch tools, the system moves with you."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does the system design take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Four to five weeks for a contained operation (one brand, one to two content channels, a small team). Six to eight weeks for a more complex one with multiple brands, three or more channels, or cross-functional workflows."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does the system design cost?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The system design is a project fee based on the complexity of the build — primarily the number of channels, the team size, the number of tools involved, and whether content workflow crosses into other functions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the difference between this and just writing better prompts?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A prompt is a single instruction for a single output. A content system is the infrastructure that governs how your team produces content consistently. The prompt skill documents are one component of the system — they sit inside a workflow with decision rights, review stages, and a governance structure."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will this slow my team down?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The system is designed to fit into how your team already works. The prompt skill documents replace the improvised prompting your team does now. The workflow formalises decisions that are already being made informally. For most teams, the initial adjustment period is a few days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you provide ongoing support after the system is built?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The system design engagement ends at handover. If you want ongoing strategic support, that's the advisory retainer — a separate engagement with a three-month minimum. The system is designed to work without ongoing external involvement."
+        }
+      }
+    ]
+  }
+  </script>
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -157,7 +237,25 @@
     .related{padding:48px 0;}
     .service-box{padding:24px 20px;}
     .footer-inner{flex-direction:column;align-items:flex-start;}
+    .faq-band{padding-block:48px;}
   }
+  /* ---------- FAQ ---------- */
+  .faq-band{background:var(--coolwhite);padding-block:72px;}
+  .faq-list{margin-top:32px;}
+  .faq-item{border-top:1px solid var(--hairline);}
+  .faq-item:last-child{border-bottom:1px solid var(--hairline);}
+  .faq-toggle{width:100%;background:none;border:none;padding:20px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;cursor:pointer;text-align:left;font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.5;color:var(--moss);}
+  .faq-q{flex:1;}
+  .faq-icon{width:20px;height:20px;flex-shrink:0;position:relative;margin-top:2px;}
+  .faq-icon::before,.faq-icon::after{content:'';position:absolute;background:var(--sage);transition:transform .3s ease,opacity .3s ease;}
+  .faq-icon::before{width:14px;height:1.5px;top:50%;left:50%;transform:translate(-50%,-50%);}
+  .faq-icon::after{width:1.5px;height:14px;top:50%;left:50%;transform:translate(-50%,-50%);}
+  .faq-item.open .faq-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+  .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-item.open .faq-answer{max-height:800px;}
+  .faq-answer p{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;color:var(--moss);padding-bottom:24px;}
+  .faq-band h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,2.5vw,2.2rem);line-height:1.2;color:var(--moss);margin-bottom:6px;}
+  .faq-band .accent-line{width:56px;height:2px;background:var(--seaglass);margin-bottom:0;}
   </style>
 </head>
 <body>
@@ -280,6 +378,96 @@
   </div>
 </div>
 
+<div class="faq-band">
+  <div class="narrow">
+    <h2>Frequently asked questions</h2>
+    <div class="accent-line"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">What does the system include?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>The deliverable is a documented content operations system with several components: an end-to-end workflow from brief to publication, a RACI matrix defining who decides what at each stage, one prompt skill document per channel (written in markdown, platform-agnostic), a tool integration map, a change log, a quick reference guide, and a team training session. The prompt skill documents encode your brand voice, messaging standards, and quality expectations into structured prompts your team uses in their AI tools.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">Do I need to have done an audit first?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>The system design requires an understanding of your brand, its voice, and where the content is currently falling short. That can come from my audit (the natural entry point) or from equivalent work done independently — but the input needs to exist. I also run an operational audit as part of the system design engagement itself, mapping how your team currently works, which tools they use, and where the workflow breaks down. The system is designed against real findings, not assumptions.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">What happens after handover?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>You run it. The system is designed so your team operates it independently. Someone on your team is identified during the engagement as the skill owner — the person with enough brand judgment to maintain and update the prompt system over time. They receive specific training on how to maintain and adjust the system as your business evolves. There is no ongoing dependency on me after handover.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">What if we change AI tools after you've built the system?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>The prompt skill documents are written in markdown, which is platform-agnostic. They work in ChatGPT, Claude, Copilot, Gemini, or any other tool that accepts structured text prompts. If you switch tools, the system moves with you. The workflow documentation and governance structure are also tool-independent — they describe how your team works, not which software they use.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">How long does it take?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>Four to five weeks for a contained operation (one brand, one to two content channels, a small team). Six to eight weeks for a more complex one (multiple brands or audience segments, three or more channels, cross-functional workflows). The timeline includes the operational audit, system design, prompt system build, documentation, and training.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">How much does it cost?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>The system design is a project fee based on the complexity of the build — primarily the number of channels (each requires its own prompt skill document), the team size, the number of tools involved, and whether content workflow crosses into other functions like sales or product. I'll put together a specific scope and fee after an initial conversation about what you're working with.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">What's the difference between this and just writing better prompts?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>A prompt is a single instruction for a single output. A content system is the infrastructure that governs how your team produces content consistently: who does what, in what order, with what tools, against what standards. The prompt skill documents are one component of the system — they encode your brand voice and channel-specific requirements into structured prompts. But they sit inside a workflow with decision rights, review stages, and a governance structure that ensures consistency across people and over time. Writing a good prompt solves one task. The system solves the organisational problem.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">Will this slow my team down?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>The system is designed to fit into how your team already works, not to add bureaucratic layers on top of it. The prompt skill documents replace the improvised prompting your team does now — they don't add a step, they replace an inconsistent one with a consistent one. The workflow formalises decisions that are already being made informally (who reviews, who approves, what qualifies as ready to publish). For most teams, the initial adjustment period is a few days before the new process becomes routine.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-toggle">
+          <span class="faq-q">Do you provide ongoing support after the system is built?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <p>The system design engagement ends at handover. If you want ongoing strategic support — someone to check in on how the system is working, adjust it as your business or tools evolve, and advise on content and AI decisions — that's the advisory retainer, a separate engagement with a three-month minimum. The system is designed to work without ongoing external involvement, but the retainer is available for businesses that want it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="cta-band">
   <div class="narrow">
     <span class="eyebrow">Get in touch</span>
@@ -338,6 +526,14 @@
   window.addEventListener('scroll',()=>{
     const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
     bar.style.width=pct+'%';
+  });
+  document.querySelectorAll('.faq-toggle').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=btn.closest('.faq-item');
+      const isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+      if(!isOpen)item.classList.add('open');
+    });
   });
 </script>
 </body>

@@ -35,6 +35,78 @@
   <link rel="icon" type="image/png" sizes="512x512" href="images/favicon-512.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <title>Elzanne Amao — Content Strategy &amp; AI Operations</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What kind of AI consulting is this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "This practice focuses on content quality and brand coherence. I don't build chatbots, automate CRM workflows, or set up AI agents. I work with businesses that have already adopted AI tools for content production and are dealing with the downstream effects: inconsistent output, flattened brand voice, or content that no longer sounds like it comes from a specific business with a specific point of view."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is this for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Founder-operators and senior leaders of established small to mid-sized businesses, typically 5 to 50 people. The common profile is a business where AI tools have been adopted — often informally, by individual team members — and the content has started to drift without anyone making a deliberate decision to change it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is this different from an AI automation consultant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AI automation consultants build systems that make your operations faster — bots, agents, workflow automations. That's useful work, but it doesn't address what's happening to the quality and coherence of your content. I assess the content itself: whether it meets your brand standards, whether it's consistent across channels, and whether the way your team uses AI is producing output you'd stand behind."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you build AI tools or sell software?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. I assess content quality, diagnose where AI adoption has introduced problems, and build documented systems your team uses to maintain quality going forward. I don't sell, resell, or partner with any AI platform."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does \"independent\" mean in this context?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It means my recommendations aren't shaped by a platform partnership or an implementation practice I need to fill. If the audit finding is that you need a different tool, I'll recommend it. If the finding is that you need to change how your team prompts rather than switch tools, I'll recommend that instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does a typical engagement look like?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most clients start with the audit, which takes about two weeks and produces a written report with specific findings and recommendations. If the findings indicate a need for structured change, the system design engagement follows — that's a four-to-eight-week build that produces a documented content operations system your team owns and runs independently."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I'm not sure if I have a problem. How do I know if I need this?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A few indicators: your content volume has increased since adopting AI tools, but engagement or conversion has not kept pace. Different team members produce noticeably different quality or tone when using AI. Your content could plausibly be published under a competitor's name without anyone noticing the difference. You don't have documented guidelines for how your team should use AI for content work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I just write better prompts myself?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Better prompts help with individual outputs, but they don't solve the organisational problem. If three people on your team each write their own prompts with their own interpretation of the brand voice, you get three versions of the brand — regardless of how good each individual prompt is. The system I build gives your team a shared standard: documented prompts per channel, clear decision rights, and a workflow that produces consistent output across people and tools."
+      }
+    }
+  ]
+}
+</script>
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -233,6 +305,57 @@
     .contact-row{flex-direction:column;gap:28px;align-items:center;}
     .footer-inner{flex-direction:column;align-items:flex-start;}
   }
+
+  /* ---------- Why This Practice ---------- */
+  .why-practice{padding-block:96px;border-bottom:1px solid var(--hairline);}
+  .why-practice h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;color:var(--moss);margin-bottom:32px;max-width:24ch;}
+  .why-practice p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:var(--moss);max-width:68ch;margin-bottom:20px;}
+  .why-practice p:last-child{margin-bottom:0;}
+
+  /* ---------- Touchpoints (Dark) ---------- */
+  .touchpoints{background:var(--moss);padding-block:96px;}
+  .touchpoints h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;color:var(--white);max-width:24ch;margin-bottom:28px;}
+  .tp-intro{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:rgba(241,244,242,0.78);max-width:68ch;margin-bottom:48px;}
+  .tp-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:44px;}
+  .tp-card{background:rgba(255,255,255,0.05);border:1px solid rgba(184,205,212,0.18);padding:28px 24px;}
+  .tp-eyebrow{display:block;font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--seaglass);margin-bottom:14px;}
+  .tp-card p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.65;color:rgba(241,244,242,0.72);}
+  .tp-closing{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;color:rgba(241,244,242,0.65);max-width:68ch;margin-bottom:20px;}
+  .tp-audit-link{color:var(--seaglass);text-decoration:none;font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid rgba(184,205,212,0.35);padding-bottom:2px;transition:color .3s,border-color .3s;display:inline-block;}
+  .tp-audit-link:hover{color:var(--white);border-color:var(--seaglass);}
+
+  /* ---------- Stats Band ---------- */
+  .stats-band{background:var(--moss);padding-block:80px;border-top:1px solid rgba(184,205,212,0.12);}
+  .stats-band h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;color:var(--white);margin-bottom:16px;}
+  .stats-intro{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;color:rgba(241,244,242,0.75);max-width:64ch;margin-bottom:48px;}
+  .stat-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .stat-card{background:rgba(255,255,255,0.05);border:1px solid rgba(184,205,212,0.15);padding:36px 28px;}
+  .stat-eyebrow{display:block;font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--seaglass);margin-bottom:16px;}
+  .stat-num{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(3.5rem,6vw,5.5rem);line-height:1;color:var(--white);margin-bottom:20px;}
+  .stat-desc{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.65;color:rgba(241,244,242,0.75);margin-bottom:14px;}
+  .stat-source{display:block;font-family:var(--sans);font-size:12px;font-weight:400;color:rgba(184,205,212,0.55);letter-spacing:.02em;}
+
+  /* ---------- FAQ Band ---------- */
+  .faq-band{background:var(--coolwhite);padding-block:96px;}
+  .faq-list{max-width:760px;margin-top:40px;}
+  .faq-item{border-top:1px solid var(--hairline);}
+  .faq-item:last-child{border-bottom:1px solid var(--hairline);}
+  .faq-toggle{width:100%;background:none;border:none;padding:22px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;cursor:pointer;text-align:left;font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.5;color:var(--moss);}
+  .faq-q{flex:1;}
+  .faq-icon{width:20px;height:20px;flex-shrink:0;position:relative;margin-top:2px;}
+  .faq-icon::before,.faq-icon::after{content:'';position:absolute;background:var(--sage);transition:transform .3s ease,opacity .3s ease;}
+  .faq-icon::before{width:14px;height:1.5px;top:50%;left:50%;transform:translate(-50%,-50%);}
+  .faq-icon::after{width:1.5px;height:14px;top:50%;left:50%;transform:translate(-50%,-50%);}
+  .faq-item.open .faq-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
+  .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+  .faq-item.open .faq-answer{max-height:800px;}
+  .faq-answer p{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;color:var(--moss);padding-bottom:24px;max-width:680px;}
+
+  @media (max-width:860px){
+    .why-practice,.touchpoints,.stats-band,.faq-band{padding-block:64px;}
+    .tp-cards{grid-template-columns:1fr 1fr;}
+    .stat-cards{grid-template-columns:1fr;}
+  }
 </style>
 </head>
 <body>
@@ -282,6 +405,14 @@
     </div>
   </section>
 
+  <!-- Why This Practice -->
+  <section class="wrap why-practice">
+    <h2 class="reveal">AI content consulting for businesses that already use AI</h2>
+    <p class="reveal">If you've looked into AI consulting for your business, you've mostly found automation — chatbots, agents, CRM workflows, operational efficiency. That work solves a real set of problems, but it doesn't touch what's happening to your content.</p>
+    <p class="reveal">This practice focuses on content quality and brand coherence after AI adoption. I work with businesses where the team is already using AI to produce content — and where the output has become inconsistent, generic, or hard to distinguish from what a competitor might publish.</p>
+    <p class="reveal">I assess what's changed, identify where and why quality has slipped, and build documented systems that give your team a shared standard for AI-assisted content work. Independent assessment, no platform partnerships, no lock-in. Your team owns everything I build.</p>
+  </section>
+
   <!-- What I do -->
   <section id="services" class="engagements">
     <div class="wrap">
@@ -314,6 +445,62 @@
         </a>
       </div>
       <p class="eng-note reveal">If you're not sure which of these fits, that's fine. <a href="#contact">Email me</a> and describe what you're working on.</p>
+    </div>
+  </section>
+
+  <!-- Touchpoints -->
+  <section class="touchpoints">
+    <div class="wrap">
+      <h2 class="reveal">AI adopted without guidelines produces content without coherence</h2>
+      <p class="tp-intro reveal">Before AI, your brand voice lived in editorial habits, institutional knowledge, and the judgment of people who'd been writing for the business long enough to know what it should sound like. AI tools don't carry any of that. Each prompt starts from zero. When multiple people prompt independently, the brand fragments across every channel they touch.</p>
+      <div class="tp-cards">
+        <div class="tp-card reveal">
+          <span class="tp-eyebrow">Website</span>
+          <p>Compare your home page with your services page. If they were written by different people using different AI conversations, the tone will shift between them.</p>
+        </div>
+        <div class="tp-card reveal">
+          <span class="tp-eyebrow">Email</span>
+          <p>Open your most recent welcome email and your most recent nurture email side by side. If they were built at different times with different prompts, they're presenting different versions of the brand.</p>
+        </div>
+        <div class="tp-card reveal">
+          <span class="tp-eyebrow">Proposals</span>
+          <p>Read the last three proposals your team sent. If the language is interchangeable, the specific framing that used to differentiate your offer has been replaced by the default register of the AI tool.</p>
+        </div>
+        <div class="tp-card reveal">
+          <span class="tp-eyebrow">Client deliverables</span>
+          <p>Pull a report from before your team started using AI and compare it with a recent one. If the expertise is still there but the voice has changed, the work is harder to distinguish from what a competitor could produce.</p>
+        </div>
+      </div>
+      <p class="tp-closing reveal">These shifts happen gradually and don't trigger an obvious alarm. The audit identifies where they've started in your content, how far they've progressed, and what to prioritise first.</p>
+      <a href="ai-content-operations-audit.html" class="tp-audit-link reveal">Learn more about the audit &rarr;</a>
+    </div>
+  </section>
+
+  <!-- Research Stats -->
+  <section class="stats-band">
+    <div class="wrap">
+      <h2 class="reveal">What the research shows</h2>
+      <p class="stats-intro reveal">The impact of AI-generated content on audience trust is measurable and growing. Three recent studies put numbers to it.</p>
+      <div class="stat-cards">
+        <div class="stat-card reveal">
+          <span class="stat-eyebrow">Consumer comfort</span>
+          <span class="stat-num">26%</span>
+          <p class="stat-desc">of consumers are comfortable with AI-generated content — down from 60% in two years.</p>
+          <span class="stat-source">eMarketer, 2025</span>
+        </div>
+        <div class="stat-card reveal">
+          <span class="stat-eyebrow">Reader trust</span>
+          <span class="stat-num">~50%</span>
+          <p class="stat-desc">drop in reader trust when content is perceived as AI-generated, with a 14% decline in purchase consideration.</p>
+          <span class="stat-source">Raptive study, 3,000 adults, 2025</span>
+        </div>
+        <div class="stat-card reveal">
+          <span class="stat-eyebrow">Brand trust</span>
+          <span class="stat-num">85%</span>
+          <p class="stat-desc">of decision-makers say AI content published without human review erodes brand trust.</p>
+          <span class="stat-source">WordPress VIP, 800 respondents, 2026</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -403,6 +590,90 @@
     </div>
   </section>
 
+  <!-- FAQs -->
+  <section id="faq" class="faq-band">
+    <div class="wrap">
+      <div class="head-block">
+        <h2 class="section-head reveal">Frequently asked questions</h2>
+        <div class="accent-line"></div>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-toggle">
+            <span class="faq-q">What kind of AI consulting is this?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer">
+            <p>This practice focuses on content quality and brand coherence. I don't build chatbots, automate CRM workflows, or set up AI agents. I work with businesses that have already adopted AI tools for content production and are dealing with the downstream effects: inconsistent output, flattened brand voice, or content that no longer sounds like it comes from a specific business with a specific point of view.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-toggle">
+            <span class="faq-q">Who is this for?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer">
+            <p>Founder-operators and senior leaders of established small to mid-sized businesses, typically 5 to 50 people. The common profile is a business where AI tools have been adopted — often informally, by individual team members — and the content has started to drift without anyone making a deliberate decision to change it. You may have noticed that your content is less distinctive than it used to be, or that different team members are producing noticeably different quality when they use AI.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-toggle">
+            <span class="faq-q">How is this different from an AI automation consultant?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer">
+            <p>AI automation consultants build systems that make your operations faster — bots, agents, workflow automations. That's useful work, but it doesn't address what's happening to the quality and coherence of your content. I assess the content itself: whether it meets your brand standards, whether it's consistent across channels, and whether the way your team uses AI is producing output you'd stand behind. The diagnostic and the system I build are both independent — they don't lead into an implementation pipeline or a platform partnership.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-toggle">
+            <span class="faq-q">Do you build AI tools or sell software?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer">
+            <p>No. I assess content quality, diagnose where AI adoption has introduced problems, and build documented systems your team uses to maintain quality going forward. I don't sell, resell, or partner with any AI platform. If your current tools are the right ones and the problem is how your team uses them, I'll say that.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-toggle">
+            <span class="faq-q">What does "independent" mean in this context?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer">
+            <p>It means my recommendations aren't shaped by a platform partnership or an implementation practice I need to fill. If the audit finding is that you need a different tool, I'll recommend it. If the finding is that you need to change how your team prompts rather than switch tools, I'll recommend that instead. The deliverable is the diagnosis and the system — I don't have a build service to sell you afterwards.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-toggle">
+            <span class="faq-q">What does a typical engagement look like?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer">
+            <p>Most clients start with the audit, which takes about two weeks and produces a written report with specific findings and recommendations. If the findings indicate a need for structured change, the system design engagement follows — that's a four-to-eight-week build that produces a documented content operations system your team owns and runs independently. An ongoing advisory retainer is available for businesses that want strategic oversight as tools and practices evolve.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-toggle">
+            <span class="faq-q">I'm not sure if I have a problem. How do I know if I need this?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer">
+            <p>A few indicators: your content volume has increased since adopting AI tools, but engagement or conversion has not kept pace. Different team members produce noticeably different quality or tone when using AI. Your content could plausibly be published under a competitor's name without anyone noticing the difference. You don't have documented guidelines for how your team should use AI for content work. If any of those apply, the audit will tell you whether there's a real problem and how significant it is.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-toggle">
+            <span class="faq-q">Can I just write better prompts myself?</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq-answer">
+            <p>Better prompts help with individual outputs, but they don't solve the organisational problem. If three people on your team each write their own prompts with their own interpretation of the brand voice, you get three versions of the brand — regardless of how good each individual prompt is. The system I build gives your team a shared standard: documented prompts per channel, clear decision rights, and a workflow that produces consistent output across people and tools.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact -->
   <section id="contact" class="contact">
     <div class="wrap">
@@ -484,6 +755,16 @@
     });
     navLinks.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => { navLinks.classList.remove('open'); menuIcon.textContent = 'Menu'; });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
     });
   });
 </script>
