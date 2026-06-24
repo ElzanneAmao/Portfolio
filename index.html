@@ -319,9 +319,9 @@
   }
 
   /* ---------- Why This Practice ---------- */
-  .why-practice{background:var(--coolwhite);padding-block:96px;}
-  .why-practice h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;color:var(--moss);margin-bottom:32px;max-width:24ch;}
-  .why-practice p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:var(--moss);max-width:68ch;margin-bottom:20px;}
+  .why-practice{background:var(--moss);padding-block:96px;}
+  .why-practice h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;color:var(--white);margin-bottom:32px;max-width:24ch;}
+  .why-practice p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:rgba(241,244,242,0.82);max-width:68ch;margin-bottom:20px;}
   .why-practice p:last-child{margin-bottom:0;}
 
   /* ---------- Touchpoints (Dark) ---------- */
@@ -346,15 +346,20 @@
   .stat-num{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(3.5rem,6vw,5.5rem);line-height:1;color:var(--white);margin-bottom:20px;}
   .stat-desc{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.65;color:rgba(241,244,242,0.75);margin-bottom:14px;}
   .stat-source{display:block;font-family:var(--sans);font-size:12px;font-weight:400;color:rgba(184,205,212,0.55);letter-spacing:.02em;}
+  .stat-source a{color:rgba(184,205,212,0.55);text-decoration:none;border-bottom:1px solid rgba(184,205,212,0.25);padding-bottom:1px;transition:color .3s,border-color .3s;}
+  .stat-source a:hover{color:var(--seaglass);border-color:rgba(184,205,212,0.6);}
 
   /* ---------- FAQ Band ---------- */
   .faq-band{background:var(--coolwhite);padding-block:96px;}
+  .faq-band .head-block{max-width:760px;margin-inline:auto;}
   .faq-list{max-width:760px;margin-top:40px;margin-inline:auto;}
   .faq-answer ul{margin:4px 0 16px 20px;padding:0;}
   .faq-answer li{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;color:var(--moss);margin-bottom:8px;}
   .faq-item{border-top:1px solid var(--hairline);}
   .faq-item:last-child{border-bottom:1px solid var(--hairline);}
-  .faq-toggle{width:100%;background:none;border:none;padding:22px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;cursor:pointer;text-align:left;font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.5;color:var(--moss);}
+  .faq-toggle{width:100%;background:none;border:none;padding:22px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;cursor:pointer;text-align:left;font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.5;color:var(--moss);transition:color .25s ease,padding-left .25s ease;}
+  .faq-toggle:hover{color:var(--sage);padding-left:6px;}
+  .faq-toggle:hover .faq-icon::before,.faq-toggle:hover .faq-icon::after{background:var(--seaglass);}
   .faq-q{flex:1;}
   .faq-icon{width:20px;height:20px;flex-shrink:0;position:relative;margin-top:2px;}
   .faq-icon::before,.faq-icon::after{content:'';position:absolute;background:var(--sage);transition:transform .3s ease,opacity .3s ease;}
@@ -420,11 +425,13 @@
   </section>
 
   <!-- Why This Practice -->
-  <section class="wrap why-practice">
-    <h2 class="reveal">AI content consulting for businesses that already use AI</h2>
+  <section class="why-practice">
+    <div class="wrap">
+    <h2 class="reveal">Content consulting for businesses that already use AI</h2>
     <p class="reveal">If you've looked into AI consulting for your business, you've mostly found automations like chatbots, agents, CRM workflows, operational efficiency. That can make your business ops more efficient, but doesn't address what's happening to your content.</p>
     <p class="reveal">This practice focuses on content quality and brand coherence after AI adoption. I work with businesses where the team is already using AI to produce content and where the output has become inconsistent, generic, or hard to distinguish from what a competitor might publish.</p>
     <p class="reveal">I assess what's changed, identify where and why quality has slipped, and build documented systems that give your team a shared standard for AI-assisted content work. Independent assessment, no platform partnerships, no lock-in. Your team owns everything I build.</p>
+    </div>
   </section>
 
   <!-- What I do -->
@@ -461,34 +468,6 @@
     </div>
   </section>
 
-  <!-- Touchpoints -->
-  <section class="touchpoints">
-    <div class="wrap">
-      <h2 class="reveal">AI adopted without guidelines produces content without coherence</h2>
-      <p class="tp-intro reveal">Before AI, your brand voice lived in editorial habits, institutional knowledge, and the judgment of people who'd been writing for the business long enough to know what it should sound like. AI tools don't carry any of that. Each prompt starts from zero. When multiple people prompt independently, the brand fragments across every channel they touch.</p>
-      <div class="tp-cards">
-        <div class="tp-card reveal">
-          <span class="tp-eyebrow">Website</span>
-          <p>Compare your home page with your services page. If they were written by different people using different AI conversations, the tone will shift between them.</p>
-        </div>
-        <div class="tp-card reveal">
-          <span class="tp-eyebrow">Email</span>
-          <p>Open your most recent welcome email and your most recent nurture email side by side. If they were built at different times with different prompts, they're presenting different versions of the brand.</p>
-        </div>
-        <div class="tp-card reveal">
-          <span class="tp-eyebrow">Proposals</span>
-          <p>Read the last three proposals your team sent. If the language is interchangeable, the specific framing that used to differentiate your offer has been replaced by the default register of the AI tool.</p>
-        </div>
-        <div class="tp-card reveal">
-          <span class="tp-eyebrow">Client deliverables</span>
-          <p>Pull a report from before your team started using AI and compare it with a recent one. If the expertise is still there but the voice has changed, the work is harder to distinguish from what a competitor could produce.</p>
-        </div>
-      </div>
-      <p class="tp-closing reveal">These shifts happen gradually and don't trigger an obvious alarm. The audit identifies where they've started in your content, how far they've progressed, and what to prioritise first.</p>
-      <a href="ai-content-operations-audit.html" class="tp-audit-link reveal">Learn more about the audit &rarr;</a>
-    </div>
-  </section>
-
   <!-- Research Stats -->
   <section class="stats-band">
     <div class="wrap">
@@ -499,19 +478,19 @@
           <span class="stat-eyebrow">Consumer comfort</span>
           <span class="stat-num">26%</span>
           <p class="stat-desc">of consumers are comfortable with AI-generated content — down from 60% in two years.</p>
-          <span class="stat-source">eMarketer, 2025</span>
+          <span class="stat-source"><a href="https://www.emarketer.com/content/25-years-marketing-trends-consumer-connection-data-collection-ai" target="_blank" rel="noopener">eMarketer, 2025</a></span>
         </div>
         <div class="stat-card reveal">
           <span class="stat-eyebrow">Reader trust</span>
           <span class="stat-num">~50%</span>
           <p class="stat-desc">drop in reader trust when content is perceived as AI-generated, with a 14% decline in purchase consideration.</p>
-          <span class="stat-source">Raptive study, 3,000 adults, 2025</span>
+          <span class="stat-source"><a href="https://raptive.com/blog/the-ai-stink-is-real-and-its-costing-brands/" target="_blank" rel="noopener">Raptive study, 3,000 adults, 2025</a></span>
         </div>
         <div class="stat-card reveal">
           <span class="stat-eyebrow">Brand trust</span>
           <span class="stat-num">85%</span>
           <p class="stat-desc">of decision-makers say AI content published without human review erodes brand trust.</p>
-          <span class="stat-source">WordPress VIP, 800 respondents, 2026</span>
+          <span class="stat-source"><a href="https://wpvip.com/future-of-the-web-2026/ai-content-governance/" target="_blank" rel="noopener">WordPress VIP, 800 respondents, 2026</a></span>
         </div>
       </div>
     </div>
