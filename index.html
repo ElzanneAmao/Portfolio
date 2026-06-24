@@ -324,15 +324,18 @@
 
   /* ---------- Why This Practice ---------- */
   .why-practice{background:var(--moss);padding-block:96px;}
-  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
-  .why-text h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;color:var(--white);margin-bottom:28px;}
-  .why-text p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:rgba(241,244,242,0.78);margin-bottom:20px;}
-  .why-text p:last-child{margin-bottom:0;color:rgba(241,244,242,0.5);font-style:italic;}
-  .why-signals{padding-top:4px;}
-  .why-signals-label{display:block;font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--seaglass);margin-bottom:28px;}
-  .why-signal{border-top:1px solid rgba(184,205,212,0.2);padding:24px 0;}
-  .why-signal:last-child{border-bottom:1px solid rgba(184,205,212,0.2);}
-  .why-signal p{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.45;color:var(--white);margin:0;}
+  .why-top{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:56px;}
+  .why-heading h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.8vw,3rem);line-height:1.1;color:var(--white);margin-bottom:20px;}
+  .why-heading .accent-rule{width:56px;height:2px;background:var(--seaglass);}
+  .why-body p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:rgba(241,244,242,0.78);margin-bottom:20px;}
+  .why-body p:last-child{margin-bottom:0;}
+  .why-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;}
+  .why-card{background:var(--coolwhite);padding:32px 28px 40px;}
+  .why-card-dot{width:9px;height:9px;background:var(--seaglass);margin-bottom:24px;}
+  .why-card p{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.5;color:var(--moss);margin:0;}
+  .why-closing{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;color:rgba(241,244,242,0.52);}
+  .why-closing a{color:var(--seaglass);text-decoration:none;border-bottom:1px solid rgba(184,205,212,0.35);padding-bottom:1px;transition:color .3s,border-color .3s;}
+  .why-closing a:hover{color:var(--white);border-color:var(--seaglass);}
 
   /* ---------- Touchpoints (Dark) ---------- */
   .touchpoints{background:var(--moss);padding-block:96px;}
@@ -385,7 +388,8 @@
     .why-practice,.touchpoints,.stats-band,.faq-band{padding-block:64px;}
     .tp-cards{grid-template-columns:1fr 1fr;}
     .stat-cards{grid-template-columns:1fr;}
-    .why-grid{grid-template-columns:1fr;gap:48px;}
+    .why-top{grid-template-columns:1fr;gap:32px;margin-bottom:40px;}
+    .why-cards{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -439,26 +443,31 @@
   <!-- Why This Practice -->
   <section class="why-practice">
     <div class="wrap">
-      <div class="why-grid">
-        <div class="why-text">
+      <div class="why-top">
+        <div class="why-heading">
           <h2 class="reveal">Content consulting for businesses that use AI</h2>
+          <div class="accent-rule reveal"></div>
+        </div>
+        <div class="why-body">
           <p class="reveal">Many businesses adopted AI to help teams produce content faster, reduce bottlenecks, and keep up with increasing demands on marketing and communication teams.</p>
           <p class="reveal">Once AI enters the workflow, content standards can become difficult to maintain. Different people develop different ways of working. Teams publish more but are less certain that the work reflects the same standards their business expects.</p>
-          <p class="reveal">My work focuses on understanding where those patterns are coming from and what needs to change.</p>
-        </div>
-        <div class="why-signals">
-          <span class="why-signals-label reveal">Most common patterns</span>
-          <div class="why-signal reveal">
-            <p>Your content volume increased, but engagement remains flat.</p>
-          </div>
-          <div class="why-signal reveal">
-            <p>Different people use different prompts, processes, and quality standards.</p>
-          </div>
-          <div class="why-signal reveal">
-            <p>Your content is becoming harder to distinguish from your competitors.</p>
-          </div>
         </div>
       </div>
+      <div class="why-cards">
+        <div class="why-card reveal">
+          <div class="why-card-dot"></div>
+          <p>Your content volume increased, but engagement remains flat.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-card-dot"></div>
+          <p>Different people, different prompts, no shared standard.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-card-dot"></div>
+          <p>Your content could run under a competitor's name and nobody would notice.</p>
+        </div>
+      </div>
+      <p class="why-closing reveal">My work focuses on understanding where those patterns are coming from and what needs to change. <a href="#services">See how I work →</a></p>
     </div>
   </section>
 
