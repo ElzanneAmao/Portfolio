@@ -187,11 +187,11 @@
   .portrait img{width:100%;height:100%;object-fit:cover;display:block;}
 
   /* ---------- Engagement Types (cool white panel) ---------- */
-  .engagements{background:var(--coolwhite);padding-block:96px;}
+  .engagements{background:var(--white);padding-block:96px;}
   .eng-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:56px;}
   .eng-top .intro{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;color:var(--moss);max-width:46ch;justify-self:end;}
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-  .card{border:1px solid var(--hairline);border-left:3px solid var(--seaglass);background:transparent;padding:36px 30px;display:flex;flex-direction:column;transition:background .25s ease,border-color .25s ease;overflow:hidden;text-decoration:none;color:inherit;}
+  .card{border:1px solid var(--hairline);border-left:3px solid var(--seaglass);border-top:none;background:transparent;padding:36px 30px;display:flex;flex-direction:column;transition:background .25s ease,border-color .25s ease;overflow:hidden;text-decoration:none;color:inherit;}
   .card:hover{background:var(--seaglass);border-color:var(--seaglass);}
   .card .card-img{aspect-ratio:3/2;overflow:hidden;margin:-36px -30px 28px;background:var(--coolwhite);}
   .card .card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
@@ -319,7 +319,7 @@
   }
 
   /* ---------- Why This Practice ---------- */
-  .why-practice{padding-block:96px;border-bottom:1px solid var(--hairline);}
+  .why-practice{background:var(--coolwhite);padding-block:96px;}
   .why-practice h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;color:var(--moss);margin-bottom:32px;max-width:24ch;}
   .why-practice p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:var(--moss);max-width:68ch;margin-bottom:20px;}
   .why-practice p:last-child{margin-bottom:0;}
