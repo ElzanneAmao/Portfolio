@@ -255,7 +255,9 @@
   .faq-list{margin-top:32px;}
   .faq-item{border-top:1px solid var(--hairline);}
   .faq-item:last-child{border-bottom:1px solid var(--hairline);}
-  .faq-toggle{width:100%;background:none;border:none;padding:20px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;cursor:pointer;text-align:left;font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.5;color:var(--moss);}
+  .faq-toggle{width:100%;background:none;border:none;padding:20px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;cursor:pointer;text-align:left;font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.5;color:var(--moss);transition:color .25s ease,padding-left .25s ease;}
+  .faq-toggle:hover{color:var(--sage);padding-left:6px;}
+  .faq-toggle:hover .faq-icon::before,.faq-toggle:hover .faq-icon::after{background:var(--seaglass);}
   .faq-q{flex:1;}
   .faq-icon{width:20px;height:20px;flex-shrink:0;position:relative;margin-top:2px;}
   .faq-icon::before,.faq-icon::after{content:'';position:absolute;background:var(--sage);transition:transform .3s ease,opacity .3s ease;}

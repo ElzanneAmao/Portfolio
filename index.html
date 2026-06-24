@@ -323,6 +323,9 @@
   .why-practice h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;color:var(--white);margin-bottom:32px;max-width:24ch;}
   .why-practice p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:rgba(241,244,242,0.82);max-width:68ch;margin-bottom:20px;}
   .why-practice p:last-child{margin-bottom:0;}
+  .why-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+  .why-card{border:1px solid rgba(184,205,212,0.2);border-left:3px solid rgba(184,205,212,0.45);padding:32px 28px;}
+  .why-card p{font-family:var(--serif);font-weight:500;font-size:clamp(1.05rem,1.7vw,1.3rem);line-height:1.4;color:var(--white);max-width:none;margin-bottom:0;}
 
   /* ---------- Touchpoints (Dark) ---------- */
   .touchpoints{background:var(--moss);padding-block:96px;}
@@ -341,7 +344,8 @@
   .stats-band h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;color:var(--white);margin-bottom:16px;}
   .stats-intro{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;color:rgba(241,244,242,0.75);max-width:64ch;margin-bottom:48px;}
   .stat-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  .stat-card{background:rgba(255,255,255,0.05);border:1px solid rgba(184,205,212,0.15);padding:36px 28px;}
+  .stat-card{background:rgba(255,255,255,0.05);border:1px solid rgba(184,205,212,0.15);padding:36px 28px;transition:transform .3s ease,box-shadow .3s ease;}
+  .stat-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.25);}
   .stat-eyebrow{display:block;font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--seaglass);margin-bottom:16px;}
   .stat-num{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(3.5rem,6vw,5.5rem);line-height:1;color:var(--white);margin-bottom:20px;}
   .stat-desc{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.65;color:rgba(241,244,242,0.75);margin-bottom:14px;}
@@ -373,7 +377,7 @@
   @media (max-width:860px){
     .why-practice,.touchpoints,.stats-band,.faq-band{padding-block:64px;}
     .tp-cards{grid-template-columns:1fr 1fr;}
-    .stat-cards{grid-template-columns:1fr;}
+    .stat-cards,.why-cards{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -427,10 +431,20 @@
   <!-- Why This Practice -->
   <section class="why-practice">
     <div class="wrap">
-    <h2 class="reveal">Content consulting for businesses that already use AI</h2>
+    <h2 class="reveal">Content consulting for businesses that use AI</h2>
     <p class="reveal">If you've looked into AI consulting for your business, you've mostly found automations like chatbots, agents, CRM workflows, operational efficiency. That can make your business ops more efficient, but doesn't address what's happening to your content.</p>
     <p class="reveal">This practice focuses on content quality and brand coherence after AI adoption. I work with businesses where the team is already using AI to produce content and where the output has become inconsistent, generic, or hard to distinguish from what a competitor might publish.</p>
-    <p class="reveal">I assess what's changed, identify where and why quality has slipped, and build documented systems that give your team a shared standard for AI-assisted content work. Independent assessment, no platform partnerships, no lock-in. Your team owns everything I build.</p>
+    <div class="why-cards">
+      <div class="why-card reveal">
+        <p>I assess what's changed and where quality has slipped</p>
+      </div>
+      <div class="why-card reveal">
+        <p>I build documented systems your team owns and runs</p>
+      </div>
+      <div class="why-card reveal">
+        <p>Independent assessment, no platform lock-in</p>
+      </div>
+    </div>
     </div>
   </section>
 
@@ -499,7 +513,7 @@
   <!-- Selected Work -->
   <section id="work" class="wrap work">
     <div class="head-block reveal">
-      <h2 class="section-head">Selected Work</h2>
+      <h2 class="section-head">Case Studies</h2>
       <div class="accent-line"></div>
     </div>
     <div class="work-grid">
