@@ -324,12 +324,15 @@
 
   /* ---------- Why This Practice ---------- */
   .why-practice{background:var(--moss);padding-block:96px;}
-  .why-practice h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;color:var(--white);margin-bottom:32px;max-width:24ch;}
-  .why-practice p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:rgba(241,244,242,0.82);max-width:68ch;margin-bottom:20px;}
-  .why-practice p:last-child{margin-bottom:0;}
-  .why-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
-  .why-card{border:1px solid rgba(184,205,212,0.2);border-left:3px solid rgba(184,205,212,0.45);padding:32px 28px;}
-  .why-card p{font-family:var(--serif);font-weight:500;font-size:clamp(1.05rem,1.7vw,1.3rem);line-height:1.4;color:var(--white);max-width:none;margin-bottom:0;}
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
+  .why-text h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;color:var(--white);margin-bottom:28px;}
+  .why-text p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:rgba(241,244,242,0.78);margin-bottom:20px;}
+  .why-text p:last-child{margin-bottom:0;color:rgba(241,244,242,0.5);font-style:italic;}
+  .why-signals{padding-top:4px;}
+  .why-signals-label{display:block;font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--seaglass);margin-bottom:28px;}
+  .why-signal{border-top:1px solid rgba(184,205,212,0.2);padding:24px 0;}
+  .why-signal:last-child{border-bottom:1px solid rgba(184,205,212,0.2);}
+  .why-signal p{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.1rem,1.6vw,1.3rem);line-height:1.45;color:var(--white);margin:0;}
 
   /* ---------- Touchpoints (Dark) ---------- */
   .touchpoints{background:var(--moss);padding-block:96px;}
@@ -381,7 +384,8 @@
   @media (max-width:860px){
     .why-practice,.touchpoints,.stats-band,.faq-band{padding-block:64px;}
     .tp-cards{grid-template-columns:1fr 1fr;}
-    .stat-cards,.why-cards{grid-template-columns:1fr;}
+    .stat-cards{grid-template-columns:1fr;}
+    .why-grid{grid-template-columns:1fr;gap:48px;}
   }
 </style>
 </head>
@@ -420,7 +424,7 @@
     <div class="hero-grid">
       <div>
         <h1 class="tagline reveal">Your team adopted AI.<br>Were your brand standards part of the plan?</h1>
-        <p class="intro reveal">I work with business owners and leadership teams to find out whether AI is strengthening or weakening the standard of work your brand was built on. Then I help build a content operation your team can maintain with confidence.</p>
+        <p class="intro reveal">I help business owners find out what AI is doing to the standard of work their brand was built on.</p>
         <div class="actions reveal">
           <a class="btn btn-primary" href="#services">View my services</a>
           <a class="btn btn-outline" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Read my Substack</a>
@@ -435,20 +439,26 @@
   <!-- Why This Practice -->
   <section class="why-practice">
     <div class="wrap">
-    <h2 class="reveal">Content consulting for businesses that use AI</h2>
-    <p class="reveal">If you've looked into AI consulting for your business, you've mostly found automations like chatbots, agents, CRM workflows, operational efficiency. That can make your business ops more efficient, but doesn't address what's happening to your content.</p>
-    <p class="reveal">This practice focuses on content quality and brand coherence after AI adoption. I work with businesses where the team is already using AI to produce content and where the output has become inconsistent, generic, or hard to distinguish from what a competitor might publish.</p>
-    <div class="why-cards">
-      <div class="why-card reveal">
-        <p>I assess what's changed and where quality has slipped</p>
+      <div class="why-grid">
+        <div class="why-text">
+          <h2 class="reveal">Content consulting for businesses that use AI</h2>
+          <p class="reveal">Many businesses adopted AI to help teams produce content faster, reduce bottlenecks, and keep up with increasing demands on marketing and communication teams.</p>
+          <p class="reveal">Once AI enters the workflow, content standards can become difficult to maintain. Different people develop different ways of working. Teams publish more but are less certain that the work reflects the same standards their business expects.</p>
+          <p class="reveal">My work focuses on understanding where those patterns are coming from and what needs to change.</p>
+        </div>
+        <div class="why-signals">
+          <span class="why-signals-label reveal">Most common patterns</span>
+          <div class="why-signal reveal">
+            <p>Your content volume increased, but engagement remains flat.</p>
+          </div>
+          <div class="why-signal reveal">
+            <p>Different people use different prompts, processes, and quality standards.</p>
+          </div>
+          <div class="why-signal reveal">
+            <p>Your content is becoming harder to distinguish from your competitors.</p>
+          </div>
+        </div>
       </div>
-      <div class="why-card reveal">
-        <p>I build documented systems your team owns and runs</p>
-      </div>
-      <div class="why-card reveal">
-        <p>Independent assessment, no platform lock-in</p>
-      </div>
-    </div>
     </div>
   </section>
 
