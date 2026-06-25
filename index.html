@@ -259,26 +259,28 @@
   .writing-card:hover .read-link .arrow{transform:translateX(4px);}
 
   /* ---------- Contact (Form) ---------- */
-  .contact{background:var(--coolwhite);padding-block:96px;text-align:center;}
-  .contact h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.5vw,2.8rem);line-height:1.15;color:var(--moss);margin-bottom:12px;}
-  .contact .contact-sub{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;color:var(--sage);max-width:52ch;margin:0 auto 48px;}
+  .contact{background:var(--moss);padding-block:96px;text-align:center;}
+  .contact h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.5vw,2.8rem);line-height:1.15;color:var(--white);margin-bottom:12px;}
+  .contact .contact-sub{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;color:rgba(184,205,212,.82);max-width:52ch;margin:0 auto 48px;}
   .contact-form{max-width:720px;margin-inline:auto;text-align:left;}
-  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:32px;}
-  .form-field{display:flex;flex-direction:column;gap:10px;margin-bottom:32px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:28px;}
+  .form-field{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
   .form-row .form-field{margin-bottom:0;}
-  .form-field label{font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);}
-  .form-field input,.form-field textarea{font-family:var(--sans);font-weight:300;font-size:16px;color:var(--moss);background:transparent;border:none;border-bottom:1px solid var(--hairline);padding:10px 0;outline:none;width:100%;transition:border-color .25s ease;}
-  .form-field input:focus,.form-field textarea:focus{border-color:var(--sage);}
-  .form-field input::placeholder,.form-field textarea::placeholder{color:rgba(44,56,48,0.38);}
+  .form-field label{font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--seaglass);}
+  .form-field input,.form-field textarea{font-family:var(--sans);font-weight:300;font-size:16px;color:var(--white);background:transparent;border:none;border-bottom:1px solid rgba(184,205,212,.28);padding:10px 0;outline:none;width:100%;transition:border-color .25s ease;}
+  .form-field input:focus,.form-field textarea:focus{border-color:var(--seaglass);}
+  .form-field input::placeholder,.form-field textarea::placeholder{color:rgba(241,244,242,.32);}
   .form-field textarea{resize:none;min-height:96px;}
-  .form-submit{text-align:center;margin-top:40px;}
+  .form-submit{text-align:center;margin-top:36px;}
+  .btn-send{font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;background:var(--sage);color:var(--white);border:none;padding:14px 28px;cursor:pointer;transition:opacity .3s ease;}
+  .btn-send:hover{opacity:.9;}
 
   /* ---------- Footer (light strip) ---------- */
   footer{background:var(--white);border-top:1px solid var(--hairline);padding-block:32px;}
   .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
   .footer-inner .fname{font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--moss);}
   .footer-mid{display:flex;gap:24px;}
-  .footer-mid a{font-family:var(--sans);font-size:14px;color:var(--sage);text-decoration:none;transition:color .3s ease;}
+  .footer-mid a{font-family:var(--sans);font-size:14px;color:var(--sage);text-decoration:none;transition:color .3s ease;display:inline-flex;align-items:center;gap:6px;}
   .footer-mid a:hover{color:var(--moss);}
   .footer-copy{font-family:var(--sans);font-size:13px;color:var(--sage);}
 
@@ -732,7 +734,7 @@
           <textarea id="message" name="message" placeholder="Tell me about your current AI content workflow…" required></textarea>
         </div>
         <div class="form-submit">
-          <button type="submit" class="btn btn-primary">Send Enquiry</button>
+          <button type="submit" class="btn-send">Send Enquiry</button>
         </div>
       </form>
     </div>
@@ -743,8 +745,8 @@
   <div class="wrap footer-inner">
     <span class="fname">Elzanne Amao</span>
     <div class="footer-mid">
-      <a href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Substack</a>
-      <a href="https://www.linkedin.com/in/elzanneamao" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://elzanneamao.substack.com" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>Substack</a>
+      <a href="https://www.linkedin.com/in/elzanneamao" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
     </div>
     <span class="footer-copy">© 2026 Elzanne Amao. All rights reserved.</span>
   </div>
