@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  EDITING NOTES — proposals/safely-anchored.html
+  ============================================================
+  WHAT THIS IS:
+    A private client proposal page. It is NOT linked from the main
+    navigation and is marked noindex, so it will not appear in
+    Google results or the site's sitemap. Share it by sending the
+    direct link:
+      https://elzanneamao.netlify.app/proposals/safely-anchored.html
+
+  HOW TO EDIT TEXT:
+    Change only the words BETWEEN tags (e.g. <h2>Three options.</h2>
+    -> edit "Three options." only). Don't touch the tags, quotes, or
+    class="..." parts.
+
+  THE DESK GRID:
+    The 120-square grid near the top is drawn by the small script at
+    the bottom of this file. To change the numbers, edit this line:
+      var total = 120, filled = 68;
+    and update the matching words in the legend and headings above it.
+  ============================================================
+-->
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Safely Anchored Small School — Proposal</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512.png">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600&family=Darker+Grotesque:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --moss:#2c3830;
+    --sage:#7a8c6e;
+    --sage-ink:#4e5f46;
+    --gold:#a8a44c;
+    --glass:#b8cdd4;
+    --cream:#f1f4f2;
+    --rule:#d5ddd6;
+    --display:'Bitter',Georgia,serif;
+    --body:'Darker Grotesque','Trebuchet MS',sans-serif;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{-webkit-text-size-adjust:100%;}
+
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--moss);
+    font-family:var(--body);
+    font-size:21px;
+    font-weight:500;
+    line-height:1.45;
+  }
+
+  .wrap{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 28px 90px;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead{
+    padding:64px 0 40px;
+    border-bottom:2px solid var(--moss);
+  }
+
+  .eyebrow{
+    font-family:var(--body);
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--sage-ink);
+    margin:0 0 18px;
+  }
+
+  h1{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(30px,5.4vw,46px);
+    line-height:1.14;
+    letter-spacing:-.015em;
+    margin:0 0 20px;
+  }
+
+  .standfirst{
+    font-size:23px;
+    color:var(--sage-ink);
+    margin:0;
+    max-width:34em;
+  }
+
+  .purpose{
+    font-family:var(--display);
+    font-size:19px;
+    font-weight:500;
+    color:var(--moss);
+    margin:20px 0 0;
+    padding-top:16px;
+    border-top:1px solid var(--rule);
+    max-width:30em;
+  }
+
+  /* ---------- sections ---------- */
+
+  section{padding:52px 0 0;}
+
+  h2{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(23px,3.6vw,30px);
+    line-height:1.2;
+    margin:0 0 8px;
+  }
+
+  .kicker{
+    font-size:17px;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 14px;
+  }
+
+  p{margin:0 0 18px;max-width:36em;}
+
+  strong{font-weight:700;}
+
+  /* ---------- desk grid ---------- */
+
+  .deskwrap{
+    margin:26px 0 22px;
+    padding:30px 30px 26px;
+    background:#fff;
+    border:1px solid var(--rule);
+  }
+
+  .desks{
+    display:grid;
+    grid-template-columns:repeat(20,1fr);
+    gap:6px;
+    margin-bottom:22px;
+  }
+
+  .desk{
+    aspect-ratio:1/1;
+    border-radius:2px;
+  }
+
+  .desk.filled{background:var(--moss);}
+
+  .desk.empty{
+    background:transparent;
+    border:1.5px solid var(--glass);
+  }
+
+  .legend{
+    display:flex;
+    flex-wrap:wrap;
+    gap:26px;
+    font-size:18px;
+    color:var(--sage-ink);
+    border-top:1px solid var(--rule);
+    padding-top:18px;
+  }
+
+  .legend span{display:flex;align-items:center;gap:9px;}
+
+  .swatch{width:15px;height:15px;border-radius:2px;flex:none;}
+  .swatch.filled{background:var(--moss);}
+  .swatch.empty{border:1.5px solid var(--glass);}
+
+  .bignum{
+    font-family:var(--display);
+    font-size:clamp(44px,9vw,74px);
+    font-weight:600;
+    line-height:1;
+    letter-spacing:-.03em;
+    margin:0 0 6px;
+  }
+
+  .bignum-label{
+    font-size:21px;
+    color:var(--sage-ink);
+    margin:0 0 30px;
+    max-width:32em;
+  }
+
+  /* ---------- findings ---------- */
+
+  .finding{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:24px;
+    padding:20px 0;
+    border-top:1px solid var(--rule);
+    align-items:baseline;
+  }
+
+  .finding:last-of-type{border-bottom:1px solid var(--rule);}
+
+  .finding .fig{
+    font-family:var(--display);
+    font-size:27px;
+    font-weight:600;
+    line-height:1.1;
+    letter-spacing:-.02em;
+    color:var(--moss);
+  }
+
+  .finding .fig small{
+    display:block;
+    font-family:var(--body);
+    font-size:16px;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-top:5px;
+  }
+
+  .finding p{margin:0;font-size:20px;}
+
+  /* ---------- options ---------- */
+
+  .option{
+    border:1px solid var(--rule);
+    background:#fff;
+    padding:28px 28px 24px;
+    margin-bottom:16px;
+  }
+
+  .option.pick{
+    border:2px solid var(--moss);
+    position:relative;
+  }
+
+  .pick-flag{
+    position:absolute;
+    top:-13px;
+    left:26px;
+    background:var(--gold);
+    color:#fff;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    padding:4px 12px;
+  }
+
+  .option-head{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:10px;
+    margin-bottom:6px;
+  }
+
+  .option h3{
+    font-family:var(--display);
+    font-size:23px;
+    font-weight:600;
+    margin:0;
+  }
+
+  .price{
+    font-family:var(--display);
+    font-size:23px;
+    font-weight:600;
+    white-space:nowrap;
+  }
+
+  .price small{
+    display:block;
+    text-align:right;
+    font-family:var(--body);
+    font-size:16px;
+    font-weight:600;
+    color:var(--sage-ink);
+    letter-spacing:.02em;
+  }
+
+  .option ul{
+    margin:14px 0 0;
+    padding:0;
+    list-style:none;
+  }
+
+  .option li{
+    position:relative;
+    padding-left:20px;
+    margin-bottom:7px;
+    font-size:19px;
+    line-height:1.35;
+  }
+
+  .option li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:.62em;
+    width:7px;
+    height:7px;
+    background:var(--sage);
+    border-radius:50%;
+  }
+
+  .inherits{
+    font-size:19px;
+    font-weight:700;
+    color:var(--sage-ink);
+    margin:12px 0 0;
+    padding-top:12px;
+    border-top:1px solid var(--rule);
+  }
+
+  .builds{
+    font-size:19px;
+    font-weight:700;
+    color:var(--moss);
+    background:var(--cream);
+    border-left:3px solid var(--gold);
+    padding:9px 14px;
+    margin:14px 0 4px;
+  }
+
+  .builds span{font-weight:500;color:var(--sage-ink);}
+
+  .expect{
+    font-size:18px;
+    margin:16px 0 8px;
+    padding-top:14px;
+    border-top:1px solid var(--rule);
+    color:var(--sage-ink);
+  }
+
+  .expect b{
+    display:block;
+    font-family:var(--body);
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:6px;
+  }
+
+  .option ul.ticks{margin:0;padding:0;list-style:none;}
+
+  .option ul.ticks li{
+    position:relative;
+    padding-left:26px;
+    margin-bottom:7px;
+    font-size:18px;
+    line-height:1.35;
+    color:var(--moss);
+  }
+
+  .option ul.ticks li::before{
+    content:"\2713";
+    position:absolute;
+    left:0;
+    top:-1px;
+    width:auto;
+    height:auto;
+    background:none;
+    border-radius:0;
+    font-size:17px;
+    font-weight:700;
+    color:var(--gold);
+  }
+
+  .note{
+    font-size:19px;
+    color:var(--sage-ink);
+    border-left:3px solid var(--glass);
+    padding:4px 0 4px 18px;
+    margin:24px 0 0;
+    max-width:36em;
+  }
+
+  .pullquote{
+    font-family:var(--display);
+    font-size:clamp(20px,3.1vw,25px);
+    font-weight:400;
+    font-style:italic;
+    line-height:1.35;
+    color:var(--moss);
+    background:#fff;
+    border-left:4px solid var(--gold);
+    padding:22px 26px;
+    margin:26px 0;
+    max-width:32em;
+  }
+
+  ul.plain{
+    margin:18px 0 22px;
+    padding:0;
+    list-style:none;
+    max-width:36em;
+  }
+
+  ul.plain li{
+    position:relative;
+    padding-left:22px;
+    margin-bottom:9px;
+    font-size:20px;
+    line-height:1.35;
+  }
+
+  ul.plain li::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:.58em;
+    width:8px;
+    height:8px;
+    background:var(--sage);
+    border-radius:50%;
+  }
+
+  .verdict{
+    font-family:var(--display);
+    font-size:clamp(21px,3.2vw,26px);
+    font-weight:500;
+    line-height:1.3;
+    color:var(--moss);
+    border-top:2px solid var(--moss);
+    padding-top:20px;
+    margin:30px 0 0;
+    max-width:30em;
+  }
+
+  /* ---------- needs ---------- */
+
+  .needs{margin:20px 0 0;padding:0;list-style:none;counter-reset:n;}
+
+  .needs li{
+    counter-increment:n;
+    position:relative;
+    padding-left:42px;
+    margin-bottom:13px;
+    font-size:20px;
+  }
+
+  .needs li::before{
+    content:counter(n);
+    position:absolute;
+    left:0;
+    top:0;
+    font-family:var(--display);
+    font-size:18px;
+    font-weight:600;
+    color:var(--gold);
+    border:1px solid var(--gold);
+    width:27px;
+    height:27px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* ---------- footer ---------- */
+
+  footer{
+    margin-top:58px;
+    padding-top:26px;
+    border-top:2px solid var(--moss);
+    font-size:18px;
+    color:var(--sage-ink);
+  }
+
+  footer .name{
+    font-family:var(--display);
+    font-size:20px;
+    font-weight:600;
+    color:var(--moss);
+    margin:0 0 4px;
+  }
+
+  .fine{font-size:16px;margin-top:22px;color:var(--sage);}
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width:620px){
+    body{font-size:20px;}
+    .wrap{padding:0 20px 70px;}
+    .desks{grid-template-columns:repeat(12,1fr);gap:5px;}
+    .deskwrap{padding:22px 20px 20px;}
+    .finding{grid-template-columns:1fr;gap:6px;}
+    .finding .fig small{display:inline;margin-left:8px;}
+  }
+
+  @media print{
+    body{background:#fff;font-size:12pt;}
+    .deskwrap,.option{break-inside:avoid;}
+    section{padding-top:26px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Prepared for leadership &middot; August 2026</p>
+    <h1>Safely Anchored has room for 52 more children.</h1>
+    <p class="standfirst">In preparing this, I looked at everything a parent sees between hearing your name and signing an application, to determine where enrolments could be improved, how that experience could work better, and how to reach families who have not yet heard of the school.</p>
+    <p class="purpose">A review of what is working, what is not, and what to do next.</p>
+  </header>
+
+  <section>
+    <p class="kicker">Where the school stands</p>
+    <h2>120 places. 68 children.</h2>
+
+    <div class="deskwrap">
+      <div class="desks" id="desks" role="img" aria-label="A grid of 120 places, 68 filled and 52 empty."></div>
+      <div class="legend">
+        <span><i class="swatch filled"></i> 68 enrolled today</span>
+        <span><i class="swatch empty"></i> 52 places open</span>
+      </div>
+    </div>
+
+    <p class="bignum">R2.4m &ndash; R3.0m</p>
+    <p class="bignum-label">Annual fee income those 52 places would bring in, depending on the mix of half&#8209;day and full&#8209;day enrolments.</p>
+
+    <p>The school grew from 30 children to 48 during 2025. Since January 2026 it has moved from 65 to 68. <strong>Sixty&#8209;five children are confirmed for 2027, which is where 2026 opened.</strong></p>
+    <p>Most families here now arrived through someone who already knew the school. That is a good sign, and it is also a limit on how many families the school can reach. <strong>The work below is about reaching parents outside that network.</strong></p>
+  </section>
+
+  <section>
+    <p class="kicker">What a parent finds</p>
+    <h2>Four things worth seeing for yourself.</h2>
+
+    <div class="finding">
+      <div class="fig">0<small>Google reviews</small></div>
+      <p>The nearest comparable school has 77. Safely Anchored Transport has 35 at 4.8 stars, from the same families in the same suburb.</p>
+    </div>
+
+    <div class="finding">
+      <div class="fig">15<small>Pages of filler</small></div>
+      <p>The website still carries the sample pages its template arrived with, describing a different school in another country. They are live and Google can show them to parents, even though they cannot be reached from the main navigation.</p>
+    </div>
+
+    <div class="finding">
+      <div class="fig">31<small>Out of 100</small></div>
+      <p>Google's mobile speed score for the homepage. Every other school in the area scores between 55 and 84, including one smaller than this school.</p>
+    </div>
+
+    <div class="finding">
+      <div class="fig">2025<small>On the form</small></div>
+      <p>The admissions button on the homepage is not working at present. Where it does open, it opens a seven&#8209;page pack dated 2025. The website's first job is to collect the names of interested parents, and admissions should sit behind that rather than in front of it.</p>
+    </div>
+  </section>
+
+  <section>
+    <p class="kicker">The main finding</p>
+    <h2>The journey a family takes, as described to me.</h2>
+
+    <ul class="plain">
+      <li>A family enquires by email, WhatsApp or in person</li>
+      <li>Almost all of them come for a trial day</li>
+      <li>Almost all of those children enrol</li>
+    </ul>
+
+    <p>The exceptions are children the school knows it cannot support, and families who are later offered a place at the local public school.</p>
+
+    <p><strong>The problem to solve is getting more families into that journey.</strong></p>
+
+    <p class="pullquote">&ldquo;Ek dink die grootste ad is ons busse wat orals rondry &mdash; hulle ken ons busse, maar nie ons skool nie.&rdquo;</p>
+
+    <p>The Safely Anchored name is associated with transport and aftercare. Thirty&#8209;five parents have reviewed the transport service on Google and none have reviewed the school, which is largely the same community answering two different questions.</p>
+
+    <p>That is a better position than being unknown. Every bus is already a daily impression across Sunningdale, Parklands and Table View, and it carries no indication that there is a school attached to it.</p>
+  </section>
+
+  <section>
+    <p class="kicker">An eye on the next set of enrolments</p>
+    <h2>The next fifty families will need more proof.</h2>
+
+    <p>A family who arrives on another family's recommendation:</p>
+
+    <ul class="plain">
+      <li>Has already had the most important question answered by someone they trust, which is whether their child would be safe and cared for here</li>
+      <li>May still look at the website and the social accounts, usually to confirm what they were told rather than to decide</li>
+      <li>Reads an out&#8209;of&#8209;date form or a slow page as a small school being busy, and carries on</li>
+    </ul>
+
+    <p>A family who has never heard of the school:</p>
+
+    <ul class="plain">
+      <li>Has nobody's word to go on, so needs the reassurance to come from somewhere else</li>
+      <li>Has only the website, the Google listing, the social accounts and the enquiry and application forms as evidence</li>
+      <li>Uses those things to judge whether this is a school that pays attention, because there is nothing else available to judge on</li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="kicker">Getting the word out</p>
+    <h2>Three ways a family hears about the school.</h2>
+
+    <p><strong>Posting on Facebook and Instagram.</strong></p>
+
+    <ul class="plain">
+      <li>This is organic social media, and it reaches people who already follow the page</li>
+      <li>The school has 463 followers on Instagram and 619 on Facebook</li>
+      <li>Posting more on organic social media will not lead to a significant increase in enquiries or enrolments</li>
+      <li>How the school presents its brand on these platforms is a trust point, and a cohesive look and feel matters</li>
+    </ul>
+
+    <p><strong>Paying Meta to show a post to a wider audience.</strong></p>
+
+    <ul class="plain">
+      <li>Boosting posts has been done in the past but stopped since March 2026</li>
+      <li>Advertising through Meta can be done in a more strategic way to reach parents in Sunningdale, Parklands and Table View who do not follow the page and have not heard of the school</li>
+      <li>The school chooses the area, the type of parent, how much it spends and for how long, and can stop at any point</li>
+    </ul>
+
+    <p><strong>Reaching families away from a screen.</strong> Advertising is not only online, and for a school of this size the offline routes are often the stronger ones:</p>
+
+    <ul class="plain">
+      <li>The buses, which are seen across three suburbs every weekday</li>
+      <li>Promoting the school to preschools nearby that do not compete for the same age group</li>
+      <li>Occupational therapists, speech therapists and paediatric practices, who are asked which school would suit a child</li>
+      <li>Opening the holiday club to children from any school</li>
+      <li>Churches in the area, where families are already inclined towards a school of this kind</li>
+      <li>Estate agents, who are asked about schools by every family moving in</li>
+    </ul>
+  </section>
+
+  <section>
+    <p class="kicker">How I can assist</p>
+    <h2>Three options.</h2>
+
+    <div class="option pick">
+      <span class="pick-flag">Recommended</span>
+      <div class="option-head">
+        <h3>Advanced package</h3>
+        <div class="price">R8 000<small>per month &middot; six months</small></div>
+      </div>
+      <p class="builds">R48 000 in total.</p>
+      <ul>
+        <li>Month one is the full written review, as described in the audit option below</li>
+        <li>Website corrections specified and checked with your web supplier</li>
+        <li>A short enquiry form on the website, so a family can ask a question without filling in an application</li>
+        <li>Every enquiry recorded in one place, from the website, WhatsApp, email and the gate</li>
+        <li>Google listing rebuilt, and a review campaign run with your current parents</li>
+        <li>A set of templates so every post looks like the same school</li>
+        <li>A monthly content plan the school posts itself</li>
+        <li>Facebook and Instagram advertising set up and managed, August to October and again in January, aimed at parents within a few kilometres of the school</li>
+        <li>Outreach to preschools nearby that would be open to advertising the school to their leaving families</li>
+        <li>Open day support: advertising beforehand, the enquiry and registration experience for interested families on the day, and an email follow&#8209;up sequence afterwards</li>
+        <li>A short email sequence through November and December for families who enquired but have not yet applied</li>
+        <li>A monthly meeting against four numbers: enquiries received, visits booked, applications received, and Google reviews</li>
+      </ul>
+      <p class="expect"><b>At the end of January 2027, you'll have:</b></p>
+      <ul class="ticks">
+        <li>Everything listed in the basic package</li>
+        <li>New enquiries generated from families outside the school's existing network</li>
+        <li>A dedicated nurture campaign keeping interested families engaged through to enrolment</li>
+        <li>Booked visits from advertising, counted and reported monthly</li>
+        <li>A working relationship with the preschools that feed this area</li>
+        <li>A pipeline of interested families carried into the 2028 recruitment cycle</li>
+      </ul>
+    </div>
+
+    <div class="option">
+      <div class="option-head">
+        <h3>Basic package</h3>
+        <div class="price">R6 000<small>per month &middot; six months</small></div>
+      </div>
+      <p class="builds">R36 000 in total.</p>
+      <ul>
+        <li>Month one is the full written review, as described in the audit option below</li>
+        <li>Website corrections specified and checked with your web supplier</li>
+        <li>A short enquiry form on the website, so a family can ask a question without filling in an application</li>
+        <li>Every enquiry recorded in one place, from the website, WhatsApp, email and the gate</li>
+        <li>Google listing rebuilt, and a review campaign run with your current parents</li>
+        <li>A set of templates so every post looks like the same school</li>
+        <li>A monthly content plan the school posts itself</li>
+        <li>A monthly meeting against four numbers: enquiries received, visits booked, applications received, and Google reviews</li>
+      </ul>
+      <p class="expect"><b>At the end of January 2027, you'll have:</b></p>
+      <ul class="ticks">
+        <li>A Google listing carrying reviews</li>
+        <li>The website corrections done and checked</li>
+        <li>A clear enquiry route that does not require a full application upfront</li>
+        <li>A single record of all enquiries, regardless of how they arrived</li>
+        <li>Six months of reporting to plan the 2028 recruitment from</li>
+      </ul>
+      <p class="inherits">This option puts the school in good order. It does not include advertising or outreach to bring in new families.</p>
+    </div>
+
+    <div class="option">
+      <div class="option-head">
+        <h3>Audit</h3>
+        <div class="price">R15 000<small>once off &middot; three weeks</small></div>
+      </div>
+      <p class="builds">For leadership that wants the findings before committing to six months.</p>
+      <ul>
+        <li>Every page of the website, including the pages Google has indexed that are not in your menu</li>
+        <li>The Google listing, Facebook, Instagram and the application pack</li>
+        <li>How the school compares to five neighbouring schools on search position, reviews and website speed</li>
+        <li>A numbered fix list in plain language, in the order the items should be done, with the effect of each one explained</li>
+        <li>One meeting to talk it through, and answers to questions afterwards</li>
+      </ul>
+      <p class="expect"><b>By the end of three weeks you will have</b></p>
+      <ul class="ticks">
+        <li>A written record of what is wrong and what to do about it</li>
+        <li>A fix list your web supplier can work from without me</li>
+        <li>A clear picture of where the school sits against its neighbours</li>
+      </ul>
+      <p class="inherits">This option produces findings. It does not include carrying them out.</p>
+    </div>
+
+    <p class="note"><strong>Advertising budget sits outside these fees.</strong> Paid by the school directly to Meta.</p>
+
+    <p class="note"><strong>Not included in any option:</strong> daily posting, replying to comments and messages, photography, ongoing website maintenance, and the printing, travel and delivery costs of anything handed out to preschools.</p>
+
+    <p class="verdict">The largest of these options is R48 000 over six months. A single half&#8209;day enrolment brings in R46 800 a year, and at this school nearly every family who enquires enrols.</p>
+  </section>
+
+  <section>
+    <p class="kicker">Before we start</p>
+    <h2>Five things I would need.</h2>
+    <ol class="needs">
+      <li>One named person responsible for answering enquiries, and a working day as the standard for replying</li>
+      <li>Access to the Google Business Profile</li>
+      <li>Your web supplier's availability, with dates</li>
+      <li>Photographs, and clarity on which children have consent</li>
+      <li>A decision on whether the buses can carry the school's name, grades and website, so that the recognition they already have points somewhere</li>
+    </ol>
+  </section>
+
+  <footer>
+    <p class="name">Elzanne Amao</p>
+    <p>Content and communications strategy &middot; Cape Town</p>
+    <p class="fine">Figures for enrolment and capacity supplied by the school, July 2026. Capacity assumes six grades of twenty for 2026. Search results, review counts and speed scores recorded on 27 July 2026 and available on request.</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var grid = document.getElementById('desks');
+  if(!grid) return;
+  var total = 120, filled = 68;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var frag = document.createDocumentFragment();
+
+  for(var i = 0; i < total; i++){
+    var d = document.createElement('div');
+    d.className = 'desk ' + (i < filled ? 'filled' : 'empty');
+    if(!reduce){
+      d.style.opacity = '0';
+      d.style.transition = 'opacity .4s ease';
+      d.style.transitionDelay = (i * 9) + 'ms';
+    }
+    frag.appendChild(d);
+  }
+  grid.appendChild(frag);
+
+  if(!reduce){
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        var all = grid.children;
+        for(var j = 0; j < all.length; j++){ all[j].style.opacity = '1'; }
+      });
+    });
+  }
+})();
+</script>
+</body>
+</html>
