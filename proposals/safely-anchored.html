@@ -10,6 +10,14 @@
     direct link:
       https://elzanneamao.netlify.app/proposals/safely-anchored.html
 
+  THE HEADER:
+    Uses images/logo-olive.png from the main site, so if the logo is
+    replaced there it updates here too. Both the logo and the "View
+    portfolio" link open the site in a NEW tab, so a client reading
+    the proposal does not lose their place. There is deliberately no
+    Services/Case Studies menu — this is a document, not a site page,
+    and the menu would invite the reader away mid-pitch.
+
   HOW TO EDIT TEXT:
     Change only the words BETWEEN tags (e.g. <h2>Three options.</h2>
     -> edit "Three options." only). Don't touch the tags, quotes, or
@@ -50,6 +58,7 @@
     --glass:#b8cdd4;
     --cream:#f1f4f2;
     --rule:#d5ddd6;
+    --hairline:#dde2dd;
     --display:'Bitter',Georgia,serif;
     --body:'Darker Grotesque','Trebuchet MS',sans-serif;
   }
@@ -74,10 +83,47 @@
     padding:0 28px 90px;
   }
 
+  /* ---------- site header ---------- */
+
+  .site-header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:#fff;
+    border-bottom:1px solid var(--hairline);
+  }
+
+  .site-nav{
+    max-width:760px;
+    margin:0 auto;
+    padding:0 28px;
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+  }
+
+  .wordmark{display:inline-flex;align-items:center;text-decoration:none;}
+
+  .site-logo{height:38px;width:auto;display:block;}
+
+  .site-nav .back{
+    font-size:17px;
+    font-weight:600;
+    letter-spacing:.02em;
+    color:var(--sage-ink);
+    text-decoration:none;
+    white-space:nowrap;
+    transition:color .3s ease;
+  }
+
+  .site-nav .back:hover{color:var(--moss);}
+
   /* ---------- masthead ---------- */
 
   .masthead{
-    padding:64px 0 40px;
+    padding:52px 0 40px;
     border-bottom:2px solid var(--moss);
   }
 
@@ -531,14 +577,30 @@
   @media (max-width:620px){
     body{font-size:20px;}
     .wrap{padding:0 20px 70px;}
+    .site-nav{padding:0 20px;height:64px;gap:16px;}
+    .site-logo{height:31px;}
+    .site-nav .back{font-size:16px;}
     .desks{grid-template-columns:repeat(12,1fr);gap:5px;}
     .deskwrap{padding:22px 20px 20px;}
     .finding{grid-template-columns:1fr;gap:6px;}
     .finding .fig small{display:inline;margin-left:8px;}
   }
 
+  /* Small phones: the logo plus a full-width link overruns 360px and
+     drags the whole page sideways, so both step down here. */
+
+  @media (max-width:430px){
+    .site-nav{height:58px;gap:12px;}
+    .site-logo{height:26px;}
+    .site-nav .back{font-size:15px;}
+  }
+
   @media print{
     body{background:#fff;font-size:12pt;}
+    .site-header{position:static;border-bottom:1px solid var(--hairline);}
+    .site-nav{height:auto;padding:0 0 14px;}
+    .site-nav .back{display:none;}
+    .masthead{padding-top:28px;}
     .deskwrap,.option{break-inside:avoid;}
     section{padding-top:26px;}
     .packages{width:auto;margin-left:0;transform:none;}
@@ -547,6 +609,14 @@
 </style>
 </head>
 <body>
+
+<header class="site-header">
+  <nav class="site-nav">
+    <a href="/" class="wordmark" target="_blank" rel="noopener"><img src="/images/logo-olive.png" alt="Elzanne Amao" class="site-logo"></a>
+    <a href="/" class="back" target="_blank" rel="noopener">View portfolio &#8599;</a>
+  </nav>
+</header>
+
 <div class="wrap">
 
   <header class="masthead">
