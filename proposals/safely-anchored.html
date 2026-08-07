@@ -15,6 +15,13 @@
     -> edit "Three options." only). Don't touch the tags, quotes, or
     class="..." parts.
 
+  THE THREE PACKAGES:
+    Audit sits on its own first. Basic and Advanced sit side by side
+    inside <div class="compare"> so they can be compared. On narrow
+    screens and in print they stack automatically — that is expected,
+    not a fault. To change which package is flagged "Recommended",
+    move class="pick" and the <span class="pick-flag"> line.
+
   THE DESK GRID:
     The 120-square grid near the top is drawn by the small script at
     the bottom of this file. To change the numbers, edit this line:
@@ -256,6 +263,34 @@
     letter-spacing:.13em;
     text-transform:uppercase;
     padding:4px 12px;
+  }
+
+  /* The three packages. Audit spans the full block, then basic and
+     advanced sit side by side beneath it for comparison. On large
+     screens the block widens past the 760px text column; below
+     1060px it returns to that column and the pair stacks, because
+     at that width two cards would be too narrow to read. */
+
+  .compare{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:16px;
+    margin-top:16px;
+  }
+
+  /* Grid stretches both cards to the taller one, so the pair reads as
+     a matched set. The shorter card carries its spare space at the
+     foot rather than a gap in the middle. */
+
+  .compare .option{margin-bottom:0;}
+
+  @media (min-width:1060px){
+    .packages{
+      width:min(960px,calc(100vw - 80px));
+      margin-left:50%;
+      transform:translateX(-50%);
+    }
+    .compare{grid-template-columns:1fr 1fr;}
   }
 
   .option-head{
@@ -506,6 +541,8 @@
     body{background:#fff;font-size:12pt;}
     .deskwrap,.option{break-inside:avoid;}
     section{padding-top:26px;}
+    .packages{width:auto;margin-left:0;transform:none;}
+    .compare{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -642,64 +679,7 @@
     <p class="kicker">How I can assist</p>
     <h2>Three options.</h2>
 
-    <div class="option pick">
-      <span class="pick-flag">Recommended</span>
-      <div class="option-head">
-        <h3>Advanced package</h3>
-        <div class="price">R8 000<small>per month &middot; six months</small></div>
-      </div>
-      <p class="builds">R48 000 in total.</p>
-      <ul>
-        <li>Month one is the full written review, as described in the audit option below</li>
-        <li>Website corrections specified and checked with your web supplier</li>
-        <li>A short enquiry form on the website, so a family can ask a question without filling in an application</li>
-        <li>Every enquiry recorded in one place, from the website, WhatsApp, email and the gate</li>
-        <li>Google listing rebuilt, and a review campaign run with your current parents</li>
-        <li>A set of templates so every post looks like the same school</li>
-        <li>A monthly content plan the school posts itself</li>
-        <li>Facebook and Instagram advertising set up and managed, August to October and again in January, aimed at parents within a few kilometres of the school</li>
-        <li>Outreach to preschools nearby that would be open to advertising the school to their leaving families</li>
-        <li>Open day support: advertising beforehand, the enquiry and registration experience for interested families on the day, and an email follow&#8209;up sequence afterwards</li>
-        <li>A short email sequence through November and December for families who enquired but have not yet applied</li>
-        <li>A monthly meeting against four numbers: enquiries received, visits booked, applications received, and Google reviews</li>
-      </ul>
-      <p class="expect"><b>At the end of January 2027, you'll have:</b></p>
-      <ul class="ticks">
-        <li>Everything listed in the basic package</li>
-        <li>New enquiries generated from families outside the school's existing network</li>
-        <li>A dedicated nurture campaign keeping interested families engaged through to enrolment</li>
-        <li>Booked visits from advertising, counted and reported monthly</li>
-        <li>A working relationship with the preschools that feed this area</li>
-        <li>A pipeline of interested families carried into the 2028 recruitment cycle</li>
-      </ul>
-    </div>
-
-    <div class="option">
-      <div class="option-head">
-        <h3>Basic package</h3>
-        <div class="price">R6 000<small>per month &middot; six months</small></div>
-      </div>
-      <p class="builds">R36 000 in total.</p>
-      <ul>
-        <li>Month one is the full written review, as described in the audit option below</li>
-        <li>Website corrections specified and checked with your web supplier</li>
-        <li>A short enquiry form on the website, so a family can ask a question without filling in an application</li>
-        <li>Every enquiry recorded in one place, from the website, WhatsApp, email and the gate</li>
-        <li>Google listing rebuilt, and a review campaign run with your current parents</li>
-        <li>A set of templates so every post looks like the same school</li>
-        <li>A monthly content plan the school posts itself</li>
-        <li>A monthly meeting against four numbers: enquiries received, visits booked, applications received, and Google reviews</li>
-      </ul>
-      <p class="expect"><b>At the end of January 2027, you'll have:</b></p>
-      <ul class="ticks">
-        <li>A Google listing carrying reviews</li>
-        <li>The website corrections done and checked</li>
-        <li>A clear enquiry route that does not require a full application upfront</li>
-        <li>A single record of all enquiries, regardless of how they arrived</li>
-        <li>Six months of reporting to plan the 2028 recruitment from</li>
-      </ul>
-      <p class="inherits">This option puts the school in good order. It does not include advertising or outreach to bring in new families.</p>
-    </div>
+    <div class="packages">
 
     <div class="option">
       <div class="option-head">
@@ -721,6 +701,71 @@
         <li>A clear picture of where the school sits against its neighbours</li>
       </ul>
       <p class="inherits">This option produces findings. It does not include carrying them out.</p>
+    </div>
+
+    <div class="compare">
+
+      <div class="option">
+        <div class="option-head">
+          <h3>Basic package</h3>
+          <div class="price">R6 000<small>per month &middot; six months</small></div>
+        </div>
+        <p class="builds">R36 000 in total.</p>
+        <ul>
+          <li>Month one is the full written review, as described in the audit option above</li>
+          <li>Website corrections specified and checked with your web supplier</li>
+          <li>A short enquiry form on the website, so a family can ask a question without filling in an application</li>
+          <li>Every enquiry recorded in one place, from the website, WhatsApp, email and the gate</li>
+          <li>Google listing rebuilt, and a review campaign run with your current parents</li>
+          <li>A set of templates so every post looks like the same school</li>
+          <li>A monthly content plan the school posts itself</li>
+          <li>A monthly meeting against four numbers: enquiries received, visits booked, applications received, and Google reviews</li>
+        </ul>
+        <p class="expect"><b>At the end of January 2027, you'll have:</b></p>
+        <ul class="ticks">
+          <li>A Google listing carrying reviews</li>
+          <li>The website corrections done and checked</li>
+          <li>A clear enquiry route that does not require a full application upfront</li>
+          <li>A single record of all enquiries, regardless of how they arrived</li>
+          <li>Six months of reporting to plan the 2028 recruitment from</li>
+        </ul>
+        <p class="inherits">This option puts the school in good order. It does not include advertising or outreach to bring in new families.</p>
+      </div>
+
+      <div class="option pick">
+        <span class="pick-flag">Recommended</span>
+        <div class="option-head">
+          <h3>Advanced package</h3>
+          <div class="price">R8 000<small>per month &middot; six months</small></div>
+        </div>
+        <p class="builds">R48 000 in total.</p>
+        <ul>
+          <li>Month one is the full written review, as described in the audit option above</li>
+          <li>Website corrections specified and checked with your web supplier</li>
+          <li>A short enquiry form on the website, so a family can ask a question without filling in an application</li>
+          <li>Every enquiry recorded in one place, from the website, WhatsApp, email and the gate</li>
+          <li>Google listing rebuilt, and a review campaign run with your current parents</li>
+          <li>A set of templates so every post looks like the same school</li>
+          <li>A monthly content plan the school posts itself</li>
+          <li>Facebook and Instagram advertising set up and managed, August to October and again in January, aimed at parents within a few kilometres of the school</li>
+          <li>Outreach to preschools nearby that would be open to advertising the school to their leaving families</li>
+          <li>Open day support: advertising beforehand, the enquiry and registration experience for interested families on the day, and an email follow&#8209;up sequence afterwards</li>
+          <li>A short email sequence through November and December for families who enquired but have not yet applied</li>
+          <li>A monthly meeting against four numbers: enquiries received, visits booked, applications received, and Google reviews</li>
+        </ul>
+        <p class="expect"><b>At the end of January 2027, you'll have:</b></p>
+        <ul class="ticks">
+          <li>Everything listed in the basic package</li>
+          <li>New enquiries generated from families outside the school's existing network</li>
+          <li>A dedicated nurture campaign keeping interested families engaged through to enrolment</li>
+          <li>Booked visits from advertising, counted and reported monthly</li>
+          <li>A working relationship with the preschools that feed this area</li>
+          <li>A pipeline of interested families carried into the 2028 recruitment cycle</li>
+        </ul>
+      </div>
+
+    </div>
+
     </div>
 
     <p class="note"><strong>Advertising budget sits outside these fees.</strong> Paid by the school directly to Meta.</p>
