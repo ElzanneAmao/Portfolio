@@ -113,6 +113,22 @@
     overflow:hidden;
   }
 
+  /* Lets a textarea size itself to its content via CSS alone, with
+     no JS-computed pixel height involved. That matters specifically
+     because print uses a smaller font than the screen (see --fs
+     below) — a height measured and locked in px while editing on
+     screen doesn't shrink back down for the smaller print font,
+     leaving dead space under the text once printed. Native intrinsic
+     sizing has no such gap: it's recalculated as part of layout for
+     whichever font size is actually in effect, at print time same as
+     screen time. Where this isn't supported yet, the JS fallback
+     below (autoGrow) takes over instead. */
+  textarea{field-sizing:content;}
+
+  @supports not (field-sizing:content){
+    textarea{resize:vertical;overflow:auto;}
+  }
+
   input:hover,textarea:hover{background:rgba(184,205,212,.16);}
 
   input:focus,textarea:focus{
@@ -495,7 +511,16 @@
 
 <script>
 (function(){
+  /* When the browser supports field-sizing (see CSS above), it
+     handles textarea height on its own — correctly, for whatever
+     font size is actually being rendered, screen or print — so this
+     stays out of the way entirely rather than fighting it with an
+     inline pixel height. Only browsers without that support fall
+     through to the manual JS resize. */
+  var nativeSizing=(typeof CSS!=='undefined' && CSS.supports && CSS.supports('field-sizing','content'));
+
   function autoGrow(el){
+    if(nativeSizing) return;
     el.style.height='auto';
     el.style.height=el.scrollHeight+'px';
   }
@@ -544,6 +569,22 @@
     if(tr) tr.remove();
     recompute();
   };
+
+  /* Print uses a smaller font than the screen (see --fs in the print
+     media query), so a textarea sized to fit its text on screen has
+     leftover space once printed — the same words take less height at
+     the smaller size, but the box's JS-set pixel height doesn't know
+     that on its own. beforeprint fires after the browser has already
+     switched to print layout, so re-measuring here picks up the
+     print font size correctly. afterprint restores the screen sizing
+     once the print dialog closes, since going back the other way has
+     the same problem in reverse. */
+  window.addEventListener('beforeprint',function(){
+    document.querySelectorAll('textarea').forEach(autoGrow);
+  });
+  window.addEventListener('afterprint',function(){
+    document.querySelectorAll('textarea').forEach(autoGrow);
+  });
 
   document.addEventListener('DOMContentLoaded',function(){
     document.querySelectorAll('textarea').forEach(autoGrow);
