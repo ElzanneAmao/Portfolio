@@ -358,22 +358,40 @@
   }
 
   @media print{
-    :root{--fs:11.5pt;}
-    /* Most browsers strip background colours from print output unless
-       the reader happens to have "Background graphics" checked in
-       their print dialog — not something anyone knows to look for.
-       This forces the table header's cream shading (and anything
-       else colour-dependent) to print regardless of that toggle. */
+    :root{--fs:10pt;}
     *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-    body{background:#fff;}
+    body{background:#fff;line-height:1.3;}
+    .wrap{padding:0 0 0;}
     .no-print,.toolbar,.rm-btn,.add-line{display:none !important;}
     input:hover,textarea:hover,input:focus,textarea:focus{background:transparent;outline:none;}
+
+    .headgrid{grid-template-columns:1fr 1fr;gap:12px;}
+    .meta-row{grid-template-columns:1fr 1fr;}
+    .bankgrid{grid-template-columns:1fr 1fr;gap:6px 20px;}
+
+    input::placeholder,textarea::placeholder{color:transparent !important;}
+    input[type="date"]::-webkit-calendar-picker-indicator{display:none !important;}
+
     table.items tr{break-inside:avoid;}
     .totals,.panel{break-inside:avoid;}
     .panel,table.items{border-color:#ccc;}
-    section{padding-top:24px;}
-    .masthead{padding-top:0;}
-    @page{margin:16mm;}
+    table.items th,table.items td{padding:6px 10px;}
+
+    section{padding-top:10px;}
+    .masthead{padding:0 0 10px;margin-bottom:0;border-bottom-width:1px;}
+    .masthead .eyebrow{margin-bottom:0;font-size:9pt;}
+    .headgrid{margin-top:6px;}
+    .headgrid .stack > *{margin-bottom:1px;}
+    .meta-row{margin-bottom:1px;gap:2px 10px;}
+    .field-label{margin-bottom:0;font-size:7.5pt;letter-spacing:.08em;}
+    .panel{padding:8px 12px;}
+    .panel .stack > *{margin-bottom:1px;}
+    .totals{margin-top:6px;}
+    .totals-row{padding:3px 0;}
+    .totals-row.grand{margin-top:1px;padding-top:5px;}
+    .add-line{margin-top:0;}
+
+    @page{margin:10mm 14mm;}
   }
 </style>
 </head>
