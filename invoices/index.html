@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  EDITING NOTES — invoices/index.html
+  ============================================================
+  WHAT THIS IS:
+    A blank, reusable invoice tool. Not client-specific — every
+    field except your own "From" details starts empty or with a
+    placeholder, so this one file works for any client, invoice
+    after invoice. It is NOT linked from the main navigation and is
+    marked noindex, so it will not appear in Google results or the
+    site's sitemap. Direct link:
+      https://elzanneamao.netlify.app/invoices/
+
+  WHY THIS IS SAFE IN A PUBLIC REPO:
+    Nothing you type into this page is saved anywhere — not to a
+    file, not to this site, not to any server. There is no backend
+    and no database. Everything lives only in the browser tab you
+    have open, for as long as you have it open. Refresh the page,
+    or close the tab, and it's gone.
+    That is deliberate, and it is what makes this safe to keep in a
+    PUBLIC repository: the committed file itself is always just
+    blank fields and placeholder text, whether you've used it once
+    or a hundred times. There is no invoice data, no client details
+    and no banking details anywhere in the file's history, because
+    none of it is ever written back into the file.
+    Do NOT hardcode real banking details, real invoice numbers, or
+    a real client's information into this file to "save yourself
+    typing" — that would defeat the entire point, and it would sit
+    in this repo's git history permanently, even if you delete it
+    again later. Retype the sensitive fields each time, or keep
+    your banking details in a private note somewhere off GitHub and
+    paste them in when you need them.
+
+  HOW TO USE IT:
+    Open the page, fill in the fields (click any field and type —
+    they're already laid out like the finished invoice), use
+    "+ Add line" for more line items, then Print → Save as PDF
+    and attach that PDF to an email yourself. "Clear form" reloads
+    the page to start over.
+
+  WHAT'S PREFILLED VS BLANK:
+    Your name, role and email in the "From" block are prefilled,
+    since they're already public on the proposal and quote pages in
+    this same repo. "Bill to" defaults to Safely Anchored Small
+    School for the immediate invoice this was built for — change
+    or clear it for the next client. Everything else, including the
+    whole banking-details block, starts blank on purpose.
+  ============================================================
+-->
+<html lang="en-ZA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Invoice Tool</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/images/favicon-512.png">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600&family=Darker+Grotesque:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --moss:#2c3830;
+    --sage:#7a8c6e;
+    --sage-ink:#4e5f46;
+    --gold:#a8a44c;
+    --glass:#b8cdd4;
+    --cream:#f1f4f2;
+    --rule:#d5ddd6;
+    --hairline:#dde2dd;
+    --display:'Bitter',Georgia,serif;
+    --body:'Darker Grotesque','Trebuchet MS',sans-serif;
+    --fs:19px;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{-webkit-text-size-adjust:100%;}
+
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--moss);
+    font-family:var(--body);
+    font-size:var(--fs);
+    font-weight:500;
+    line-height:1.45;
+  }
+
+  .wrap{
+    max-width:820px;
+    margin:0 auto;
+    padding:0 28px 90px;
+  }
+
+  /* ---------- shared field styling ---------- */
+  /* Inputs and textareas are styled to disappear into the page —
+     no border, no box — so the form reads as the finished document
+     you're filling in, not a form sitting on top of one. */
+
+  input,textarea{
+    font:inherit;
+    color:inherit;
+    background:transparent;
+    border:none;
+    border-radius:2px;
+    padding:3px 4px;
+    margin:0 -4px;
+    width:100%;
+    resize:none;
+    overflow:hidden;
+  }
+
+  input:hover,textarea:hover{background:rgba(184,205,212,.16);}
+
+  input:focus,textarea:focus{
+    outline:1px dashed var(--sage);
+    background:#fff;
+  }
+
+  input::placeholder,textarea::placeholder{color:var(--sage);opacity:.7;}
+
+  /* ---------- on-screen notice + actions (never printed) ---------- */
+
+  .no-print{}
+
+  .toolbar{
+    margin:28px 0 0;
+    padding:16px 20px;
+    background:#fff;
+    border:1px solid var(--rule);
+    border-left:3px solid var(--gold);
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+
+  .toolbar p{
+    margin:0;
+    font-size:16px;
+    color:var(--sage-ink);
+    max-width:38em;
+  }
+
+  .toolbar .actions{display:flex;gap:10px;flex-wrap:wrap;}
+
+  button{
+    font-family:var(--body);
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    cursor:pointer;
+    border-radius:2px;
+    padding:10px 16px;
+    border:1px solid var(--moss);
+    background:var(--moss);
+    color:#fff;
+    transition:opacity .2s ease;
+  }
+
+  button:hover{opacity:.85;}
+
+  button.ghost{background:transparent;color:var(--sage-ink);border-color:var(--rule);}
+
+  /* ---------- masthead ---------- */
+
+  .masthead{
+    padding:44px 0 36px;
+    border-bottom:2px solid var(--moss);
+  }
+
+  .eyebrow{
+    font-family:var(--body);
+    font-size:var(--fs);
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--sage-ink);
+    margin:0;
+  }
+
+  .field-label{
+    display:block;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--sage-ink);
+    margin:0 0 6px;
+  }
+
+  /* ---------- from / meta header ---------- */
+
+  .headgrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:28px;
+    margin-top:28px;
+  }
+
+  .headgrid .name{
+    font-family:var(--display);
+    font-size:var(--fs);
+    font-weight:700;
+    color:var(--moss);
+  }
+
+  .headgrid .stack > *{display:block;margin-bottom:8px;}
+  .headgrid .stack > *:last-child{margin-bottom:0;}
+
+  .meta-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px 16px;
+    margin-bottom:8px;
+  }
+
+  /* ---------- sections ---------- */
+
+  section{padding:40px 0 0;}
+
+  .panel{
+    background:#fff;
+    border:1px solid var(--rule);
+    padding:22px 24px;
+  }
+
+  /* ---------- line items table ---------- */
+
+  table.items{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border:1px solid var(--rule);
+  }
+
+  table.items th{
+    text-align:left;
+    padding:14px 16px;
+    background:var(--cream);
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--sage-ink);
+    border-bottom:1px solid var(--rule);
+  }
+
+  table.items th.amt,table.items td.amt{text-align:right;width:150px;}
+
+  table.items td{
+    padding:14px 16px;
+    border-top:1px solid var(--rule);
+    vertical-align:top;
+  }
+
+  table.items tr:first-child td{border-top:none;}
+
+  td.amt input{text-align:right;}
+
+  td.rm{width:36px;padding:14px 8px;text-align:center;}
+
+  .rm-btn{
+    border:none;
+    background:transparent;
+    color:var(--sage);
+    font-weight:700;
+    font-size:18px;
+    padding:0;
+    line-height:1;
+  }
+
+  .rm-btn:hover{color:#b34848;opacity:1;}
+
+  .add-line{margin-top:14px;}
+
+  .totals{
+    margin-top:14px;
+    margin-left:auto;
+    width:100%;
+    max-width:340px;
+  }
+
+  .totals-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    padding:8px 0;
+    border-top:1px solid var(--rule);
+  }
+
+  .totals-row:first-child{border-top:none;}
+
+  .totals-row .lbl{color:var(--sage-ink);}
+
+  .totals-row.grand{
+    border-top:2px solid var(--moss);
+    margin-top:4px;
+    padding-top:12px;
+  }
+
+  .totals-row.grand .lbl,.totals-row.grand .val{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:calc(var(--fs) + 3px);
+    color:var(--moss);
+  }
+
+  .totals-row .val{font-weight:600;}
+
+  .adj-input{max-width:110px;text-align:right;}
+
+  /* ---------- bank details grid ---------- */
+
+  .bankgrid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px 28px;
+  }
+
+  /* ---------- responsive ---------- */
+
+  @media (max-width:680px){
+    body{font-size:20px;}
+    .wrap{padding:0 20px 70px;}
+    .headgrid{grid-template-columns:1fr;gap:24px;}
+    .meta-row{grid-template-columns:1fr 1fr;}
+    .bankgrid{grid-template-columns:1fr;}
+    table.items th.time,table.items td.time{display:none;}
+  }
+
+  @media (max-width:460px){
+    :root{--fs:18px;}
+    table.items th,table.items td{padding:10px 10px;}
+    table.items th.amt,table.items td.amt{width:110px;}
+  }
+
+  @media print{
+    :root{--fs:11.5pt;}
+    body{background:#fff;}
+    .no-print,.toolbar,.rm-btn,.add-line{display:none !important;}
+    input:hover,textarea:hover,input:focus,textarea:focus{background:transparent;outline:none;}
+    table.items tr{break-inside:avoid;}
+    .panel,table.items{border-color:#ccc;}
+    section{padding-top:24px;}
+    .masthead{padding-top:0;}
+    @page{margin:16mm;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <div class="toolbar no-print">
+    <p>This lives only in your browser — nothing you type is saved, sent, or stored anywhere. Refresh and it's gone, so Print → Save as PDF before you navigate away, then attach that PDF to an email yourself.</p>
+    <div class="actions">
+      <button type="button" class="ghost" onclick="if(confirm('Clear everything on this invoice? This can\'t be undone.')) location.reload();">Clear form</button>
+      <button type="button" onclick="window.print();">Print / Save as PDF</button>
+    </div>
+  </div>
+
+  <header class="masthead">
+    <p class="eyebrow">Invoice</p>
+
+    <div class="headgrid">
+      <div class="stack">
+        <span class="field-label">From</span>
+        <input class="name" type="text" value="Elzanne Amao" aria-label="Your name">
+        <textarea rows="1" aria-label="Your role and location">Content and communications strategy &middot; Cape Town</textarea>
+        <input type="text" value="elzanne.amao@gmail.com" aria-label="Your email">
+        <input type="text" placeholder="Phone (optional)" aria-label="Your phone number">
+      </div>
+
+      <div class="stack">
+        <div class="meta-row">
+          <div>
+            <span class="field-label">Invoice no.</span>
+            <input type="text" placeholder="e.g. INV-2026-01" aria-label="Invoice number">
+          </div>
+          <div>
+            <span class="field-label">Date issued</span>
+            <input type="date" id="date-issued" aria-label="Date issued">
+          </div>
+        </div>
+        <div class="meta-row">
+          <div>
+            <span class="field-label">Due date</span>
+            <input type="date" aria-label="Due date">
+          </div>
+          <div>
+            <span class="field-label">Terms</span>
+            <input type="text" value="Payable within 7 days" aria-label="Payment terms">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <span class="field-label">Bill to</span>
+    <div class="panel">
+      <div class="stack">
+        <input class="name" style="font-family:var(--display);font-weight:700;" type="text" value="Safely Anchored Small School" aria-label="Client or organisation name">
+        <input type="text" placeholder="Contact person (optional)" aria-label="Client contact person">
+        <textarea rows="1" placeholder="Address (optional)" aria-label="Client address"></textarea>
+        <input type="text" placeholder="Client email (optional)" aria-label="Client email">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="field-label">Items</span>
+    <table class="items">
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th class="amt">Amount (ZAR)</th>
+          <th class="rm no-print"></th>
+        </tr>
+      </thead>
+      <tbody id="items-body">
+        <tr>
+          <td><textarea rows="1" class="li-desc" placeholder="Describe the item or service" aria-label="Line item description"></textarea></td>
+          <td class="amt"><input type="text" inputmode="decimal" class="li-amount" placeholder="0.00" aria-label="Line item amount"></td>
+          <td class="rm no-print"><button type="button" class="rm-btn" aria-label="Remove line" onclick="removeLine(this);">&times;</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button type="button" class="ghost add-line no-print" onclick="addLine();">+ Add line</button>
+
+    <div class="totals">
+      <div class="totals-row">
+        <span class="lbl">Subtotal</span>
+        <span class="val" id="subtotal">R0.00</span>
+      </div>
+      <div class="totals-row">
+        <span class="lbl">Adjustment <span style="font-size:13px;">(VAT, discount, etc.)</span></span>
+        <input type="text" inputmode="decimal" class="adj-input" id="adjustment" placeholder="0.00" aria-label="Adjustment amount" oninput="recompute();">
+      </div>
+      <div class="totals-row grand">
+        <span class="lbl">Total due</span>
+        <span class="val" id="total">R0.00</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="field-label">Payment details</span>
+    <div class="panel">
+      <div class="bankgrid">
+        <div>
+          <span class="field-label">Bank</span>
+          <input type="text" placeholder="Bank name" aria-label="Bank name">
+        </div>
+        <div>
+          <span class="field-label">Account holder</span>
+          <input type="text" placeholder="Account holder" aria-label="Account holder">
+        </div>
+        <div>
+          <span class="field-label">Account number</span>
+          <input type="text" placeholder="Account number" aria-label="Account number">
+        </div>
+        <div>
+          <span class="field-label">Branch code</span>
+          <input type="text" placeholder="Branch code" aria-label="Branch code">
+        </div>
+        <div>
+          <span class="field-label">Account type</span>
+          <input type="text" placeholder="e.g. Cheque / Savings" aria-label="Account type">
+        </div>
+        <div>
+          <span class="field-label">Payment reference</span>
+          <input type="text" placeholder="e.g. your invoice number" aria-label="Payment reference">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <span class="field-label">Notes</span>
+    <div class="panel">
+      <textarea rows="1" placeholder="Optional note to the client" aria-label="Notes to client"></textarea>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  function autoGrow(el){
+    el.style.height='auto';
+    el.style.height=el.scrollHeight+'px';
+  }
+
+  function toNum(v){
+    var n=parseFloat(String(v).replace(/[^0-9.\-]/g,''));
+    return isNaN(n)?0:n;
+  }
+
+  function fmt(n){
+    return 'R'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+  }
+
+  window.recompute=function(){
+    var amounts=document.querySelectorAll('.li-amount');
+    var subtotal=0;
+    amounts.forEach(function(el){subtotal+=toNum(el.value);});
+    var adj=toNum(document.getElementById('adjustment').value);
+    document.getElementById('subtotal').textContent=fmt(subtotal);
+    document.getElementById('total').textContent=fmt(subtotal+adj);
+  };
+
+  /* Delegated on the document, so this covers every textarea and
+     amount field on the page — the static ones (address, notes,
+     the first line item) and any line item added later by
+     addLine() — without needing to wire each one up by hand. */
+  document.addEventListener('input',function(e){
+    var t=e.target;
+    if(t.tagName==='TEXTAREA') autoGrow(t);
+    if(t.classList.contains('li-amount') || t.id==='adjustment') recompute();
+  });
+
+  window.addLine=function(){
+    var tbody=document.getElementById('items-body');
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td><textarea rows="1" class="li-desc" placeholder="Describe the item or service" aria-label="Line item description"></textarea></td>'+
+      '<td class="amt"><input type="text" inputmode="decimal" class="li-amount" placeholder="0.00" aria-label="Line item amount"></td>'+
+      '<td class="rm no-print"><button type="button" class="rm-btn" aria-label="Remove line" onclick="removeLine(this);">&times;</button></td>';
+    tbody.appendChild(tr);
+    var desc=tr.querySelector('.li-desc');
+    if(desc){autoGrow(desc);desc.focus();}
+  };
+
+  window.removeLine=function(btn){
+    var tr=btn.closest('tr');
+    if(tr) tr.remove();
+    recompute();
+  };
+
+  document.addEventListener('DOMContentLoaded',function(){
+    document.querySelectorAll('textarea').forEach(autoGrow);
+    var dateIssued=document.getElementById('date-issued');
+    if(dateIssued && !dateIssued.value){
+      var d=new Date();
+      var iso=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+      dateIssued.value=iso;
+    }
+    recompute();
+  });
+})();
+</script>
+</body>
+</html>
