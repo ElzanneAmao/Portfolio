@@ -359,6 +359,12 @@
 
   @media print{
     :root{--fs:11.5pt;}
+    /* Most browsers strip background colours from print output unless
+       the reader happens to have "Background graphics" checked in
+       their print dialog — not something anyone knows to look for.
+       This forces the table header's cream shading (and anything
+       else colour-dependent) to print regardless of that toggle. */
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
     body{background:#fff;}
     .no-print,.toolbar,.rm-btn,.add-line{display:none !important;}
     input:hover,textarea:hover,input:focus,textarea:focus{background:transparent;outline:none;}
