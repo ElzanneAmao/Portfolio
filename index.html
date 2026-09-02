@@ -14,13 +14,7 @@
     inscape-case-study.html must stay in the SAME folder, or the
     links between pages will break.
 
-  PLACEHOLDERS TO REPLACE ON THIS PAGE:
-    - Headshot: the "Add headshot" box in the hero. To use a real
-      photo, replace that <div class="portrait">...</div> with
-      <img src="your-photo.jpg" alt="Elzanne Amao" style="width:100%">
-      (put your-photo.jpg in this same folder).
-    - "Connect" button: currently does nothing. To make it link,
-      wrap it or change it to a link to about.html#contact.
+  HERO: Full-bleed animated gradient (no portrait image).
     - "Inquire" links and "email me" already point to about.html#contact.
 
   LINKS:
@@ -178,13 +172,24 @@
   .accent-line{width:72px;height:2px;background:var(--seaglass);margin-top:18px;}
 
   /* ---------- Hero ---------- */
-  .hero{padding-top:96px;padding-bottom:96px;}
-  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;}
-  .hero .tagline{font-family:var(--serif);font-weight:500;font-size:clamp(2.2rem,4.2vw,3.4rem);line-height:1.15;color:var(--moss);margin-top:0;max-width:28ch;}
-  .hero .intro{font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.7;color:var(--moss);margin-top:32px;max-width:52ch;}
-  .hero .actions{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;}
-  .portrait{aspect-ratio:4/5;overflow:hidden;border:1px solid var(--hairline);}
-  .portrait img{width:100%;height:100%;object-fit:cover;display:block;}
+  .hero{background:var(--moss);padding:120px 0 100px;position:relative;overflow:hidden;}
+  .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;will-change:transform;}
+  .hero::before{width:650px;height:650px;background:var(--sage);opacity:.3;top:-18%;left:-8%;animation:drift 22s ease-in-out infinite alternate;}
+  .hero::after{width:520px;height:520px;background:var(--seaglass);opacity:.2;bottom:-12%;right:-4%;animation:drift 22s ease-in-out infinite alternate-reverse;}
+  @keyframes drift{
+    0%{transform:translate(0,0) scale(1);}
+    25%{transform:translate(50px,30px) scale(1.06);}
+    50%{transform:translate(-20px,60px) scale(.96);}
+    75%{transform:translate(40px,-10px) scale(1.03);}
+    100%{transform:translate(-30px,40px) scale(1.08);}
+  }
+  .hero .eyebrow{display:block;font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--seaglass);margin-bottom:28px;}
+  .hero .tagline{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,5vw,4rem);line-height:1.12;color:var(--white);margin-top:0;max-width:22ch;}
+  .hero .intro{font-family:var(--sans);font-weight:300;font-size:19px;line-height:1.7;color:rgba(241,244,242,.72);margin-top:28px;max-width:48ch;}
+  .hero .actions{display:flex;gap:16px;margin-top:44px;flex-wrap:wrap;}
+  .hero .btn-primary{background:var(--sage);color:var(--white);}
+  .hero .btn-outline{border-color:rgba(184,205,212,.4);color:var(--seaglass);}
+  .hero .btn-outline:hover{background:rgba(184,205,212,.12);color:var(--white);border-color:var(--seaglass);}
 
   /* ---------- Engagement Types (cool white panel) ---------- */
   .engagements{background:var(--white);padding-block:96px;}
@@ -295,7 +300,10 @@
   /* ---------- Motion ---------- */
   .js .reveal{opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1s ease;}
   .js .reveal.in{opacity:1;transform:translateY(0);}
-  @media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none;}}
+  @media (prefers-reduced-motion:reduce){
+    .js .reveal{opacity:1;transform:none;transition:none;}
+    .hero::before,.hero::after{animation:none;}
+  }
 
   /* ---------- Responsive ---------- */
   @media (max-width:860px){
@@ -304,9 +312,7 @@
     .nav-links.open{display:flex;flex-direction:column;align-items:flex-start;position:fixed;top:80px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--hairline);padding:24px 20px;gap:20px;z-index:49;}
     .nav-links.open .btn-cta{margin-top:4px;}
     .menu-icon{display:block;cursor:pointer;}
-    .hero{padding-top:56px;padding-bottom:64px;}
-    .hero-grid{grid-template-columns:1fr;gap:40px;}
-    .portrait{max-width:320px;}
+    .hero{padding:80px 0 72px;}
     .engagements,.work,.voices,.writing{padding-block:64px;}
     .eng-top{grid-template-columns:1fr;gap:24px;align-items:start;}
     .eng-top .intro{justify-self:start;}
@@ -426,18 +432,14 @@
 
 <main>
   <!-- Hero -->
-  <section class="wrap hero">
-    <div class="hero-grid">
-      <div>
-        <h1 class="tagline reveal">Your team adopted AI.<br>Were your brand standards part of the plan?</h1>
-        <p class="intro reveal">I help business owners find out what AI is doing to the standard of work their brand was built on.</p>
-        <div class="actions reveal">
-          <a class="btn btn-primary" href="#services">View my services</a>
-          <a class="btn btn-outline" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Read my Substack</a>
-        </div>
-      </div>
-      <div class="portrait reveal">
-        <img src="images/hero-portrait.jpg" alt="Elzanne Amao in a client consultation, with Table Mountain visible through the window">
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow reveal">Everyone jumped on the AI bandwagon</span>
+      <h1 class="tagline reveal">Your team adopted AI.<br>Were your brand standards part of the plan?</h1>
+      <p class="intro reveal">I help business owners find out what AI is doing to the standard of work their brand was built on.</p>
+      <div class="actions reveal">
+        <a class="btn btn-primary" href="#services">View my services</a>
+        <a class="btn btn-outline" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Read my Substack</a>
       </div>
     </div>
   </section>
