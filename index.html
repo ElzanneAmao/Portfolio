@@ -173,15 +173,21 @@
 
   /* ---------- Hero ---------- */
   .hero{background:var(--moss);padding:120px 0 100px;position:relative;overflow:hidden;}
-  .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;will-change:transform;}
-  .hero::before{width:650px;height:650px;background:var(--sage);opacity:.3;top:-18%;left:-8%;animation:drift 22s ease-in-out infinite alternate;}
-  .hero::after{width:520px;height:520px;background:var(--seaglass);opacity:.2;bottom:-12%;right:-4%;animation:drift 22s ease-in-out infinite alternate-reverse;}
+  .hero::before,.hero::after{content:'';position:absolute;border-radius:50%;pointer-events:none;will-change:transform;}
+  .hero::before{width:800px;height:800px;background:radial-gradient(circle,var(--sage) 0%,transparent 70%);opacity:.55;top:-30%;left:-12%;filter:blur(80px);animation:drift 18s ease-in-out infinite alternate;}
+  .hero::after{width:700px;height:700px;background:radial-gradient(circle,var(--seaglass) 0%,transparent 70%);opacity:.4;bottom:-20%;right:-8%;filter:blur(90px);animation:drift 18s ease-in-out infinite alternate-reverse;}
+  .hero-glow{position:absolute;width:500px;height:500px;background:radial-gradient(circle,rgba(168,164,76,.35) 0%,transparent 70%);filter:blur(100px);top:40%;left:50%;transform:translate(-50%,-50%);animation:drift2 24s ease-in-out infinite alternate;pointer-events:none;}
   @keyframes drift{
     0%{transform:translate(0,0) scale(1);}
-    25%{transform:translate(50px,30px) scale(1.06);}
-    50%{transform:translate(-20px,60px) scale(.96);}
-    75%{transform:translate(40px,-10px) scale(1.03);}
-    100%{transform:translate(-30px,40px) scale(1.08);}
+    25%{transform:translate(80px,50px) scale(1.1);}
+    50%{transform:translate(-40px,90px) scale(.94);}
+    75%{transform:translate(60px,-30px) scale(1.06);}
+    100%{transform:translate(-50px,60px) scale(1.12);}
+  }
+  @keyframes drift2{
+    0%{transform:translate(-50%,-50%) scale(1);}
+    50%{transform:translate(-30%,-40%) scale(1.15);}
+    100%{transform:translate(-60%,-55%) scale(.9);}
   }
   .hero .eyebrow{display:block;font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;color:var(--seaglass);margin-bottom:28px;}
   .hero .tagline{font-family:var(--serif);font-weight:500;font-size:clamp(2.6rem,5vw,4rem);line-height:1.12;color:var(--white);margin-top:0;max-width:22ch;}
@@ -198,10 +204,7 @@
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
   .card{border:1px solid var(--hairline);border-left:3px solid var(--seaglass);border-top:none;background:transparent;padding:36px 30px;display:flex;flex-direction:column;transition:background .25s ease,border-color .25s ease;overflow:hidden;text-decoration:none;color:inherit;}
   .card:hover{background:var(--seaglass);border-color:var(--seaglass);}
-  .card .card-img{aspect-ratio:3/2;overflow:hidden;margin:-36px -30px 28px;background:var(--coolwhite);}
-  .card .card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
-  .card:hover .card-img img{transform:scale(1.03);}
-  .card h3{font-family:var(--serif);font-weight:500;font-size:1.75rem;line-height:1.15;color:var(--moss);margin-bottom:16px;}
+  .card h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,2.2vw,2rem);line-height:1.15;color:var(--moss);margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--hairline);}
   .card p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.65;color:var(--moss);flex:1;}
   .card .inquire{margin-top:28px;font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--moss);display:inline-flex;align-items:center;gap:8px;}
   .card .inquire .arrow{color:var(--seaglass);transition:transform .3s ease,color .3s ease;}
@@ -302,7 +305,7 @@
   .js .reveal.in{opacity:1;transform:translateY(0);}
   @media (prefers-reduced-motion:reduce){
     .js .reveal{opacity:1;transform:none;transition:none;}
-    .hero::before,.hero::after{animation:none;}
+    .hero::before,.hero::after,.hero-glow{animation:none;}
   }
 
   /* ---------- Responsive ---------- */
@@ -331,19 +334,19 @@
   }
 
   /* ---------- Why This Practice ---------- */
-  .why-practice{background:var(--moss);padding-block:96px;}
+  .why-practice{background:var(--coolwhite);padding-block:96px;}
   .why-top{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:56px;}
-  .why-heading h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.8vw,3rem);line-height:1.1;color:var(--white);margin-bottom:20px;}
+  .why-heading h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.8vw,3rem);line-height:1.1;color:var(--moss);margin-bottom:20px;}
   .why-heading .accent-rule{width:56px;height:2px;background:var(--seaglass);}
-  .why-body p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:rgba(241,244,242,0.78);margin-bottom:20px;}
+  .why-body p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:var(--moss);margin-bottom:20px;}
   .why-body p:last-child{margin-bottom:0;}
   .why-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;}
-  .why-card{background:var(--coolwhite);padding:32px 28px 40px;}
+  .why-card{background:var(--white);padding:32px 28px 40px;border:1px solid var(--hairline);border-left:3px solid var(--seaglass);}
   .why-card-dot{width:9px;height:9px;background:var(--seaglass);margin-bottom:24px;}
   .why-card p{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.5;color:var(--moss);margin:0;}
-  .why-closing{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;color:rgba(241,244,242,0.52);}
-  .why-closing a{color:var(--seaglass);text-decoration:none;border-bottom:1px solid rgba(184,205,212,0.35);padding-bottom:1px;transition:color .3s,border-color .3s;}
-  .why-closing a:hover{color:var(--white);border-color:var(--seaglass);}
+  .why-closing{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;color:var(--sage);}
+  .why-closing a{color:var(--moss);text-decoration:none;border-bottom:1px solid var(--seaglass);padding-bottom:1px;transition:color .3s,border-color .3s;}
+  .why-closing a:hover{color:var(--sage);border-color:var(--sage);}
 
   /* ---------- Touchpoints (Dark) ---------- */
   .touchpoints{background:var(--moss);padding-block:96px;}
@@ -433,6 +436,7 @@
 <main>
   <!-- Hero -->
   <section class="hero">
+    <div class="hero-glow"></div>
     <div class="wrap">
       <span class="eyebrow reveal">Everyone jumped on the AI bandwagon</span>
       <h1 class="tagline reveal">Your team adopted AI.<br>Were your brand standards part of the plan?</h1>
@@ -487,19 +491,16 @@
       </div>
       <div class="cards">
         <a class="card reveal" href="ai-content-operations-audit.html">
-          <div class="card-img"><img src="images/hero-audit.jpg.png" alt="AI content operations audit" loading="lazy"></div>
           <h3>AI content operations audit</h3>
           <p>If you can tell something is off with your content since AI entered the workflow but you're not sure what, this is where to start. I produce a written read on what's working, what isn't, and where the highest-leverage changes are.</p>
           <span class="inquire">Learn more <span class="arrow">&rarr;</span></span>
         </a>
         <a class="card reveal" href="ai-integrated-content-system-design.html">
-          <div class="card-img"><img src="images/hero-system-design.jpg.png" alt="AI-integrated content system design" loading="lazy"></div>
           <h3>AI-integrated content system design</h3>
           <p>If you know what needs to change and you need someone to design the system, this is the build engagement. I design or rebuild your content operation so your team knows what AI handles, what they handle, and how the pieces fit together.</p>
           <span class="inquire">Learn more <span class="arrow">&rarr;</span></span>
         </a>
         <a class="card reveal" href="ai-advisory-sme-leadership.html">
-          <div class="card-img"><img src="images/hero-advisory.jpg.png" alt="AI advisory for SME leadership" loading="lazy"></div>
           <h3>AI advisory for SME leadership</h3>
           <p>If you don't need a project but you do need someone to think with, this is a retainer. Monthly check-ins, async availability between them, and a quarterly written read on how your AI integration is holding up against the business you're building.</p>
           <span class="inquire">Learn more <span class="arrow">&rarr;</span></span>
