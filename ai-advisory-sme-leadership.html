@@ -18,198 +18,55 @@
   <meta name="twitter:image" content="https://elzanneamao.netlify.app/images/og-image.jpg">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-  <style>
-  :root{
-    --moss:#2c3830;
-    --sage:#7a8c6e;
-    --seaglass:#b8cdd4;
-    --coolwhite:#f1f4f2;
-    --white:#ffffff;
-    --hairline:#dde2dd;
-    --serif:"Cormorant Garamond",Georgia,serif;
-    --sans:"DM Sans",system-ui,sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;scroll-padding-top:80px;}
-  body{background:var(--white);color:var(--moss);font-family:var(--sans);font-weight:300;-webkit-font-smoothing:antialiased;}
-  ::selection{background:var(--seaglass);color:var(--moss);}
-
-  #progress{position:fixed;top:0;left:0;height:3px;background:var(--seaglass);width:0;z-index:60;transition:width .1s linear;}
-
-  /* Nav */
-  header{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--hairline);z-index:50;}
-  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:80px;}
-  .wordmark img.site-logo{height:40px;display:block;}
-  .nav-links{display:flex;align-items:center;gap:32px;}
-  .nav-links a:not(.btn-cta){font-family:var(--sans);font-size:15px;font-weight:400;color:var(--sage);text-decoration:none;padding-bottom:4px;transition:color .3s ease;}
-  .nav-links a:not(.btn-cta):hover{color:var(--moss);}
-  .btn-cta{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;background:var(--sage);color:var(--white);border:none;padding:11px 22px;cursor:pointer;transition:opacity .3s ease;display:inline-flex;align-items:center;justify-content:center;line-height:1;text-decoration:none;}
-  .btn-cta:hover{opacity:.88;}
-  .menu-icon{display:none;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--moss);cursor:pointer;user-select:none;}
-  .nav-item{position:relative;display:flex;align-items:center;}
-  .dropdown-menu{display:none;position:absolute;top:100%;padding-top:10px;right:0;left:auto;background:var(--white);border:1px solid var(--hairline);min-width:200px;z-index:100;box-shadow:0 8px 24px rgba(44,56,48,0.12);}
-  .nav-dropdown:hover .dropdown-menu{display:block;}
-  .nav-links .dropdown-menu a{display:block;padding:12px 20px;font-size:14px;font-weight:400;color:var(--sage);text-decoration:none;transition:color .2s ease,background .2s ease;}
-  .nav-links .dropdown-menu a:not(:last-child){border-bottom:1px solid var(--hairline);}
-  .nav-links .dropdown-menu a:hover{color:var(--moss);background:var(--coolwhite);}
-
-  /* Containers */
-  .wrap{max-width:1100px;margin:0 auto;padding:0 40px;}
-  .narrow{max-width:760px;margin:0 auto;padding:0 40px;}
-
-  /* Eyebrow label */
-  .eyebrow{font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--sage);display:block;margin-bottom:16px;}
-
-  /* Hero */
-  .service-hero{background:var(--coolwhite);padding:56px 0 0;}
-  .breadcrumb{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--sage);margin-bottom:28px;}
-  .breadcrumb a{color:var(--sage);text-decoration:none;transition:color .2s ease;}
-  .breadcrumb a:hover{color:var(--moss);}
-  .hero-text{max-width:720px;padding-bottom:48px;}
-  .hero-text h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.4rem,4.5vw,3.4rem);line-height:1.1;color:var(--moss);margin-bottom:20px;}
-  .hero-subtitle{font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.75;color:var(--moss);}
-
-  /* Meta strip */
-  .meta-strip{display:flex;gap:48px;flex-wrap:wrap;padding:28px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);}
-  .meta-item{display:flex;flex-direction:column;gap:6px;}
-  .meta-label{font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);}
-  .meta-value{font-family:var(--sans);font-size:15px;color:var(--moss);}
-
-  /* Section wrappers */
-  .section-white{background:var(--white);padding:72px 0;}
-  .section-pale{background:var(--coolwhite);padding:72px 0;}
-
-  /* Section headings and body */
-  .section-white h2,.section-pale h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,2.5vw,2.2rem);line-height:1.2;color:var(--moss);margin-bottom:20px;}
-  .section-white p,.section-pale p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:var(--moss);margin-bottom:16px;}
-  .section-white p:last-child,.section-pale p:last-child{margin-bottom:0;}
-  .section-heading{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,2.5vw,2.2rem);line-height:1.2;color:var(--moss);margin-bottom:32px;}
-
-  /* Phase cards */
-  .phase-bento{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
-  .phase-card{border:1px solid var(--hairline);padding:32px 28px;background:var(--white);position:relative;overflow:hidden;transition:background .3s ease,border-color .3s ease;}
-  .phase-card:hover{background:var(--seaglass);border-color:var(--seaglass);}
-  .phase-ghost{position:absolute;bottom:-14px;right:10px;font-family:var(--serif);font-size:96px;line-height:1;color:var(--moss);opacity:0;user-select:none;pointer-events:none;transition:opacity .3s ease;}
-  .phase-card:hover .phase-ghost{opacity:.12;}
-  .phase-card .phase-num{font-family:var(--sans);font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--sage);display:block;margin-bottom:16px;transition:color .3s ease;}
-  .phase-card:hover .phase-num{color:var(--moss);}
-  .phase-card h3{font-family:var(--serif);font-weight:500;font-size:1.2rem;color:var(--moss);margin-bottom:10px;}
-  .phase-card p{font-size:14px;font-weight:300;line-height:1.65;color:var(--moss);}
-
-  /* CTA band */
-  .cta-band{background:var(--moss);padding:80px 0;text-align:center;}
-  .cta-band .eyebrow{color:var(--seaglass);}
-  .cta-band h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3vw,2.6rem);color:var(--white);margin-bottom:16px;}
-  .cta-band p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;color:rgba(184,205,212,.85);max-width:48ch;margin:0 auto 32px;}
-  .contact-item{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--coolwhite);font-family:var(--sans);font-size:16px;font-weight:300;position:relative;padding-bottom:4px;}
-  .contact-item svg{width:18px;height:18px;color:var(--seaglass);}
-  .contact-item::after{content:"";position:absolute;left:0;bottom:0;width:100%;height:1px;background:var(--seaglass);transform:scaleX(0);transform-origin:right;transition:transform .35s ease;}
-  .contact-item:hover::after{transform:scaleX(1);transform-origin:left;}
-
-  /* Related */
-  .related{background:var(--coolwhite);padding:72px 0;}
-  .related h2{font-family:var(--serif);font-weight:500;font-size:1.8rem;color:var(--moss);margin-bottom:36px;}
-  .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-  .related-card{border:1px solid var(--hairline);border-left:3px solid var(--seaglass);padding:28px;text-decoration:none;display:flex;flex-direction:column;background:var(--white);transition:background .3s ease,border-color .3s ease;}
-  .related-card:hover{background:var(--seaglass);border-color:var(--seaglass);}
-  .related-card h3{font-family:var(--serif);font-weight:500;font-size:1.25rem;color:var(--moss);margin-bottom:12px;}
-  .related-card p{font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.65;color:var(--moss);flex:1;margin-bottom:16px;}
-  .see-more{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--moss);display:inline-flex;align-items:center;gap:6px;}
-  .arrow{color:var(--seaglass);transition:transform .3s ease,color .3s ease;}
-  .related-card:hover .arrow{transform:translateX(4px);color:var(--moss);}
-
-  /* Footer */
-  footer{background:var(--white);border-top:1px solid var(--hairline);padding:32px 0;}
-  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
-  .fname{font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--moss);}
-  .footer-mid{display:flex;gap:24px;align-items:center;}
-  .footer-mid a{font-family:var(--sans);font-size:14px;color:var(--sage);text-decoration:none;transition:color .3s ease;display:inline-flex;align-items:center;gap:6px;}
-  .footer-mid a:hover{color:var(--moss);}
-  .footer-copy{font-family:var(--sans);font-size:13px;color:var(--sage);}
-
-  /* Mobile */
-  @media(max-width:860px){
-    nav.wrap{padding:0 20px;}
-    .nav-links{display:none;flex-direction:column;align-items:flex-start;position:fixed;top:80px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--hairline);padding:24px 20px;gap:20px;z-index:49;}
-    .nav-links.open{display:flex;}
-    .menu-icon{display:block;}
-    .nav-item{position:static;display:block;}
-    .dropdown-menu{position:static;box-shadow:none;min-width:auto;display:none;border:none;background:transparent;padding-left:8px;padding-top:0;}
-    .nav-links.open .dropdown-menu{display:block;}
-    .nav-links .dropdown-menu a{padding:6px 4px;font-size:13px;}
-    .nav-links .dropdown-menu a:not(:last-child){border-bottom:none;}
-    .wrap,.narrow{padding:0 20px;}
-    .hero-text{max-width:100%;}
-    .phase-bento{grid-template-columns:1fr;}
-    .related-grid{grid-template-columns:1fr;}
-    .meta-strip{gap:24px;}
-    .section-white,.section-pale{padding:48px 0;}
-    .cta-band{padding:56px 0;}
-    .related{padding:48px 0;}
-    .footer-inner{flex-direction:column;align-items:flex-start;}
-    .cta-form-row{grid-template-columns:1fr;}
-  }
-  /* CTA form */
-  .cta-form{max-width:600px;margin:28px auto 0;text-align:left;}
-  .cta-form-row{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;}
-  .cta-field{display:flex;flex-direction:column;gap:8px;margin-bottom:24px;}
-  .cta-form-row .cta-field{margin-bottom:0;}
-  .cta-field label{font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--seaglass);}
-  .cta-field input,.cta-field textarea{font-family:var(--sans);font-weight:300;font-size:15px;color:var(--white);background:transparent;border:none;border-bottom:1px solid rgba(184,205,212,.28);padding:10px 0;outline:none;width:100%;transition:border-color .25s ease;}
-  .cta-field input:focus,.cta-field textarea:focus{border-color:var(--seaglass);}
-  .cta-field input::placeholder,.cta-field textarea::placeholder{color:rgba(241,244,242,.32);}
-  .cta-field textarea{resize:none;min-height:72px;}
-  .cta-form-submit{text-align:center;margin-top:28px;}
-  .btn-send{font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;background:var(--sage);color:var(--white);border:none;padding:14px 28px;cursor:pointer;transition:opacity .3s ease;}
-  .btn-send:hover{opacity:.88;}
-  </style>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=11">
+<style>
+  /* Page styles live in site.css (Service pages section) */
+</style>
 </head>
 <body>
-<div id="progress"></div>
 
-<header>
-  <nav class="wrap">
-    <a href="index.html" class="wordmark"><img src="images/logo-olive.png" alt="Elzanne Amao" class="site-logo"></a>
-    <div class="nav-links" id="navLinks">
-      <div class="nav-item nav-dropdown">
-        <a href="index.html#services">Services</a>
-        <div class="dropdown-menu">
-          <a href="ai-content-operations-audit.html">AI Content Operations Audit</a>
-          <a href="ai-integrated-content-system-design.html">Content System Design</a>
-          <a href="ai-advisory-sme-leadership.html">AI Advisory for SME Leadership</a>
+<header class="site-header">
+  <nav class="wrap" aria-label="Main">
+    <a href="index.html"><img src="images/logo-white.png" alt="Elzanne Amao" class="site-logo" width="857" height="116"></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="site-links">Menu</button>
+    <div class="links" id="site-links">
+      <div class="dd is-current">
+        <a href="index.html#services" class="dd-top">Services <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dd-menu">
+          <a href="ai-content-operations-audit.html">AI content operations audit</a>
+          <a href="ai-integrated-content-system-design.html">AI-integrated content system design</a>
+          <a href="ai-advisory-sme-leadership.html" aria-current="page">AI advisory for SME leadership</a>
         </div>
       </div>
-      <div class="nav-item nav-dropdown">
-        <a href="index.html#work">Case Studies</a>
-        <div class="dropdown-menu">
+      <div class="dd">
+        <a href="index.html#work" class="dd-top">Case studies <svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dd-menu">
           <a href="think-orion-case-study.html">Think Orion</a>
           <a href="inscape-case-study.html">Inscape</a>
         </div>
       </div>
       <a href="index.html#writing">Writing</a>
       <a href="about.html">About</a>
-      <a href="index.html#contact" class="btn-cta">Contact Me</a>
+      <a href="#contact" class="cta">Contact</a>
     </div>
-    <div class="menu-icon" id="menuIcon">Menu</div>
   </nav>
 </header>
 
-<section class="service-hero">
+<main>
+<section class="page-hero">
   <div class="wrap">
-    <div class="breadcrumb"><a href="index.html#services">Services</a> &nbsp;/&nbsp; AI Advisory for SME Leadership</div>
-    <div class="hero-text">
-      <span class="eyebrow">Ongoing advisory</span>
-      <h1>AI advisory for SME leadership</h1>
-      <p class="hero-subtitle">AI has made it easy for your competitors to sound exactly like you. It's also made it easy for you to sound exactly like them. The difference between the two is a strategic communications problem, and it compounds over time if nobody's watching it.</p>
-    </div>
-    <div class="meta-strip">
-      <div class="meta-item"><span class="meta-label">Engagement type</span><span class="meta-value">Ongoing advisory</span></div>
-      <div class="meta-item"><span class="meta-label">Minimum term</span><span class="meta-value">Three months</span></div>
-      <div class="meta-item"><span class="meta-label">Includes</span><span class="meta-value">Monthly calls + async access</span></div>
-      <div class="meta-item"><span class="meta-label">Deliverable</span><span class="meta-value">Quarterly written review</span></div>
+    <p class="crumb"><a href="index.html#services">Services</a>  /  AI Advisory for SME Leadership</p>
+    <span class="eyebrow">Ongoing advisory</span>
+    <h1>AI advisory for SME leadership</h1>
+    <p class="lede">AI has made it easy for your competitors to sound exactly like you. It's also made it easy for you to sound exactly like them. The difference between the two is a strategic communications problem, and it compounds over time if nobody's watching it.</p>
+    <div class="facts">
+        <div><span class="label">Engagement type</span><span class="value">Ongoing advisory</span></div>
+        <div><span class="label">Minimum term</span><span class="value">Three months</span></div>
+        <div><span class="label">Includes</span><span class="value">Monthly calls + async access</span></div>
+        <div><span class="label">Deliverable</span><span class="value">Quarterly written review</span></div>
     </div>
   </div>
 </section>
@@ -254,37 +111,38 @@
         <p>A written assessment at the end of each quarter: what's changed in the operation, what's working, and where to focus next. Written so you can share it with a co-founder or leadership team if needed.</p>
       </div>
     </div>
-    <p style="margin-top:40px;font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.7;color:var(--sage);">Pricing is discussed after an initial conversation. This is a committed engagement with a three-month minimum — it's scoped for businesses that are serious about maintaining their brand standards as AI becomes part of the operation.</p>
+    <p class="aside-note">Pricing is discussed after an initial conversation. This is a committed engagement with a three-month minimum — it's scoped for businesses that are serious about maintaining their brand standards as AI becomes part of the operation.</p>
   </div>
 </div>
 
-<div class="cta-band">
-  <div class="narrow">
-    <span class="eyebrow">Get in touch</span>
-    <h2>Not sure where to start?</h2>
-    <p>You don't need to know what you need yet. Tell me what's going on with your content and AI, and we'll figure out whether this is the right fit.</p>
-    <form name="enquiry-advisory" method="POST" data-netlify="true" class="cta-form">
-      <input type="hidden" name="form-name" value="enquiry-advisory">
-      <div class="cta-form-row">
-        <div class="cta-field">
-          <label for="adv-name">Full Name</label>
-          <input type="text" id="adv-name" name="name" placeholder="Your name" required>
+  <!-- Contact -->
+  <section id="contact" class="dark contact">
+    <div class="wrap split">
+      <div class="reveal">
+        <span class="eyebrow">Get in touch</span>
+        <h2>Not sure where to start?</h2>
+        <p class="sub">You don't need to know what you need yet. Tell me what's going on with your content and AI, and we'll figure out whether this is the right fit.</p>
+      </div>
+      <form name="enquiry-advisory" method="POST" data-netlify="true" class="reveal">
+        <input type="hidden" name="form-name" value="enquiry-advisory">
+        <div class="form-row">
+          <div class="field">
+            <label for="adv-name">Full name</label>
+            <input type="text" id="adv-name" name="name" placeholder="Your name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="adv-email">Email address</label>
+            <input type="email" id="adv-email" name="email" placeholder="your@email.com" required autocomplete="email">
+          </div>
         </div>
-        <div class="cta-field">
-          <label for="adv-email">Email Address</label>
-          <input type="email" id="adv-email" name="email" placeholder="your@email.com" required>
+        <div class="field">
+          <label for="adv-message">Message</label>
+          <textarea id="adv-message" name="message" placeholder="Tell me about your content and AI challenges…"></textarea>
         </div>
-      </div>
-      <div class="cta-field">
-        <label for="adv-message">Message</label>
-        <textarea id="adv-message" name="message" placeholder="Tell me about your content and AI challenges…"></textarea>
-      </div>
-      <div class="cta-form-submit">
-        <button type="submit" class="btn-send">Send Enquiry</button>
-      </div>
-    </form>
-  </div>
-</div>
+        <button type="submit" class="btn btn-light">Send enquiry</button>
+      </form>
+    </div>
+  </section>
 
 <div class="related">
   <div class="narrow">
@@ -293,43 +151,30 @@
       <a href="ai-content-operations-audit.html" class="related-card">
         <h3>AI content operations audit</h3>
         <p>For businesses that can tell something is off with their content since AI entered the workflow but aren't sure what. A bounded diagnostic that produces a written assessment.</p>
-        <span class="see-more">Learn more <span class="arrow">→</span></span>
+        <span class="more">Learn more <span class="arrow">→</span></span>
       </a>
       <a href="ai-integrated-content-system-design.html" class="related-card">
         <h3>AI-integrated content system design</h3>
         <p>For businesses that know what needs to change and need someone to design a system their team can run independently.</p>
-        <span class="see-more">Learn more <span class="arrow">→</span></span>
+        <span class="more">Learn more <span class="arrow">→</span></span>
       </a>
     </div>
+    <a class="back" href="index.html#services"><span class="arrow back">&larr;</span> Back to services</a>
   </div>
 </div>
 
+</main>
+
 <footer>
-  <div class="wrap footer-inner">
-    <span class="fname">Elzanne Amao</span>
-    <div class="footer-mid">
+  <div class="wrap">
+    <span>© 2026 Elzanne Amao. All rights reserved.</span>
+    <div class="social">
       <a href="https://elzanneamao.substack.com" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>Substack</a>
       <a href="https://www.linkedin.com/in/elzanneamao" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
     </div>
-    <span class="footer-copy">© 2026 Elzanne Amao. All rights reserved.</span>
   </div>
 </footer>
 
-<script>
-  const menuIcon=document.getElementById('menuIcon');
-  const navLinks=document.getElementById('navLinks');
-  menuIcon.addEventListener('click',()=>{
-    const open=navLinks.classList.toggle('open');
-    menuIcon.textContent=open?'Close':'Menu';
-  });
-  navLinks.querySelectorAll('a').forEach(link=>{
-    link.addEventListener('click',()=>{navLinks.classList.remove('open');menuIcon.textContent='Menu';});
-  });
-  const bar=document.getElementById('progress');
-  window.addEventListener('scroll',()=>{
-    const pct=(window.scrollY/(document.body.scrollHeight-window.innerHeight))*100;
-    bar.style.width=pct+'%';
-  });
-</script>
+<script src="site.js?v=11"></script>
 </body>
 </html>
