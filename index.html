@@ -133,7 +133,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="site.css?v=9">
 <style>
   /* Homepage-only styles. Shared styles are in site.css */
   .hero-band{overflow:hidden;padding:96px 0 0;background:linear-gradient(180deg,var(--night) 0%,var(--night-2) 100%)}
@@ -165,13 +165,22 @@
 
   /* Research (sage block) */
   .research{background:var(--sage);color:var(--white)}
-  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:64px;margin-top:40px}
-  .num{font-weight:800;font-size:clamp(4rem,8vw,7.5rem);line-height:1;letter-spacing:-.04em}
-  .stat h3{font-size:24px;font-weight:700;margin:20px 0 10px}
-  /* White on sage passes contrast only at large or bold sizes, so small text stays 19px bold */
-  .stat p{font-size:19px;font-weight:700;line-height:1.6}
-  .stat .src{display:inline-block;margin-top:14px;font-size:19px;font-weight:700;border-bottom:2px solid rgba(255,255,255,.6)}
-  .stat .src:hover{border-color:#fff}
+  .research .section-title{font-weight:400;letter-spacing:-.01em}
+  /* 24px regular counts as large text, which passes contrast on the sage */
+  .stat-intro{font-size:24px;font-weight:400;line-height:1.45;max-width:44ch}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+  /* darker sage card so regular-weight white text stays readable */
+  .stat{background:#56654c;padding:36px 32px 32px;display:flex;flex-direction:column;transition:transform .35s ease,box-shadow .35s ease,background .35s ease}
+  .stat:hover{transform:translateY(-8px);background:#4f5e46;box-shadow:0 24px 48px rgba(18,53,40,.35)}
+  .num{font-weight:800;font-size:clamp(3.8rem,6.5vw,6.2rem);line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums;transition:color .35s ease}
+  .stat:hover .num{color:var(--sage-lt)}
+  .meter{height:6px;background:rgba(255,255,255,.18);margin:24px 0 22px;overflow:hidden}
+  .meter i{display:block;height:100%;width:0;background:var(--gold);transition:width 1.6s cubic-bezier(.2,.7,.2,1) .2s}
+  .stat.in .meter i,.no-motion .meter i,html:not(.js) .meter i{width:var(--pct)}
+  .stat h3{font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#e6ece3;margin-bottom:10px}
+  .stat p{font-size:17px;font-weight:400;line-height:1.6;flex:1}
+  .stat .src{align-self:flex-start;margin-top:22px;font-size:14px;font-weight:400;color:#e6ece3;border-bottom:1px solid rgba(230,236,227,.45);padding-bottom:1px}
+  .stat .src:hover{color:#fff;border-color:#fff}
 
   /* Case studies */
   .cases{display:grid;grid-template-columns:1fr 1fr;gap:64px}
@@ -209,7 +218,8 @@
     .hero-text{padding:24px 0 0}
     .photo{order:2;max-width:340px;margin:0 auto;width:100%}
     section{padding:80px 0}
-    .stats,.cases{grid-template-columns:1fr;gap:40px}
+    .stats{grid-template-columns:1fr;gap:16px}
+    .cases{grid-template-columns:1fr;gap:40px}
     .row{grid-template-columns:36px 1fr;gap:12px}
   }
 </style>
@@ -303,26 +313,29 @@
     </div>
   </section>
 
-  <!-- Research -->
+  <!-- Research: data-count is the number the counter animates to; --pct sets the bar length -->
   <section class="research">
     <div class="wrap">
       <h2 class="section-title reveal">What the research shows</h2>
-      <p class="stat-intro reveal" style="font-size:19px;font-weight:700;max-width:60ch">The impact of AI-generated content on audience trust is measurable and growing. Three recent studies put numbers to it.</p>
+      <p class="stat-intro reveal">The impact of AI-generated content on audience trust is measurable and growing. Three recent studies put numbers to it.</p>
       <div class="stats">
         <div class="stat reveal">
-          <div class="num">26%</div>
+          <div class="num"><span data-count="26">26</span>%</div>
+          <div class="meter" aria-hidden="true"><i style="--pct:26%"></i></div>
           <h3>Consumer comfort</h3>
           <p>of consumers are comfortable with AI-generated content, down from 60% in two years.</p>
           <a class="src" href="https://www.emarketer.com/content/25-years-marketing-trends-consumer-connection-data-collection-ai" target="_blank" rel="noopener">eMarketer, 2025</a>
         </div>
         <div class="stat reveal">
-          <div class="num">~50%</div>
+          <div class="num">~<span data-count="50">50</span>%</div>
+          <div class="meter" aria-hidden="true"><i style="--pct:50%"></i></div>
           <h3>Reader trust</h3>
           <p>drop in reader trust when content is perceived as AI-generated, with a 14% decline in purchase consideration.</p>
           <a class="src" href="https://raptive.com/blog/the-ai-stink-is-real-and-its-costing-brands/" target="_blank" rel="noopener">Raptive, 3,000 adults, 2025</a>
         </div>
         <div class="stat reveal">
-          <div class="num">85%</div>
+          <div class="num"><span data-count="85">85</span>%</div>
+          <div class="meter" aria-hidden="true"><i style="--pct:85%"></i></div>
           <h3>Brand trust</h3>
           <p>of decision-makers say AI content published without human review erodes brand trust.</p>
           <a class="src" href="https://wpvip.com/future-of-the-web-2026/ai-content-governance/" target="_blank" rel="noopener">WordPress VIP, 800 respondents, 2026</a>
@@ -502,6 +515,6 @@
   </div>
 </footer>
 
-<script src="site.js"></script>
+<script src="site.js?v=9"></script>
 </body>
 </html>

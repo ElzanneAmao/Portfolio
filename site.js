@@ -13,6 +13,26 @@ document.addEventListener('DOMContentLoaded', () => {
     els.forEach(el => el.classList.add('in'));
   }
 
+  // Count-up numbers: animate from 0 when their card scrolls into view
+  const counters = document.querySelectorAll('[data-count]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) document.documentElement.classList.add('no-motion');
+  if (counters.length && !reduceMotion && 'IntersectionObserver' in window) {
+    const run = el => {
+      const end = +el.dataset.count, t0 = performance.now(), dur = 1600;
+      const tick = t => {
+        const k = Math.min(1, (t - t0) / dur), eased = 1 - Math.pow(1 - k, 3);
+        el.textContent = Math.round(end * eased);
+        if (k < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const co = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { run(e.target); co.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    counters.forEach(el => { el.textContent = '0'; co.observe(el); });
+  }
+
   // Testimonials carousel: auto-advances, pauses on hover/focus, arrows to navigate
   document.querySelectorAll('.t-carousel').forEach(car => {
     const slides = [...car.querySelectorAll('.t-slide')];
