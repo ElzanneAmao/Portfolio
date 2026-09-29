@@ -13,6 +13,52 @@ document.addEventListener('DOMContentLoaded', () => {
     els.forEach(el => el.classList.add('in'));
   }
 
+  // Testimonials carousel: auto-advances, pauses on hover/focus, arrows to navigate
+  document.querySelectorAll('.t-carousel').forEach(car => {
+    const slides = [...car.querySelectorAll('.t-slide')];
+    const now = car.querySelector('.t-now');
+    const bar = car.querySelector('.t-bar i');
+    const delay = 8000;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = 0, timer = null;
+    car.style.setProperty('--t-delay', delay + 'ms');
+    const show = n => {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => {
+        s.classList.toggle('is-active', k === i);
+        if (k === i) s.removeAttribute('aria-hidden'); else s.setAttribute('aria-hidden', 'true');
+      });
+      if (now) now.textContent = i + 1;
+      restart();
+    };
+    const stop = () => { clearTimeout(timer); timer = null; car.classList.remove('playing'); };
+    const restart = () => {
+      stop();
+      if (reduce || car.dataset.paused) return;
+      void bar.offsetWidth; // restart the progress bar animation
+      car.classList.add('playing');
+      timer = setTimeout(() => show(i + 1), delay);
+    };
+    car.querySelector('.t-prev').addEventListener('click', () => show(i - 1));
+    car.querySelector('.t-next').addEventListener('click', () => show(i + 1));
+    const pause = () => { car.dataset.paused = '1'; stop(); };
+    const resume = () => { delete car.dataset.paused; restart(); };
+    car.addEventListener('mouseenter', pause);
+    car.addEventListener('mouseleave', resume);
+    car.addEventListener('focusin', pause);
+    car.addEventListener('focusout', e => { if (!car.contains(e.relatedTarget)) resume(); });
+    document.addEventListener('visibilitychange', () => document.hidden ? stop() : restart());
+    // swipe on touch screens
+    let x0 = null;
+    car.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+    car.addEventListener('touchend', e => {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0; x0 = null;
+      if (Math.abs(dx) > 50) show(dx < 0 ? i + 1 : i - 1);
+    }, { passive: true });
+    restart();
+  });
+
   // Mobile menu
   const btn = document.querySelector('.menu-btn');
   const links = document.getElementById('site-links');

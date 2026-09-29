@@ -148,22 +148,31 @@
     </div>
   </section>
 
-  <!-- Testimonials -->
+  <!-- Testimonials: to add one, copy a whole <figure class="t-slide"> block.
+       Only the first slide should have is-active. -->
   <section class="dark" aria-labelledby="testimonials-title">
     <div class="wrap">
       <h2 id="testimonials-title" class="sr-only">Testimonials</h2>
-      <div class="lead-quote reveal">
-        <blockquote class="big">"Elzanne deeply comprehends that content is not solely about aesthetics and emotions, but equally about structure and purpose. Her ability to combine the artistic and analytical aspects of writing is a testament to her holistic approach."</blockquote>
-        <p class="attr"><b>Haddas Shem Tov</b>Creative Director, eTeacher Group · Direct manager, 2021 - 2023</p>
-      </div>
-      <div class="more-quotes">
-        <div class="reveal">
-          <blockquote>"Calm and collected, Elzanne probed with clarity and intent, helping me to hear myself with the same clarity, confidence, and authority to stick to our brand WHY. The result was a breathtaking brand identity, an interpretation of our vision."</blockquote>
-          <p class="attr"><b>Thato Matlala-Tawana</b>Human Capital Leadership &amp; Business Partnering · Client, 2024</p>
+      <div class="t-carousel reveal" aria-roledescription="carousel" aria-label="Testimonials">
+        <div class="t-track" aria-live="polite">
+          <figure class="t-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 3">
+            <blockquote class="big">"Elzanne deeply comprehends that content is not solely about aesthetics and emotions, but equally about structure and purpose. Her ability to combine the artistic and analytical aspects of writing is a testament to her holistic approach."</blockquote>
+            <figcaption class="attr"><b>Haddas Shem Tov</b>Creative Director, eTeacher Group · Direct manager, 2021 - 2023</figcaption>
+          </figure>
+          <figure class="t-slide" role="group" aria-roledescription="slide" aria-label="2 of 3" aria-hidden="true">
+            <blockquote class="big">"Calm and collected, Elzanne probed with clarity and intent, helping me to hear myself with the same clarity, confidence, and authority to stick to our brand WHY. The result was a breathtaking brand identity, an interpretation of our vision."</blockquote>
+            <figcaption class="attr"><b>Thato Matlala-Tawana</b>Human Capital Leadership &amp; Business Partnering · Client, 2024</figcaption>
+          </figure>
+          <figure class="t-slide" role="group" aria-roledescription="slide" aria-label="3 of 3" aria-hidden="true">
+            <blockquote class="big">"Elzanne played a key role in establishing a new approach to delivering Commerce degrees in block mode rather than traditional semester mode. She skillfully planned and managed this programme, which paved the way for rolling out block mode across all our degree programmes."</blockquote>
+            <figcaption class="attr"><b>Janie Steyn</b>Head of Programme, Commerce &amp; Law, Pearson Institute of Higher Education · Direct manager, 2017 - 2019</figcaption>
+          </figure>
         </div>
-        <div class="reveal">
-          <blockquote>"Elzanne played a key role in establishing a new approach to delivering Commerce degrees in block mode rather than traditional semester mode. She skillfully planned and managed this programme, which paved the way for rolling out block mode across all our degree programmes."</blockquote>
-          <p class="attr"><b>Janie Steyn</b>Head of Programme, Commerce &amp; Law, Pearson Institute of Higher Education · Direct manager, 2017 - 2019</p>
+        <div class="t-controls">
+          <button class="t-btn t-prev" type="button" aria-label="Previous testimonial"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <span class="t-count"><span class="t-now">1</span> / 3</span>
+          <button class="t-btn t-next" type="button" aria-label="Next testimonial"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+          <span class="t-bar" aria-hidden="true"><i></i></span>
         </div>
       </div>
     </div>

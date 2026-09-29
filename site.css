@@ -100,14 +100,22 @@ section,.band{padding:112px 0}
 .step h3{font-weight:700;font-size:23px;line-height:1.2;letter-spacing:-.01em;margin-bottom:10px}
 .step p{color:var(--muted);font-size:17px}
 
-/* ---------- Testimonials ---------- */
-.lead-quote{display:grid;grid-template-columns:8fr 4fr;gap:72px;align-items:end}
-blockquote.big{font-weight:700;font-size:clamp(1.7rem,3vw,2.6rem);line-height:1.25;letter-spacing:-.02em;border-left:4px solid var(--gold);padding-left:32px}
+/* ---------- Testimonials carousel ---------- */
+blockquote.big{font-weight:700;font-size:clamp(1.6rem,2.9vw,2.5rem);line-height:1.25;letter-spacing:-.02em;border-left:4px solid var(--gold);padding-left:32px}
 .attr{font-size:16px;color:var(--sea)}
 .attr b{color:#fff;display:block;font-size:18px}
-.more-quotes{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:80px;padding-top:48px;border-top:1px solid var(--rule-dark)}
-.more-quotes blockquote{font-size:19px;line-height:1.6;color:#dfe6e1}
-.more-quotes .attr{margin-top:20px}
+.t-track{display:grid;overflow:hidden}
+/* every slide sits in the same grid cell, so the section keeps the height of the longest quote */
+.t-slide{grid-area:1/1;display:grid;grid-template-columns:8fr 4fr;gap:72px;align-items:end;margin:0;opacity:0;visibility:hidden;transform:translateX(24px);transition:opacity .6s ease,transform .6s ease,visibility 0s linear .6s}
+.t-slide.is-active{opacity:1;visibility:visible;transform:none;transition:opacity .6s ease,transform .6s ease,visibility 0s}
+.t-controls{display:flex;align-items:center;gap:16px;margin-top:48px;padding-top:28px;border-top:1px solid var(--rule-dark)}
+.t-btn{width:48px;height:48px;display:grid;place-items:center;background:transparent;color:#fff;border:1px solid rgba(180,196,166,.5);cursor:pointer;transition:background .2s ease,color .2s ease}
+.t-btn:hover{background:var(--sage-lt);color:var(--night);border-color:var(--sage-lt)}
+.t-count{font-weight:700;font-size:15px;color:var(--sea);min-width:44px;text-align:center}
+.t-bar{flex:1;height:2px;background:var(--rule-dark);margin-left:16px;overflow:hidden}
+.t-bar i{display:block;height:100%;width:0;background:var(--gold)}
+.t-carousel.playing .t-bar i{animation:tbar var(--t-delay,8s) linear forwards}
+@keyframes tbar{to{width:100%}}
 
 /* ---------- FAQ ---------- */
 .faq-list{border-top:1px solid var(--rule)}
@@ -198,7 +206,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   section,.band{padding:80px 0}
   .page-hero{padding:32px 0 64px}
   .facts > div{flex-basis:45%}
-  .split,.lead-quote,.more-quotes,.related-grid{grid-template-columns:1fr;gap:40px}
+  .split,.related-grid{grid-template-columns:1fr;gap:40px}
+  .t-slide{grid-template-columns:1fr;gap:28px}
+  blockquote.big{padding-left:22px}
   .section-white,.section-pale,.faq-band,.related{padding:80px 0}
   .narrow{padding:0 20px}
   .form-row{grid-template-columns:1fr;gap:0}
