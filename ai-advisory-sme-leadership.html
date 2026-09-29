@@ -21,7 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=14">
+<link rel="stylesheet" href="site.css?v=15">
 <style>
   /* Page styles live in site.css (Service pages section) */
 </style>
@@ -123,8 +123,10 @@
         <h2>Not sure where to start?</h2>
         <p class="sub">You don't need to know what you need yet. Tell me what's going on with your content and AI, and we'll figure out whether this is the right fit.</p>
       </div>
-      <form name="contact" method="POST" data-netlify="true" class="reveal">
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="reveal">
         <input type="hidden" name="form-name" value="contact">
+        <!-- Honeypot: hidden from people; bots that fill it in are discarded by Netlify -->
+        <p class="hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <input type="hidden" name="page" value="AI advisory for SME leadership">
         <div class="form-row">
           <div class="field">
@@ -176,6 +178,6 @@
   </div>
 </footer>
 
-<script src="site.js?v=14"></script>
+<script src="site.js?v=15"></script>
 </body>
 </html>
