@@ -83,8 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
     show(0);
   });
 
-  // Netlify forms: submit in the background and thank the visitor on the page
-  document.querySelectorAll('form[data-netlify="true"]').forEach(form => {
+  // Netlify forms: submit in the background and thank the visitor on the page.
+  // Select by the hidden form-name field: Netlify strips data-netlify when it deploys.
+  document.querySelectorAll('form').forEach(form => {
+    if (!form.querySelector('input[name="form-name"]')) return;
     form.addEventListener('submit', async e => {
       e.preventDefault();
       const btn = form.querySelector('[type="submit"]');
