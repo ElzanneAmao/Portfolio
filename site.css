@@ -12,7 +12,8 @@
   --sage-lt:#b4c4a6;     /* sage tint for text and buttons on dark backgrounds */
   --sage-dk:#5f7052;     /* sage shade for small text on white */
   --gold:#a8a44c;        /* highlight: link underlines and rules only */
-  --night:#263029;       /* dark sections */
+  --night:#123528;       /* dark sections: deep bottle green */
+  --night-2:#193f30;     /* lighter end of the hero gradient */
   --moss:#2c3830;        /* main text colour */
   --sea:#b8cdd4;         /* secondary text on dark */
   --coolwhite:#f1f4f2;
@@ -61,7 +62,7 @@ a:hover .arrow{transform:translateX(4px)}
 a:hover .arrow.back{transform:translateX(-4px)}
 
 /* ---------- Page hero (inner pages) ---------- */
-.page-hero{padding:56px 0 88px;background:linear-gradient(180deg,var(--night) 0%,var(--moss) 100%);color:#eef2ef}
+.page-hero{padding:56px 0 88px;background:linear-gradient(180deg,var(--night) 0%,var(--night-2) 100%);color:#eef2ef}
 .crumb{font-size:15px;font-weight:600;color:var(--sage-lt);margin-bottom:28px}
 .crumb a{border-bottom:1px solid rgba(180,196,166,.5)}
 .crumb a:hover{color:#fff}
