@@ -121,20 +121,11 @@ blockquote.big{font-weight:700;font-size:clamp(1.6rem,2.9vw,2.5rem);line-height:
 .t-track{display:flex;transition:transform .9s cubic-bezier(.65,0,.25,1)}
 .t-slide{flex:0 0 100%;display:grid;grid-template-columns:8fr 4fr;gap:72px;align-items:end;margin:0;opacity:.25;transition:opacity .9s ease}
 .t-slide.is-active{opacity:1}
-.t-controls{display:flex;align-items:center;justify-content:space-between;margin-top:56px}
-.t-dots{display:flex;gap:10px}
-.t-dot{width:40px;height:14px;padding:6px 0;background:none;border:none;cursor:pointer;position:relative}
-.t-dot::before,.t-dot i{content:"";position:absolute;left:0;top:6px;height:2px;width:100%;background:rgba(184,205,212,.25)}
-.t-dot i{width:0;background:var(--gold)}
-.t-dot.is-done i{width:100%}
-.t-dot.is-active i{width:100%}
-.t-carousel.playing .t-dot.is-active i{width:0;animation:tbar var(--t-delay,8s) linear forwards}
-.t-arrows{display:flex;gap:8px}
-.t-btn{width:44px;height:44px;display:grid;place-items:center;background:none;border:none;color:rgba(238,242,239,.6);cursor:pointer;transition:color .2s ease,transform .2s ease}
-.t-btn:hover{color:#fff}
-.t-prev:hover{transform:translateX(-3px)}
-.t-next:hover{transform:translateX(3px)}
-@keyframes tbar{from{width:0}to{width:100%}}
+.t-carousel{position:relative}
+/* single next arrow, bottom right, level with the attribution */
+.t-slide .attr{padding-right:72px}
+.t-btn{position:absolute;right:-12px;bottom:-10px;width:48px;height:48px;display:grid;place-items:center;background:none;border:none;color:rgba(238,242,239,.75);cursor:pointer;transition:color .2s ease,transform .25s ease}
+.t-btn:hover{color:#fff;transform:translateX(4px)}
 
 /* ---------- FAQ ---------- */
 .faq-list{border-top:1px solid var(--rule)}
