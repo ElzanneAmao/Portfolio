@@ -116,18 +116,25 @@ section,.band{padding:112px 0}
 blockquote.big{font-weight:700;font-size:clamp(1.6rem,2.9vw,2.5rem);line-height:1.25;letter-spacing:-.02em;border-left:4px solid var(--gold);padding-left:32px}
 .attr{font-size:16px;color:var(--sea)}
 .attr b{color:#fff;display:block;font-size:18px}
-.t-track{display:grid;overflow:hidden}
-/* every slide sits in the same grid cell, so the section keeps the height of the longest quote */
-.t-slide{grid-area:1/1;display:grid;grid-template-columns:8fr 4fr;gap:72px;align-items:end;margin:0;opacity:0;visibility:hidden;transform:translateX(24px);transition:opacity .6s ease,transform .6s ease,visibility 0s linear .6s}
-.t-slide.is-active{opacity:1;visibility:visible;transform:none;transition:opacity .6s ease,transform .6s ease,visibility 0s}
-.t-controls{display:flex;align-items:center;gap:16px;margin-top:48px;padding-top:28px;border-top:1px solid var(--rule-dark)}
-.t-btn{width:48px;height:48px;display:grid;place-items:center;background:transparent;color:#fff;border:1px solid rgba(180,196,166,.5);cursor:pointer;transition:background .2s ease,color .2s ease}
-.t-btn:hover{background:var(--sage-lt);color:var(--night);border-color:var(--sage-lt)}
-.t-count{font-weight:700;font-size:15px;color:var(--sea);min-width:44px;text-align:center}
-.t-bar{flex:1;height:2px;background:var(--rule-dark);margin-left:16px;overflow:hidden}
-.t-bar i{display:block;height:100%;width:0;background:var(--gold)}
-.t-carousel.playing .t-bar i{animation:tbar var(--t-delay,8s) linear forwards}
-@keyframes tbar{to{width:100%}}
+.t-viewport{overflow:hidden}
+/* slides sit side by side in one strip that glides left and right */
+.t-track{display:flex;transition:transform .9s cubic-bezier(.65,0,.25,1)}
+.t-slide{flex:0 0 100%;display:grid;grid-template-columns:8fr 4fr;gap:72px;align-items:end;margin:0;opacity:.25;transition:opacity .9s ease}
+.t-slide.is-active{opacity:1}
+.t-controls{display:flex;align-items:center;justify-content:space-between;margin-top:56px}
+.t-dots{display:flex;gap:10px}
+.t-dot{width:40px;height:14px;padding:6px 0;background:none;border:none;cursor:pointer;position:relative}
+.t-dot::before,.t-dot i{content:"";position:absolute;left:0;top:6px;height:2px;width:100%;background:rgba(184,205,212,.25)}
+.t-dot i{width:0;background:var(--gold)}
+.t-dot.is-done i{width:100%}
+.t-dot.is-active i{width:100%}
+.t-carousel.playing .t-dot.is-active i{width:0;animation:tbar var(--t-delay,8s) linear forwards}
+.t-arrows{display:flex;gap:8px}
+.t-btn{width:44px;height:44px;display:grid;place-items:center;background:none;border:none;color:rgba(238,242,239,.6);cursor:pointer;transition:color .2s ease,transform .2s ease}
+.t-btn:hover{color:#fff}
+.t-prev:hover{transform:translateX(-3px)}
+.t-next:hover{transform:translateX(3px)}
+@keyframes tbar{from{width:0}to{width:100%}}
 
 /* ---------- FAQ ---------- */
 .faq-list{border-top:1px solid var(--rule)}

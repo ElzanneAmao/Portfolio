@@ -33,29 +33,44 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(el => { el.textContent = '0'; co.observe(el); });
   }
 
-  // Testimonials carousel: auto-advances, pauses on hover/focus, arrows to navigate
+  // Testimonials carousel: slides glide sideways, auto-advance, pause on hover/focus
   document.querySelectorAll('.t-carousel').forEach(car => {
+    const track = car.querySelector('.t-track');
     const slides = [...car.querySelectorAll('.t-slide')];
-    const now = car.querySelector('.t-now');
-    const bar = car.querySelector('.t-bar i');
+    const dotsWrap = car.querySelector('.t-dots');
     const delay = 8000;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let i = 0, timer = null;
     car.style.setProperty('--t-delay', delay + 'ms');
+    if (reduce) track.style.transition = 'none';
+    const dots = slides.map((s, k) => {
+      const d = document.createElement('button');
+      d.type = 'button'; d.className = 't-dot';
+      d.setAttribute('aria-label', 'Testimonial ' + (k + 1));
+      d.appendChild(document.createElement('i'));
+      d.addEventListener('click', () => show(k));
+      dotsWrap.appendChild(d);
+      return d;
+    });
     const show = n => {
       i = (n + slides.length) % slides.length;
+      track.style.transform = 'translateX(' + (-100 * i) + '%)';
       slides.forEach((s, k) => {
         s.classList.toggle('is-active', k === i);
         if (k === i) s.removeAttribute('aria-hidden'); else s.setAttribute('aria-hidden', 'true');
       });
-      if (now) now.textContent = i + 1;
+      dots.forEach((d, k) => {
+        d.classList.toggle('is-active', k === i);
+        d.classList.toggle('is-done', k < i);
+        d.setAttribute('aria-current', k === i ? 'true' : 'false');
+      });
       restart();
     };
     const stop = () => { clearTimeout(timer); timer = null; car.classList.remove('playing'); };
     const restart = () => {
       stop();
       if (reduce || car.dataset.paused) return;
-      void bar.offsetWidth; // restart the progress bar animation
+      void car.offsetWidth; // restart the progress animation
       car.classList.add('playing');
       timer = setTimeout(() => show(i + 1), delay);
     };
@@ -68,6 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
     car.addEventListener('focusin', pause);
     car.addEventListener('focusout', e => { if (!car.contains(e.relatedTarget)) resume(); });
     document.addEventListener('visibilitychange', () => document.hidden ? stop() : restart());
+    car.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight') show(i + 1);
+      if (e.key === 'ArrowLeft') show(i - 1);
+    });
     // swipe on touch screens
     let x0 = null;
     car.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
@@ -76,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const dx = e.changedTouches[0].clientX - x0; x0 = null;
       if (Math.abs(dx) > 50) show(dx < 0 ? i + 1 : i - 1);
     }, { passive: true });
-    restart();
+    show(0);
   });
 
   // Mobile menu
