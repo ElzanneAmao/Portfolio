@@ -83,6 +83,39 @@ document.addEventListener('DOMContentLoaded', () => {
     show(0);
   });
 
+  // Netlify forms: submit in the background and thank the visitor on the page
+  document.querySelectorAll('form[data-netlify="true"]').forEach(form => {
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const btn = form.querySelector('[type="submit"]');
+      const label = btn.textContent;
+      const old = form.querySelector('.form-error'); if (old) old.remove();
+      btn.disabled = true; btn.textContent = 'Sending…';
+      try {
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString()
+        });
+        if (!res.ok) throw new Error(res.status);
+        const done = document.createElement('div');
+        done.className = 'form-thanks';
+        done.setAttribute('role', 'status');
+        done.tabIndex = -1;
+        done.innerHTML = '<p class="form-thanks-title">Thank you, your message is on its way.</p>' +
+          '<p>I\'ll read it and get back to you soon.</p>';
+        form.replaceWith(done);
+        done.focus();
+      } catch (err) {
+        btn.disabled = false; btn.textContent = label;
+        const msg = document.createElement('p');
+        msg.className = 'form-error'; msg.setAttribute('role', 'alert');
+        msg.textContent = 'Something went wrong sending your message. Please try again in a moment.';
+        btn.after(msg);
+      }
+    });
+  });
+
   // Mobile menu
   const btn = document.querySelector('.menu-btn');
   const links = document.getElementById('site-links');

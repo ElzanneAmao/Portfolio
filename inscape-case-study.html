@@ -45,7 +45,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=11">
+<link rel="stylesheet" href="site.css?v=13">
 <style>
   /* Case study page styles. Shared styles are in site.css */
   .cs-section{padding:0 0 96px}
@@ -66,8 +66,9 @@
   .tc-intro{max-width:70ch;margin:20px 0 56px}
   .checks{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
   .check{border-top:3px solid var(--moss);padding-top:22px}
-  .check .badge{width:48px;height:48px;background:var(--white);color:var(--sage-dk);display:grid;place-items:center;margin-bottom:18px}
-  .check .badge svg{width:24px;height:24px}
+  /* icons: Lucide (lucide.dev, ISC licence) */
+  .check .badge{color:var(--sage-dk);margin-bottom:16px}
+  .check .badge svg{width:32px;height:32px;display:block}
   .check h4{font-weight:700;font-size:21px;margin-bottom:8px}
   .check p{color:var(--muted);font-size:17px}
   .moss-callout{background:var(--night);color:#eef2ef;padding:36px 40px;margin-top:32px;display:flex;gap:20px;align-items:flex-start}
@@ -160,17 +161,17 @@
       <p class="tc-intro reveal">The degree's pedagogical paradigm is design thinking, its intended graduate finishes around 2030, and AI is both a topic students need to understand and a tool they will use throughout their studies. The problem was how to bake those three considerations into every unit, consistently, in a way that survived contact with multiple content developers writing in parallel. So I attached three checks to every unit in the brief, sitting alongside the content scope and learning outcomes as something a developer had to actively answer.</p>
       <div class="checks">
         <div class="check reveal">
-          <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 1 4 10.5c-.8.7-1 1.2-1 2H9c0-.8-.2-1.3-1-2A6 6 0 0 1 12 3Z"/></svg></div>
+          <div class="badge"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /> <path d="M9 18h6" /> <path d="M10 22h4" /></svg></div>
           <h4>Design Thinking Check</h4>
           <p>Each unit must include a moment of student ideation or prototyping before formal models are introduced.</p>
         </div>
         <div class="check reveal">
-          <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.6 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.6-4-9s1.5-6.5 4-9Z"/></svg></div>
+          <div class="badge"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" /> <path d="M2 12h20" /></svg></div>
           <h4>Real-World Check</h4>
           <p>Each unit must carry at least one South African industry example.</p>
         </div>
         <div class="check reveal">
-          <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3l1.8 4.7L18.5 9l-4.7 1.8L12 15.5l-1.8-4.7L5.5 9l4.7-1.3L12 3Z"/><path d="M18 16l.8 2.2L21 19l-2.2.8L18 22l-.8-2.2L15 19l2.2-.8L18 16Z"/></svg></div>
+          <div class="badge"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /> <path d="M20 2v4" /> <path d="M22 4h-4" /> <circle cx="4" cy="20" r="2" /></svg></div>
           <h4>Future-Proof Check</h4>
           <p>Each unit must address how AI, digital transformation, or sustainability shapes contemporary practice in that subject area.</p>
         </div>
@@ -185,7 +186,7 @@
       <div class="cs-body reveal">
         <p class="lead">The same logic showed up at the activity level. One of the early units in Foundations 1 includes an activity where students ask ChatGPT to write a one-sentence definition of marketing, then critique what the AI produced — what was left out, what assumptions it made, what they would have included instead. A student who outsources thinking to AI fails this activity, because they have nothing to critique with.</p>
         <div class="moss-callout">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 16v-5M12 8h.01"/></svg>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10" /> <path d="M12 16v-4" /> <path d="M12 8h.01" /></svg>
           <p>"The point isn't to teach students about AI. It's to make AI use part of the learning task in a way that requires the student to bring their own developing judgement to the output."</p>
         </div>
       </div>
@@ -247,8 +248,9 @@
         <h2>Get in touch</h2>
         <p class="sub">Tell me what's going on with your content. I'll let you know whether I can help and what the right next step is.</p>
       </div>
-      <form name="enquiry-inscape" method="POST" data-netlify="true" class="reveal">
-        <input type="hidden" name="form-name" value="enquiry-inscape">
+      <form name="contact" method="POST" data-netlify="true" class="reveal">
+        <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="page" value="Inscape case study">
         <div class="form-row">
           <div class="field">
             <label for="in-name">Full name</label>
@@ -279,6 +281,6 @@
   </div>
 </footer>
 
-<script src="site.js?v=11"></script>
+<script src="site.js?v=13"></script>
 </body>
 </html>

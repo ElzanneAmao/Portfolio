@@ -43,7 +43,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=11">
+<link rel="stylesheet" href="site.css?v=13">
 <style>
   /* About page styles. Shared styles are in site.css */
   .about-hero{padding:0;overflow:hidden}
@@ -150,8 +150,9 @@
         <h2>Get in touch</h2>
         <p class="sub">Your team is using AI for content but the output doesn't feel right. I help you figure out why and what to change.</p>
       </div>
-      <form name="contact-about" method="POST" data-netlify="true" class="reveal">
-        <input type="hidden" name="form-name" value="contact-about">
+      <form name="contact" method="POST" data-netlify="true" class="reveal">
+        <input type="hidden" name="form-name" value="contact">
+        <input type="hidden" name="page" value="About">
         <div class="form-row">
           <div class="field">
             <label for="about-name">Full name</label>
@@ -182,6 +183,6 @@
   </div>
 </footer>
 
-<script src="site.js?v=11"></script>
+<script src="site.js?v=13"></script>
 </body>
 </html>

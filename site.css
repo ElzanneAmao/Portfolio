@@ -154,6 +154,13 @@ blockquote.big{font-weight:700;font-size:clamp(1.6rem,2.9vw,2.5rem);line-height:
 .field input::placeholder,.field textarea::placeholder{color:rgba(238,242,239,.45)}
 .field textarea{resize:vertical;min-height:120px}
 
+.form-thanks{border-left:4px solid var(--gold);padding:8px 0 8px 28px;outline:none;animation:thanksIn .5s ease both}
+.form-thanks p{color:var(--sea);font-size:18px}
+.form-thanks .form-thanks-title{color:#fff;font-weight:800;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.2;letter-spacing:-.015em;margin-bottom:10px}
+.form-error{margin-top:18px;color:#f3d7cf;font-size:16px}
+.form-error a{color:#fff;font-weight:700;border-bottom:2px solid var(--gold)}
+@keyframes thanksIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
 /* ---------- Related links ---------- */
 .related-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:40px}
 .related-card{display:block;border-top:3px solid var(--moss);padding-top:24px}
