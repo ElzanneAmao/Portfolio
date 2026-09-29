@@ -48,6 +48,18 @@ nav{display:flex;justify-content:space-between;align-items:center;height:96px;po
 .links a:hover,.links a[aria-current="page"]{color:#fff}
 .links a.cta{color:var(--night);background:var(--sage-lt);padding:11px 20px}
 .links a.cta:hover{background:#c7d4bb}
+/* Dropdowns */
+.dd{position:relative}
+.dd-top{display:inline-flex;align-items:center;gap:6px}
+.dd .chev{transition:transform .2s ease}
+.dd.is-current > .dd-top{color:#fff}
+.dd-menu{position:absolute;top:100%;left:-20px;min-width:290px;padding-top:14px;opacity:0;visibility:hidden;transform:translateY(-4px);transition:opacity .2s ease,transform .2s ease,visibility 0s linear .2s;z-index:20}
+.dd-menu::before{content:"";position:absolute;inset:14px 0 0;background:var(--night);border:1px solid var(--rule-dark);box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.dd-menu a{position:relative;display:block;padding:13px 20px;font-size:15px;font-weight:600;color:#c3cdc6}
+.dd-menu a + a{border-top:1px solid var(--rule-dark)}
+.dd-menu a:hover,.dd-menu a[aria-current="page"]{color:#fff;background:rgba(180,196,166,.1)}
+.dd:hover .dd-menu,.dd:focus-within .dd-menu{opacity:1;visibility:visible;transform:none;transition:opacity .2s ease,transform .2s ease,visibility 0s}
+.dd:hover .chev,.dd:focus-within .chev{transform:rotate(180deg)}
 .menu-btn{display:none;background:none;border:1px solid rgba(180,196,166,.5);color:#fff;font:600 15px var(--sans);padding:8px 14px;cursor:pointer}
 
 /* ---------- Buttons and links ---------- */
@@ -203,6 +215,12 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   .menu-btn{display:block}
   .links{display:none;position:absolute;top:80px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:18px;padding:24px 20px 28px;background:var(--night);border-bottom:1px solid var(--rule-dark)}
   .links.open{display:flex}
+  .dd .chev{display:none}
+  .dd-menu{position:static;opacity:1;visibility:visible;transform:none;min-width:0;padding:8px 0 0 14px;border-left:1px solid var(--rule-dark);margin-top:8px}
+  .dd-menu::before{display:none}
+  .dd-menu a{padding:6px 0;font-size:15px}
+  .dd-menu a + a{border-top:none}
+  .dd-menu a:hover{background:none}
   section,.band{padding:80px 0}
   .page-hero{padding:32px 0 64px}
   .facts > div{flex-basis:45%}
