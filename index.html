@@ -14,14 +14,24 @@
     inscape-case-study.html must stay in the SAME folder, or the
     links between pages will break.
 
-  PLACEHOLDERS TO REPLACE ON THIS PAGE:
-    - Headshot: the "Add headshot" box in the hero. To use a real
-      photo, replace that <div class="portrait">...</div> with
-      <img src="your-photo.jpg" alt="Elzanne Amao" style="width:100%">
-      (put your-photo.jpg in this same folder).
-    - "Connect" button: currently does nothing. To make it link,
-      wrap it or change it to a link to about.html#contact.
-    - "Inquire" links and "email me" already point to about.html#contact.
+  DESIGN:
+    The page is typographic on purpose: no illustrations or stock
+    images. Structure comes from numbered sections, hairline rules
+    and whitespace. Colours and fonts are set once in the :root
+    block at the top of the <style> section.
+
+  ADDING OR REMOVING ITEMS:
+    Services, case studies, articles and questions are each one
+    repeated block. Copy a whole block (from its opening tag to
+    its closing tag) to add one; delete a whole block to remove one.
+    Service numbers (01, 02, 03) are typed by hand.
+
+  HERO PHOTO:
+    images/elzanne-hero.webp is a cut-out (transparent background).
+    To swap it, export a new cut-out at about 900px wide as .webp
+    or .png, save it in the images folder, and change the file name
+    in the <img> inside <div class="photo">. Update width="..." and
+    height="..." on that tag to the new image's pixel size.
 
   LINKS:
     To change a link, edit the value inside href="...".
@@ -122,572 +132,400 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --moss:#2c3830;
-    --sage:#7a8c6e;
-    --gold:#a8a44c;
-    --seaglass:#b8cdd4;
+    /* Brand colours */
+    --sage:#7a8c6e;        /* main brand colour */
+    --sage-lt:#b4c4a6;     /* sage tint for text and buttons on dark backgrounds */
+    --sage-dk:#5f7052;     /* sage shade for small text on white */
+    --gold:#a8a44c;        /* highlight: link underlines and rules only */
+    --night:#263029;       /* dark sections */
+    --moss:#2c3830;        /* main text colour */
+    --sea:#b8cdd4;         /* secondary text on dark */
     --coolwhite:#f1f4f2;
     --white:#ffffff;
-    --hairline:#dde2dd;
-    --serif:"Cormorant Garamond",Georgia,serif;
-    --sans:"DM Sans",system-ui,sans-serif;
-    --container:1280px;
-    --margin:64px;
+    --muted:#56615b;
+    --rule:#d9ded9;
+    --sans:"Figtree",system-ui,sans-serif;
   }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;scroll-padding-top:80px;}
-  body{
-    background:var(--white);
-    color:var(--moss);
-    font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.6;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
-  }
-  ::selection{background:var(--seaglass);color:var(--moss);}
-  a{color:inherit;}
-
-  .wrap{max-width:var(--container);margin-inline:auto;padding-inline:var(--margin);}
-  .full{width:100%;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:24px}
+  body{background:var(--white);color:var(--moss);font-family:var(--sans);font-size:18px;line-height:1.65;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  ::selection{background:var(--sage-lt);color:var(--night)}
+  a{color:inherit;text-decoration:none}
+  a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 48px}
+  .dark{background:var(--night);color:#eef2ef}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
   /* ---------- Header ---------- */
-  header{position:sticky;top:0;z-index:50;background:var(--white);border-bottom:1px solid var(--hairline);}
-  .nav{display:flex;justify-content:space-between;align-items:center;height:80px;}
-  .wordmark{text-decoration:none;display:inline-flex;align-items:center;}
-  .site-logo{height:40px;width:auto;display:block;}
-  .nav-links{display:flex;align-items:center;gap:32px;}
-  .nav-links a:not(.btn-cta){font-family:var(--sans);font-size:15px;font-weight:400;color:var(--sage);text-decoration:none;padding-bottom:4px;transition:color .3s ease;}
-  .nav-links a:not(.btn-cta):hover{color:var(--moss);}
-  .btn-cta{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;background:var(--sage);color:var(--white);border:none;padding:11px 22px;cursor:pointer;transition:opacity .3s ease;display:inline-flex;align-items:center;justify-content:center;line-height:1;text-decoration:none;}
-  .btn-cta:hover{opacity:.88;}
-  .menu-icon{display:none;font-family:var(--sans);font-weight:500;color:var(--moss);}
+  .site-header{position:absolute;top:0;left:0;right:0;z-index:10}
+  nav{display:flex;justify-content:space-between;align-items:center;height:96px;position:relative}
+  .site-logo{height:28px;width:auto;display:block}
+  .links{display:flex;gap:36px;align-items:center;font-weight:600;font-size:16px}
+  .links a{color:#c3cdc6;transition:color .2s ease}
+  .links a:hover{color:#fff}
+  .links a.cta{color:var(--night);background:var(--sage-lt);padding:11px 20px}
+  .links a.cta:hover{background:#c7d4bb}
+  .menu-btn{display:none;background:none;border:1px solid rgba(180,196,166,.5);color:#fff;font:600 15px var(--sans);padding:8px 14px;cursor:pointer}
 
-  /* ---------- Buttons ---------- */
-  .btn{display:inline-block;font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;padding:14px 26px;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:opacity .3s ease,background .3s ease,color .3s ease;}
-  .btn-primary{background:var(--sage);color:var(--coolwhite);}
-  .btn-primary:hover{opacity:.9;}
-  .btn-outline{background:transparent;border-color:var(--moss);color:var(--moss);}
-  .btn-outline:hover{background:var(--moss);color:var(--coolwhite);}
-  .btn-gold{background:var(--sage);color:var(--white);}
-  .btn-gold:hover{opacity:.9;}
-
-  /* shared section heading with gold accent */
-  .head-block{margin-bottom:48px;}
-  .section-head{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.1;color:var(--moss);}
-  .accent-line{width:72px;height:2px;background:var(--seaglass);margin-top:18px;}
+  /* ---------- Buttons and links ---------- */
+  .btn{display:inline-block;font-weight:700;font-size:16px;padding:16px 26px;transition:background .2s ease}
+  .btn-light{background:var(--sage-lt);color:var(--night)}
+  .btn-light:hover{background:#c7d4bb}
+  .btn-ink{background:var(--moss);color:#fff;border:none;cursor:pointer;font-family:var(--sans)}
+  .btn-ink:hover{background:var(--night)}
+  .tlink{font-weight:700;font-size:16px;border-bottom:2px solid var(--gold);padding-bottom:2px}
+  .tlink .arrow{display:inline-block;transition:transform .2s ease}
+  a:hover .arrow{transform:translateX(4px)}
 
   /* ---------- Hero ---------- */
-  .hero{padding-top:96px;padding-bottom:96px;}
-  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;}
-  .hero .tagline{font-family:var(--serif);font-weight:500;font-size:clamp(2.2rem,4.2vw,3.4rem);line-height:1.15;color:var(--moss);margin-top:0;max-width:28ch;}
-  .hero .intro{font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.7;color:var(--moss);margin-top:32px;max-width:52ch;}
-  .hero .actions{display:flex;gap:16px;margin-top:40px;flex-wrap:wrap;}
-  .portrait{aspect-ratio:4/5;overflow:hidden;border:1px solid var(--hairline);}
-  .portrait img{width:100%;height:100%;object-fit:cover;display:block;}
+  .hero-band{overflow:hidden;padding:96px 0 0;background:linear-gradient(180deg,var(--night) 0%,var(--moss) 100%)}
+  .hero{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:end}
+  .photo{position:relative;padding-top:48px}
+  .photo::before{content:"";position:absolute;left:50%;top:44%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(203,215,193,.75) 0%,rgba(180,196,166,.45) 30%,rgba(122,140,110,.12) 58%,rgba(38,48,41,0) 72%)}
+  .photo img{position:relative;z-index:1;display:block;width:100%;max-width:470px;height:auto;margin:0 auto}
+  .hero-text{align-self:center;padding:40px 0 120px}
+  h1{font-weight:800;font-size:clamp(2.6rem,5vw,4.5rem);line-height:1.02;letter-spacing:-.03em}
+  h1 em{font-style:normal;color:var(--sage-lt)}
+  .lede{font-size:20px;color:var(--sea);max-width:40ch;margin-top:28px}
+  .actions{display:flex;flex-wrap:wrap;gap:28px;align-items:center;margin-top:36px}
 
-  /* ---------- Engagement Types (cool white panel) ---------- */
-  .engagements{background:var(--white);padding-block:96px;}
-  .eng-top{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:56px;}
-  .eng-top .intro{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;color:var(--moss);max-width:46ch;justify-self:end;}
-  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-  .card{border:1px solid var(--hairline);border-left:3px solid var(--seaglass);border-top:none;background:transparent;padding:36px 30px;display:flex;flex-direction:column;transition:background .25s ease,border-color .25s ease;overflow:hidden;text-decoration:none;color:inherit;}
-  .card:hover{background:var(--seaglass);border-color:var(--seaglass);}
-  .card .card-img{aspect-ratio:3/2;overflow:hidden;margin:-36px -30px 28px;background:var(--coolwhite);}
-  .card .card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
-  .card:hover .card-img img{transform:scale(1.03);}
-  .card h3{font-family:var(--serif);font-weight:500;font-size:1.75rem;line-height:1.15;color:var(--moss);margin-bottom:16px;}
-  .card p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.65;color:var(--moss);flex:1;}
-  .card .inquire{margin-top:28px;font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--moss);display:inline-flex;align-items:center;gap:8px;}
-  .card .inquire .arrow{color:var(--seaglass);transition:transform .3s ease,color .3s ease;}
-  .card:hover .inquire .arrow{transform:translateX(5px);color:var(--moss);}
+  /* ---------- Sections ---------- */
+  section{padding:128px 0}
+  .section-title{font-weight:800;font-size:clamp(2rem,3.6vw,3.2rem);letter-spacing:-.02em;line-height:1.1;margin-bottom:24px}
+  .section-intro{font-size:19px;color:var(--muted);max-width:56ch;margin-bottom:64px}
 
-  /* ---------- Selected Work ---------- */
-  .work{padding-block:96px;}
-  .work-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
-  .work-card{text-decoration:none;display:block;}
-  .work-thumb{aspect-ratio:3/2;overflow:hidden;border:1px solid var(--hairline);margin-bottom:24px;transition:border-color .3s ease;}
-  .work-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
-  .work-card:hover .work-thumb{border-color:var(--sage);}
-  .work-card:hover .work-thumb img{transform:scale(1.03);}
-  .work-card h3{font-family:var(--serif);font-weight:500;font-size:1.6rem;line-height:1.15;color:var(--moss);margin-bottom:14px;}
-  .work-card p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.65;color:var(--moss);margin-bottom:18px;}
-  .work-card .view{font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--moss);display:inline-flex;align-items:center;gap:8px;}
-  .work-card .view .arrow{color:var(--seaglass);transition:transform .3s ease;}
-  .work-card:hover .view .arrow{transform:translate(4px,-4px);}
+  /* Why + services */
+  .split{display:grid;grid-template-columns:4fr 8fr;gap:72px}
+  .kicker{font-weight:800;font-size:30px;line-height:1.2;letter-spacing:-.015em}
+  .side p{color:var(--muted);margin-top:22px;font-size:18px}
+  .signs{list-style:none;margin-top:32px;border-top:1px solid var(--rule)}
+  .signs li{padding:14px 0 14px 22px;border-bottom:1px solid var(--rule);font-weight:600;font-size:16px;line-height:1.4;position:relative}
+  .signs li::before{content:"";position:absolute;left:0;top:21px;width:8px;height:8px;background:var(--sage)}
+  .side .note{font-size:16px;margin-top:28px}
+  .side .note a{color:var(--moss);font-weight:700;border-bottom:2px solid var(--gold)}
+  .row{display:grid;grid-template-columns:64px 1fr 1fr;gap:32px;border-top:1px solid var(--rule);padding:36px 0 60px}
+  .row:last-child{padding-bottom:0}
+  .row .n{font-size:22px;font-weight:700;color:var(--sage-dk);padding-top:8px}
+  .row h3{font-weight:700;font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.08;letter-spacing:-.02em}
+  .row h3 a:hover{color:var(--sage-dk)}
+  .row .more{display:inline-block;margin-top:18px;font-weight:700;font-size:15px;border-bottom:2px solid var(--gold)}
 
-  /* ---------- Voices (cool white panel + carousel) ---------- */
-  .voices{background:var(--coolwhite);padding-block:96px;text-align:center;}
-  .voices .section-head{text-align:center;}
-  .voices .accent-line{margin-inline:auto;}
-  .carousel{max-width:820px;margin:48px auto 0;position:relative;}
-  .slides{position:relative;}
-  .slide{display:none;flex-direction:column;align-items:center;justify-content:center;padding-inline:24px;}
-  .slide.active{display:flex;}
-  .slide blockquote{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.42;color:var(--moss);max-width:54ch;}
-  .slide .attr{margin-top:28px;font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:var(--moss);}
-  .slide .attr .role{display:block;font-weight:300;text-transform:none;letter-spacing:0;font-size:14px;margin-top:6px;color:var(--sage);}
-  .car-btn{position:absolute;top:50%;transform:translateY(-50%);background:var(--white);border:1px solid var(--hairline);cursor:pointer;color:var(--sage);padding:10px;display:flex;align-items:center;justify-content:center;transition:color .3s ease,border-color .3s ease;z-index:2;}
-  .car-btn:hover{color:var(--moss);border-color:var(--sage);}
-  .car-btn.prev{left:-8px;}
-  .car-btn.next{right:-8px;}
-  .dots{display:flex;gap:10px;justify-content:center;margin-top:36px;}
-  .dot{width:8px;height:8px;background:var(--hairline);border:none;cursor:pointer;padding:0;transition:background .3s ease;}
-  .dot.active{background:var(--seaglass);}
+  /* Research (sage block) */
+  .research{background:var(--sage);color:var(--white)}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:64px;margin-top:40px}
+  .num{font-weight:800;font-size:clamp(4rem,8vw,7.5rem);line-height:1;letter-spacing:-.04em}
+  .stat h3{font-size:24px;font-weight:700;margin:20px 0 10px}
+  /* White on sage passes contrast only at large or bold sizes, so small text stays 19px bold */
+  .stat p{font-size:19px;font-weight:700;line-height:1.6}
+  .stat .src{display:inline-block;margin-top:14px;font-size:19px;font-weight:700;border-bottom:2px solid rgba(255,255,255,.6)}
+  .stat .src:hover{border-color:#fff}
 
-  /* ---------- What I do intro ---------- */
-  .whatido-intro{max-width:760px;margin-bottom:48px;}
-  .whatido-intro p{font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.75;color:var(--moss);}
-  .eng-note{margin-top:44px;max-width:720px;font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;color:var(--moss);}
-  .eng-note a{color:var(--moss);text-decoration:none;border-bottom:1px solid var(--seaglass);padding-bottom:1px;transition:color .3s ease;}
-  .eng-note a:hover{color:var(--sage);}
+  /* Case studies */
+  .cases{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+  .case{border-top:3px solid var(--moss);padding-top:28px;display:block}
+  .case .client{font-weight:700;color:var(--sage-dk);font-size:16px}
+  .case h3{font-weight:700;font-size:30px;line-height:1.15;letter-spacing:-.015em;margin:10px 0 14px}
+  .case p{color:var(--muted)}
+  .case .more{display:inline-block;margin-top:18px;font-weight:700;font-size:15px;border-bottom:2px solid var(--gold)}
+  .case:hover h3{color:var(--sage-dk)}
 
-  /* ---------- Recent Writing ---------- */
-  .writing{background:var(--white);padding-block:96px;text-align:center;border-top:1px solid var(--hairline);}
-  .writing h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.4vw,2.8rem);color:var(--moss);}
-  .writing p{font-family:var(--sans);font-weight:300;font-size:18px;line-height:1.7;color:var(--moss);max-width:52ch;margin:24px auto 40px;}
-  .writing-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:48px;text-align:left;}
-  .writing-card{display:flex;flex-direction:column;text-decoration:none;border:1px solid var(--hairline);border-left:3px solid var(--seaglass);padding:28px 24px;background:var(--white);transition:box-shadow .25s ease,border-color .25s ease,background .25s ease;}
-  .card-img{aspect-ratio:16/9;overflow:hidden;margin:-28px -24px 24px;background:var(--coolwhite);}
-  .card-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
-  .writing-card:hover .card-img img{transform:scale(1.03);}
-  .writing-card:hover{box-shadow:0 4px 20px rgba(44,56,48,0.08);border-color:var(--seaglass);background:rgba(184,205,212,0.06);}
-  .writing-card h3{font-family:var(--serif);font-weight:500;font-size:1.3rem;line-height:1.2;color:var(--moss);margin-bottom:12px;}
-  .writing-card p{font-family:var(--sans);font-weight:300;font-size:14px;line-height:1.65;color:var(--moss);margin-bottom:20px;flex:1;}
-  .writing-card .read-link{font-family:var(--sans);font-size:12px;font-weight:500;text-transform:uppercase;letter-spacing:.06em;color:var(--moss);display:inline-flex;align-items:center;gap:6px;margin-top:auto;}
-  .writing-card .read-link .arrow{color:var(--seaglass);transition:transform .3s ease;}
-  .writing-card:hover .read-link .arrow{transform:translateX(4px);}
+  /* Testimonials (dark) */
+  .lead-quote{display:grid;grid-template-columns:8fr 4fr;gap:72px;align-items:end}
+  blockquote.big{font-weight:700;font-size:clamp(1.7rem,3vw,2.6rem);line-height:1.25;letter-spacing:-.02em;border-left:4px solid var(--gold);padding-left:32px}
+  .attr{font-size:16px;color:var(--sea)}
+  .attr b{color:#fff;display:block;font-size:18px}
+  .more-quotes{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:80px;padding-top:48px;border-top:1px solid rgba(184,205,212,.2)}
+  .more-quotes blockquote{font-size:19px;line-height:1.6;color:#dfe6e1}
+  .more-quotes .attr{margin-top:20px}
 
-  /* ---------- Contact (Form) ---------- */
-  .contact{background:var(--moss);padding-block:96px;text-align:center;}
-  .contact h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.5vw,2.8rem);line-height:1.15;color:var(--white);margin-bottom:12px;}
-  .contact .contact-sub{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;color:rgba(184,205,212,.82);max-width:52ch;margin:0 auto 48px;}
-  .contact-form{max-width:720px;margin-inline:auto;text-align:left;}
-  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:28px;}
-  .form-field{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
-  .form-row .form-field{margin-bottom:0;}
-  .form-field label{font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--seaglass);}
-  .form-field input,.form-field textarea{font-family:var(--sans);font-weight:300;font-size:16px;color:var(--white);background:transparent;border:none;border-bottom:1px solid rgba(184,205,212,.28);padding:10px 0;outline:none;width:100%;transition:border-color .25s ease;}
-  .form-field input:focus,.form-field textarea:focus{border-color:var(--seaglass);}
-  .form-field input::placeholder,.form-field textarea::placeholder{color:rgba(241,244,242,.32);}
-  .form-field textarea{resize:none;min-height:96px;}
-  .form-submit{text-align:center;margin-top:36px;}
-  .btn-send{font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;background:var(--sage);color:var(--white);border:none;padding:14px 28px;cursor:pointer;transition:opacity .3s ease;}
-  .btn-send:hover{opacity:.9;}
+  /* Writing */
+  .posts{border-top:1px solid var(--rule)}
+  .post{display:grid;grid-template-columns:5fr 6fr 1fr;gap:40px;padding:32px 0;border-bottom:1px solid var(--rule);align-items:baseline}
+  .post h3{font-weight:700;font-size:24px;line-height:1.25;letter-spacing:-.01em}
+  .post p{color:var(--muted);font-size:17px}
+  .post .go{justify-self:end;font-weight:700;font-size:15px;white-space:nowrap}
+  .post:hover h3{color:var(--sage-dk)}
+  .writing .after{margin-top:40px}
 
-  /* ---------- Footer (light strip) ---------- */
-  footer{background:var(--white);border-top:1px solid var(--hairline);padding-block:32px;}
-  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
-  .footer-inner .fname{font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--moss);}
-  .footer-mid{display:flex;gap:24px;}
-  .footer-mid a{font-family:var(--sans);font-size:14px;color:var(--sage);text-decoration:none;transition:color .3s ease;display:inline-flex;align-items:center;gap:6px;}
-  .footer-mid a:hover{color:var(--moss);}
-  .footer-copy{font-family:var(--sans);font-size:13px;color:var(--sage);}
+  /* FAQ */
+  .faq{background:var(--coolwhite)}
+  .faq .split{align-items:start}
+  .faq-list{border-top:1px solid var(--rule)}
+  .faq-list details{border-bottom:1px solid var(--rule)}
+  .faq-list summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:24px;padding:24px 0;font-weight:700;font-size:19px;line-height:1.4}
+  .faq-list summary::-webkit-details-marker{display:none}
+  .faq-list summary::after{content:"+";font-weight:400;font-size:28px;line-height:1;color:var(--sage-dk);transition:transform .2s ease}
+  .faq-list details[open] summary::after{transform:rotate(45deg)}
+  .faq-list summary:hover{color:var(--sage-dk)}
+  .faq-answer{padding:0 48px 28px 0;color:var(--muted)}
+  .faq-answer p+p,.faq-answer ul+p{margin-top:14px}
+  .faq-answer ul{margin:10px 0 0 20px}
+  .faq-answer li{margin-bottom:6px}
 
-  /* ---------- Nav dropdown ---------- */
-  .nav-item{position:relative;display:flex;align-items:center;}
-  .dropdown-menu{display:none;position:absolute;top:100%;padding-top:10px;right:0;left:auto;transform:none;background:var(--white);border:1px solid var(--hairline);min-width:200px;z-index:100;box-shadow:0 8px 24px rgba(44,56,48,0.12);}
-  .nav-dropdown:hover .dropdown-menu{display:block;}
-  .nav-links .dropdown-menu a{display:block;padding:12px 20px;font-size:14px;font-weight:400;color:var(--sage);text-decoration:none;transition:color .2s ease,background .2s ease;}
-  .nav-links .dropdown-menu a:not(:last-child){border-bottom:1px solid var(--hairline);}
-  .nav-links .dropdown-menu a:hover{color:var(--moss);background:var(--coolwhite);}
+  /* Contact (dark) */
+  .contact .split{align-items:start}
+  .contact h2{font-weight:800;font-size:clamp(2.4rem,4.6vw,4rem);line-height:1.04;letter-spacing:-.03em}
+  .contact h2 em{font-style:normal;color:var(--sage-lt)}
+  .contact .sub{color:var(--sea);font-size:19px;margin-top:24px;max-width:36ch}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .field{display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+  .field label{font-size:14px;font-weight:700;color:var(--sage-lt)}
+  .field input,.field textarea{font:400 18px var(--sans);color:#fff;background:transparent;border:none;border-bottom:1px solid rgba(180,196,166,.45);padding:10px 0;width:100%;transition:border-color .2s ease}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--sage-lt)}
+  .field input::placeholder,.field textarea::placeholder{color:rgba(238,242,239,.45)}
+  .field textarea{resize:vertical;min-height:120px}
+  .contact .btn-light{border:none;cursor:pointer;font-family:var(--sans)}
 
-  /* ---------- Motion ---------- */
-  .js .reveal{opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1s ease;}
-  .js .reveal.in{opacity:1;transform:translateY(0);}
-  @media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none;}}
+  /* Footer */
+  footer{background:var(--night);color:#b9c4bd;font-size:15px;border-top:1px solid rgba(184,205,212,.15)}
+  footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding-top:32px;padding-bottom:32px}
+  .social{display:flex;gap:24px}
+  .social a{display:inline-flex;align-items:center;gap:8px}
+  .social a:hover{color:#fff}
 
-  /* ---------- Responsive ---------- */
-  @media (max-width:860px){
-    :root{--margin:20px;}
-    .nav-links{display:none;}
-    .nav-links.open{display:flex;flex-direction:column;align-items:flex-start;position:fixed;top:80px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--hairline);padding:24px 20px;gap:20px;z-index:49;}
-    .nav-links.open .btn-cta{margin-top:4px;}
-    .menu-icon{display:block;cursor:pointer;}
-    .hero{padding-top:56px;padding-bottom:64px;}
-    .hero-grid{grid-template-columns:1fr;gap:40px;}
-    .portrait{max-width:320px;}
-    .engagements,.work,.voices,.writing{padding-block:64px;}
-    .eng-top{grid-template-columns:1fr;gap:24px;align-items:start;}
-    .eng-top .intro{justify-self:start;}
-    .cards{grid-template-columns:1fr;}
-    .work-grid{grid-template-columns:1fr;gap:40px;}
-    .car-btn.prev{left:-4px;}
-    .car-btn.next{right:-4px;}
-    .nav-item{position:static;display:block;}
-    .dropdown-menu{position:static;transform:none;box-shadow:none;min-width:auto;display:none;border:none;background:transparent;padding-left:8px;}
-    .nav-links.open .dropdown-menu{display:block;}
-    .nav-links .dropdown-menu a{padding:6px 4px;font-size:13px;}
-    .nav-links .dropdown-menu a:not(:last-child){border-bottom:none;}
-    .writing-cards{grid-template-columns:1fr;gap:20px;}
-    .form-row{grid-template-columns:1fr;}
-    .footer-inner{flex-direction:column;align-items:flex-start;}
+  /* Motion */
+  .js .reveal{opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s ease}
+  .js .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .js .reveal{opacity:1;transform:none;transition:none}
+    *{transition:none!important}
   }
 
-  /* ---------- Why This Practice ---------- */
-  .why-practice{background:var(--moss);padding-block:96px;}
-  .why-top{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;margin-bottom:56px;}
-  .why-heading h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.8vw,3rem);line-height:1.1;color:var(--white);margin-bottom:20px;}
-  .why-heading .accent-rule{width:56px;height:2px;background:var(--seaglass);}
-  .why-body p{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:rgba(241,244,242,0.78);margin-bottom:20px;}
-  .why-body p:last-child{margin-bottom:0;}
-  .why-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;}
-  .why-card{background:var(--coolwhite);padding:32px 28px 40px;}
-  .why-card-dot{width:9px;height:9px;background:var(--seaglass);margin-bottom:24px;}
-  .why-card p{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.05rem,1.5vw,1.25rem);line-height:1.5;color:var(--moss);margin:0;}
-  .why-closing{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;color:rgba(241,244,242,0.52);}
-  .why-closing a{color:var(--seaglass);text-decoration:none;border-bottom:1px solid rgba(184,205,212,0.35);padding-bottom:1px;transition:color .3s,border-color .3s;}
-  .why-closing a:hover{color:var(--white);border-color:var(--seaglass);}
-
-  /* ---------- Touchpoints (Dark) ---------- */
-  .touchpoints{background:var(--moss);padding-block:96px;}
-  .touchpoints h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;color:var(--white);max-width:24ch;margin-bottom:28px;}
-  .tp-intro{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.75;color:rgba(241,244,242,0.78);max-width:68ch;margin-bottom:48px;}
-  .tp-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:44px;}
-  .tp-card{background:rgba(255,255,255,0.05);border:1px solid rgba(184,205,212,0.18);padding:28px 24px;}
-  .tp-eyebrow{display:block;font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.1em;color:var(--seaglass);margin-bottom:14px;}
-  .tp-card p{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.65;color:rgba(241,244,242,0.72);}
-  .tp-closing{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.7;color:rgba(241,244,242,0.65);max-width:68ch;margin-bottom:20px;}
-  .tp-audit-link{color:var(--seaglass);text-decoration:none;font-family:var(--sans);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;border-bottom:1px solid rgba(184,205,212,0.35);padding-bottom:2px;transition:color .3s,border-color .3s;display:inline-block;}
-  .tp-audit-link:hover{color:var(--white);border-color:var(--seaglass);}
-
-  /* ---------- Stats Band ---------- */
-  .stats-band{background:var(--moss);padding-block:80px;border-top:1px solid rgba(184,205,212,0.12);}
-  .stats-band h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.15;color:var(--white);margin-bottom:16px;}
-  .stats-intro{font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.7;color:rgba(241,244,242,0.75);max-width:64ch;margin-bottom:48px;}
-  .stat-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
-  .stat-card{background:rgba(255,255,255,0.05);border:1px solid rgba(184,205,212,0.15);padding:36px 28px;transition:transform .3s ease,box-shadow .3s ease;}
-  .stat-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(0,0,0,0.25);}
-  .stat-eyebrow{display:block;font-family:var(--sans);font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.12em;color:var(--seaglass);margin-bottom:16px;}
-  .stat-num{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(3.5rem,6vw,5.5rem);line-height:1;color:var(--white);margin-bottom:20px;}
-  .stat-desc{font-family:var(--sans);font-weight:300;font-size:15px;line-height:1.65;color:rgba(241,244,242,0.75);margin-bottom:14px;}
-  .stat-source{display:block;font-family:var(--sans);font-size:12px;font-weight:400;color:rgba(184,205,212,0.55);letter-spacing:.02em;}
-  .stat-source a{color:rgba(184,205,212,0.55);text-decoration:none;border-bottom:1px solid rgba(184,205,212,0.25);padding-bottom:1px;transition:color .3s,border-color .3s;}
-  .stat-source a:hover{color:var(--seaglass);border-color:rgba(184,205,212,0.6);}
-
-  /* ---------- FAQ Band ---------- */
-  .faq-band{background:var(--coolwhite);padding-block:96px;}
-  .faq-band .head-block{max-width:760px;margin-inline:auto;}
-  .faq-list{max-width:760px;margin-top:40px;margin-inline:auto;}
-  .faq-answer ul{margin:4px 0 16px 20px;padding:0;}
-  .faq-answer li{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;color:var(--moss);margin-bottom:8px;}
-  .faq-item{border-top:1px solid var(--hairline);}
-  .faq-item:last-child{border-bottom:1px solid var(--hairline);}
-  .faq-toggle{width:100%;background:none;border:none;padding:22px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;cursor:pointer;text-align:left;font-family:var(--sans);font-weight:400;font-size:16px;line-height:1.5;color:var(--moss);transition:color .25s ease,padding-left .25s ease;}
-  .faq-toggle:hover{color:var(--sage);padding-left:6px;}
-  .faq-toggle:hover .faq-icon::before,.faq-toggle:hover .faq-icon::after{background:var(--seaglass);}
-  .faq-q{flex:1;}
-  .faq-icon{width:20px;height:20px;flex-shrink:0;position:relative;margin-top:2px;}
-  .faq-icon::before,.faq-icon::after{content:'';position:absolute;background:var(--sage);transition:transform .3s ease,opacity .3s ease;}
-  .faq-icon::before{width:14px;height:1.5px;top:50%;left:50%;transform:translate(-50%,-50%);}
-  .faq-icon::after{width:1.5px;height:14px;top:50%;left:50%;transform:translate(-50%,-50%);}
-  .faq-item.open .faq-icon::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0;}
-  .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease;}
-  .faq-item.open .faq-answer{max-height:800px;}
-  .faq-answer p{font-family:var(--sans);font-weight:300;font-size:16px;line-height:1.75;color:var(--moss);padding-bottom:24px;max-width:680px;}
-
-  @media (max-width:860px){
-    .why-practice,.touchpoints,.stats-band,.faq-band{padding-block:64px;}
-    .tp-cards{grid-template-columns:1fr 1fr;}
-    .stat-cards{grid-template-columns:1fr;}
-    .why-top{grid-template-columns:1fr;gap:32px;margin-bottom:40px;}
-    .why-cards{grid-template-columns:1fr;}
+  /* ---------- Responsive ---------- */
+  @media (max-width:980px){
+    .row{grid-template-columns:48px 1fr}
+    .row > div{grid-column:2}
+    .post{grid-template-columns:1fr;gap:10px}
+    .post .go{justify-self:start}
+  }
+  @media (max-width:820px){
+    .wrap{padding:0 20px}
+    nav{height:80px}
+    .hero-band{padding-top:80px}
+    .site-logo{height:22px}
+    .menu-btn{display:block}
+    .links{display:none;position:absolute;top:80px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:18px;padding:24px 20px 28px;background:var(--night);border-bottom:1px solid rgba(184,205,212,.2)}
+    .links.open{display:flex}
+    .hero{grid-template-columns:1fr;gap:8px}
+    .hero-text{padding:24px 0 0}
+    .photo{order:2;max-width:340px;margin:0 auto;width:100%}
+    section{padding:80px 0}
+    .split,.lead-quote,.more-quotes,.stats,.cases{grid-template-columns:1fr;gap:40px}
+    .row{grid-template-columns:36px 1fr;gap:12px}
+    .form-row{grid-template-columns:1fr;gap:0}
+    .faq-answer{padding-right:0}
   }
 </style>
 </head>
 <body>
 
-<header>
-  <nav class="wrap nav">
-    <a href="index.html" class="wordmark"><img src="images/logo-olive.png" alt="Elzanne Amao" class="site-logo"></a>
-    <div class="nav-links">
-      <div class="nav-item nav-dropdown">
-        <a href="#services">Services</a>
-        <div class="dropdown-menu">
-          <a href="ai-content-operations-audit.html">AI Content Operations Audit</a>
-          <a href="ai-integrated-content-system-design.html">Content System Design</a>
-          <a href="ai-advisory-sme-leadership.html">AI Advisory for SME Leadership</a>
-        </div>
-      </div>
-      <div class="nav-item nav-dropdown">
-        <a href="#work">Case Studies</a>
-        <div class="dropdown-menu">
-          <a href="think-orion-case-study.html">Think Orion</a>
-          <a href="inscape-case-study.html">Inscape</a>
-        </div>
-      </div>
+<header class="site-header">
+  <nav class="wrap" aria-label="Main">
+    <a href="index.html"><img src="images/logo-white.png" alt="Elzanne Amao" class="site-logo" width="856" height="80"></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="site-links">Menu</button>
+    <div class="links" id="site-links">
+      <a href="#services">Services</a>
+      <a href="#work">Case studies</a>
       <a href="#writing">Writing</a>
       <a href="about.html">About</a>
-      <a href="#contact" class="btn-cta">Contact Me</a>
+      <a href="#contact" class="cta">Contact</a>
     </div>
-    <div class="menu-icon">Menu</div>
   </nav>
 </header>
 
 <main>
   <!-- Hero -->
-  <section class="wrap hero">
-    <div class="hero-grid">
+  <section class="dark hero-band">
+    <div class="wrap hero">
+      <div class="photo"><img src="images/elzanne-hero.webp" alt="Elzanne Amao" width="900" height="1272" fetchpriority="high"></div>
+      <div class="hero-text">
+        <h1>Your team adopted AI. <em>Were your brand standards part of the plan?</em></h1>
+        <p class="lede">I help business owners find out what AI is doing to the standard of work their brand was built on.</p>
+        <div class="actions">
+          <a class="btn btn-light" href="#services">View my services</a>
+          <a class="tlink" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Read my Substack</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why this practice + Services -->
+  <section id="services">
+    <div class="wrap split">
+      <div class="side reveal">
+        <h2 class="kicker">Content consulting for businesses that use AI</h2>
+        <p>Many businesses adopted AI to help teams produce content faster, reduce bottlenecks, and keep up with increasing demands on marketing and communication teams.</p>
+        <p>Once AI enters the workflow, content standards can become difficult to maintain. Different people develop different ways of working. Teams publish more but are less certain that the work reflects the same standards their business expects.</p>
+        <ul class="signs">
+          <li>Your content volume increased, but engagement remains flat</li>
+          <li>Different people, different prompts, no shared standard</li>
+          <li>Your content could run under a competitor's name and nobody would notice</li>
+        </ul>
+        <p class="note">Not sure which service fits? <a href="#contact">Email me</a> and describe what you're working on.</p>
+      </div>
       <div>
-        <h1 class="tagline reveal">Your team adopted AI.<br>Were your brand standards part of the plan?</h1>
-        <p class="intro reveal">I help business owners find out what AI is doing to the standard of work their brand was built on.</p>
-        <div class="actions reveal">
-          <a class="btn btn-primary" href="#services">View my services</a>
-          <a class="btn btn-outline" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Read my Substack</a>
-        </div>
-      </div>
-      <div class="portrait reveal">
-        <img src="images/hero-portrait.jpg" alt="Elzanne Amao in a client consultation, with Table Mountain visible through the window">
-      </div>
-    </div>
-  </section>
-
-  <!-- Why This Practice -->
-  <section class="why-practice">
-    <div class="wrap">
-      <div class="why-top">
-        <div class="why-heading">
-          <h2 class="reveal">Content consulting for businesses that use AI</h2>
-          <div class="accent-rule reveal"></div>
-        </div>
-        <div class="why-body">
-          <p class="reveal">Many businesses adopted AI to help teams produce content faster, reduce bottlenecks, and keep up with increasing demands on marketing and communication teams.</p>
-          <p class="reveal">Once AI enters the workflow, content standards can become difficult to maintain. Different people develop different ways of working. Teams publish more but are less certain that the work reflects the same standards their business expects.</p>
-        </div>
-      </div>
-      <div class="why-cards">
-        <div class="why-card reveal">
-          <div class="why-card-dot"></div>
-          <p>Your content volume increased, but engagement remains flat.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-card-dot"></div>
-          <p>Different people, different prompts, no shared standard.</p>
-        </div>
-        <div class="why-card reveal">
-          <div class="why-card-dot"></div>
-          <p>Your content could run under a competitor's name and nobody would notice.</p>
-        </div>
-      </div>
-      <p class="why-closing reveal">My work focuses on understanding where those patterns are coming from and what needs to change. <a href="#services">See how I work →</a></p>
-    </div>
-  </section>
-
-  <!-- What I do -->
-  <section id="services" class="engagements">
-    <div class="wrap">
-      <div class="head-block reveal">
-        <h2 class="section-head">Services</h2>
-        <div class="accent-line"></div>
-      </div>
-      <div class="whatido-intro">
-        <p class="reveal">The work is structured around where you are in the problem and whether you need clarity, a system, or ongoing oversight.</p>
-      </div>
-      <div class="cards">
-        <a class="card reveal" href="ai-content-operations-audit.html">
-          <div class="card-img"><img src="images/hero-audit.jpg.png" alt="AI content operations audit" loading="lazy"></div>
-          <h3>AI content operations audit</h3>
-          <p>If you can tell something is off with your content since AI entered the workflow but you're not sure what, this is where to start. I produce a written read on what's working, what isn't, and where the highest-leverage changes are.</p>
-          <span class="inquire">Learn more <span class="arrow">&rarr;</span></span>
-        </a>
-        <a class="card reveal" href="ai-integrated-content-system-design.html">
-          <div class="card-img"><img src="images/hero-system-design.jpg.png" alt="AI-integrated content system design" loading="lazy"></div>
-          <h3>AI-integrated content system design</h3>
-          <p>If you know what needs to change and you need someone to design the system, this is the build engagement. I design or rebuild your content operation so your team knows what AI handles, what they handle, and how the pieces fit together.</p>
-          <span class="inquire">Learn more <span class="arrow">&rarr;</span></span>
-        </a>
-        <a class="card reveal" href="ai-advisory-sme-leadership.html">
-          <div class="card-img"><img src="images/hero-advisory.jpg.png" alt="AI advisory for SME leadership" loading="lazy"></div>
-          <h3>AI advisory for SME leadership</h3>
-          <p>If you don't need a project but you do need someone to think with, this is a retainer. Monthly check-ins, async availability between them, and a quarterly written read on how your AI integration is holding up against the business you're building.</p>
-          <span class="inquire">Learn more <span class="arrow">&rarr;</span></span>
-        </a>
-      </div>
-      <p class="eng-note reveal">If you're not sure which of these fits, that's fine. <a href="#contact">Email me</a> and describe what you're working on.</p>
-    </div>
-  </section>
-
-  <!-- Research Stats -->
-  <section class="stats-band">
-    <div class="wrap">
-      <h2 class="reveal">What the research shows</h2>
-      <p class="stats-intro reveal">The impact of AI-generated content on audience trust is measurable and growing. Three recent studies put numbers to it.</p>
-      <div class="stat-cards">
-        <div class="stat-card reveal">
-          <span class="stat-eyebrow">Consumer comfort</span>
-          <span class="stat-num">26%</span>
-          <p class="stat-desc">of consumers are comfortable with AI-generated content — down from 60% in two years.</p>
-          <span class="stat-source"><a href="https://www.emarketer.com/content/25-years-marketing-trends-consumer-connection-data-collection-ai" target="_blank" rel="noopener">eMarketer, 2025</a></span>
-        </div>
-        <div class="stat-card reveal">
-          <span class="stat-eyebrow">Reader trust</span>
-          <span class="stat-num">~50%</span>
-          <p class="stat-desc">drop in reader trust when content is perceived as AI-generated, with a 14% decline in purchase consideration.</p>
-          <span class="stat-source"><a href="https://raptive.com/blog/the-ai-stink-is-real-and-its-costing-brands/" target="_blank" rel="noopener">Raptive study, 3,000 adults, 2025</a></span>
-        </div>
-        <div class="stat-card reveal">
-          <span class="stat-eyebrow">Brand trust</span>
-          <span class="stat-num">85%</span>
-          <p class="stat-desc">of decision-makers say AI content published without human review erodes brand trust.</p>
-          <span class="stat-source"><a href="https://wpvip.com/future-of-the-web-2026/ai-content-governance/" target="_blank" rel="noopener">WordPress VIP, 800 respondents, 2026</a></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Selected Work -->
-  <section id="work" class="wrap work">
-    <div class="head-block reveal">
-      <h2 class="section-head">Case Studies</h2>
-      <div class="accent-line"></div>
-    </div>
-    <div class="work-grid">
-      <a class="work-card reveal" href="think-orion-case-study.html">
-        <div class="work-thumb">
-          <img src="images/think-orion-thumb.jpg" alt="Think Orion case study">
-        </div>
-        <h3>Building Think Orion's onboarding system</h3>
-        <p>Designing and implementing a comprehensive client onboarding infrastructure that bridges sales and operations for a fast-scaling marketing agency.</p>
-        <span class="view">View Case Study <span class="arrow">&#8599;</span></span>
-      </a>
-      <a class="work-card reveal" href="inscape-case-study.html">
-        <div class="work-thumb">
-          <img src="images/inscape-thumb.jpg" alt="Inscape case study">
-        </div>
-        <h3>Restructuring a BA degree for distance delivery</h3>
-        <p>A complete curriculum and instructional-design overhaul that adapted a traditional BA programme for digital-first, remote engagement while holding its academic rigour.</p>
-        <span class="view">View Case Study <span class="arrow">&#8599;</span></span>
-      </a>
-    </div>
-  </section>
-
-  <!-- Voices of Collaboration -->
-  <section class="voices">
-    <div class="wrap">
-      <div class="head-block reveal">
-        <h2 class="section-head">Testimonials</h2>
-        <div class="accent-line"></div>
-      </div>
-      <div class="carousel reveal">
-        <button class="car-btn prev" aria-label="Previous"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button class="car-btn next" aria-label="Next"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
-        <div class="slides">
-        <div class="slide active">
-            <blockquote>"Calm and collected, Elzanne probed with clarity and intent, helping me to hear myself with the same clarity, confidence, and authority to stick to our brand WHY. The result was a breathtaking brand identity, an interpretation of our vision."</blockquote>
-            <div class="attr">Thato Matlala-Tawana<span class="role">Human Capital Leadership &amp; Business Partnering · Client, 2024</span></div>
-          </div>
-          <div class="slide">
-            <blockquote>"Elzanne deeply comprehends that content is not solely about aesthetics and emotions, but equally about structure and purpose. Her ability to combine the artistic and analytical aspects of writing is a testament to her holistic approach."</blockquote>
-            <div class="attr">Haddas Shem Tov<span class="role">Creative Director, eTeacher Group · Direct manager, 2021 - 2023</span></div>
-          </div>
-          <div class="slide">
-            <blockquote>"Elzanne played a key role in establishing a new approach to delivering Commerce degrees in block mode rather than traditional semester mode. She skillfully planned and managed this programme, which paved the way for rolling out block mode across all our degree programmes."</blockquote>
-            <div class="attr">Janie Steyn<span class="role">Head of Programme, Commerce &amp; Law, Pearson Institute of Higher Education · Direct manager, 2017 - 2019</span></div>
+        <h2 class="sr-only">Services</h2>
+        <div class="row reveal">
+          <span class="n">01</span>
+          <h3><a href="ai-content-operations-audit.html">AI content operations audit</a></h3>
+          <div>
+            <p>If you can tell something is off with your content since AI entered the workflow but you're not sure what, this is where to start. I produce a written read on what's working, what isn't, and where the highest-leverage changes are.</p>
+            <a class="more" href="ai-content-operations-audit.html">Learn more <span class="arrow">&rarr;</span></a>
           </div>
         </div>
-        <div class="dots"></div>
+        <div class="row reveal">
+          <span class="n">02</span>
+          <h3><a href="ai-integrated-content-system-design.html">AI-integrated content system design</a></h3>
+          <div>
+            <p>If you know what needs to change and you need someone to design the system, this is the build engagement. I design or rebuild your content operation so your team knows what AI handles, what they handle, and how the pieces fit together.</p>
+            <a class="more" href="ai-integrated-content-system-design.html">Learn more <span class="arrow">&rarr;</span></a>
+          </div>
+        </div>
+        <div class="row reveal">
+          <span class="n">03</span>
+          <h3><a href="ai-advisory-sme-leadership.html">AI advisory for SME leadership</a></h3>
+          <div>
+            <p>If you don't need a project but you do need someone to think with, this is a retainer. Monthly check-ins, async availability between them, and a quarterly written read on how your AI integration is holding up against the business you're building.</p>
+            <a class="more" href="ai-advisory-sme-leadership.html">Learn more <span class="arrow">&rarr;</span></a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Recent Writing -->
+  <!-- Research -->
+  <section class="research">
+    <div class="wrap">
+      <h2 class="section-title reveal">What the research shows</h2>
+      <p class="stat-intro reveal" style="font-size:19px;font-weight:700;max-width:60ch">The impact of AI-generated content on audience trust is measurable and growing. Three recent studies put numbers to it.</p>
+      <div class="stats">
+        <div class="stat reveal">
+          <div class="num">26%</div>
+          <h3>Consumer comfort</h3>
+          <p>of consumers are comfortable with AI-generated content, down from 60% in two years.</p>
+          <a class="src" href="https://www.emarketer.com/content/25-years-marketing-trends-consumer-connection-data-collection-ai" target="_blank" rel="noopener">eMarketer, 2025</a>
+        </div>
+        <div class="stat reveal">
+          <div class="num">~50%</div>
+          <h3>Reader trust</h3>
+          <p>drop in reader trust when content is perceived as AI-generated, with a 14% decline in purchase consideration.</p>
+          <a class="src" href="https://raptive.com/blog/the-ai-stink-is-real-and-its-costing-brands/" target="_blank" rel="noopener">Raptive, 3,000 adults, 2025</a>
+        </div>
+        <div class="stat reveal">
+          <div class="num">85%</div>
+          <h3>Brand trust</h3>
+          <p>of decision-makers say AI content published without human review erodes brand trust.</p>
+          <a class="src" href="https://wpvip.com/future-of-the-web-2026/ai-content-governance/" target="_blank" rel="noopener">WordPress VIP, 800 respondents, 2026</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Case studies -->
+  <section id="work">
+    <div class="wrap">
+      <h2 class="section-title reveal" style="margin-bottom:64px">Case studies</h2>
+      <div class="cases">
+        <a class="case reveal" href="think-orion-case-study.html">
+          <span class="client">Think Orion</span>
+          <h3>Building Think Orion's onboarding system</h3>
+          <p>Designing and implementing a comprehensive client onboarding infrastructure that bridges sales and operations for a fast-scaling marketing agency.</p>
+          <span class="more">Read the case study <span class="arrow">&rarr;</span></span>
+        </a>
+        <a class="case reveal" href="inscape-case-study.html">
+          <span class="client">Inscape</span>
+          <h3>Restructuring a BA degree for distance delivery</h3>
+          <p>A complete curriculum and instructional-design overhaul that adapted a traditional BA programme for digital-first, remote engagement while holding its academic rigour.</p>
+          <span class="more">Read the case study <span class="arrow">&rarr;</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="dark" aria-labelledby="testimonials-title">
+    <div class="wrap">
+      <h2 id="testimonials-title" class="sr-only">Testimonials</h2>
+      <div class="lead-quote reveal">
+        <blockquote class="big">"Elzanne deeply comprehends that content is not solely about aesthetics and emotions, but equally about structure and purpose. Her ability to combine the artistic and analytical aspects of writing is a testament to her holistic approach."</blockquote>
+        <p class="attr"><b>Haddas Shem Tov</b>Creative Director, eTeacher Group · Direct manager, 2021 - 2023</p>
+      </div>
+      <div class="more-quotes">
+        <div class="reveal">
+          <blockquote>"Calm and collected, Elzanne probed with clarity and intent, helping me to hear myself with the same clarity, confidence, and authority to stick to our brand WHY. The result was a breathtaking brand identity, an interpretation of our vision."</blockquote>
+          <p class="attr"><b>Thato Matlala-Tawana</b>Human Capital Leadership &amp; Business Partnering · Client, 2024</p>
+        </div>
+        <div class="reveal">
+          <blockquote>"Elzanne played a key role in establishing a new approach to delivering Commerce degrees in block mode rather than traditional semester mode. She skillfully planned and managed this programme, which paved the way for rolling out block mode across all our degree programmes."</blockquote>
+          <p class="attr"><b>Janie Steyn</b>Head of Programme, Commerce &amp; Law, Pearson Institute of Higher Education · Direct manager, 2017 - 2019</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Writing -->
   <section id="writing" class="writing">
     <div class="wrap">
-      <h2 class="reveal">Recent Writing</h2>
-      <p class="reveal">I write regularly about AI's real-world implications — AI policy, the future of knowledge work, and what happens when systems don't account for the humans inside them.</p>
-      <div class="writing-cards">
-        <a class="writing-card reveal" href="https://elzanneamao.substack.com/p/south-africas-draft-ai-policy-withdrawn" target="_blank" rel="noopener">
-          <div class="card-img"><img src="https://substackcdn.com/image/fetch/$s_!j-oM!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F08beb154-77ee-4610-98fb-ba666e414a81_730x550.png" alt="South Africa AI Policy article" loading="lazy"></div>
+      <h2 class="section-title reveal">Recent writing</h2>
+      <p class="section-intro reveal">I write regularly about AI's real-world implications: AI policy, the future of knowledge work, and what happens when systems don't account for the humans inside them.</p>
+      <div class="posts">
+        <a class="post reveal" href="https://elzanneamao.substack.com/p/south-africas-draft-ai-policy-withdrawn" target="_blank" rel="noopener">
           <h3>South Africa's Draft AI Policy: Withdrawn for the Wrong Reason?</h3>
           <p>The fabricated citations made the headlines, but the document had deeper structural problems. On what the withdrawal means, what the commentary reveals, and where the conversation goes from here.</p>
-          <span class="read-link">Read on Substack <span class="arrow">→</span></span>
+          <span class="go">Read <span class="arrow">&rarr;</span></span>
         </a>
-        <a class="writing-card reveal" href="https://elzanneamao.substack.com/p/did-i-just-press-buttons-all-day" target="_blank" rel="noopener">
-          <div class="card-img"><img src="https://substackcdn.com/image/fetch/$s_!hDVe!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3eb367a2-b3c9-467e-a6c5-1bffe206914e_730x550.png" alt="Did I Just Press Buttons All Day article" loading="lazy"></div>
+        <a class="post reveal" href="https://elzanneamao.substack.com/p/did-i-just-press-buttons-all-day" target="_blank" rel="noopener">
           <h3>Did I Just Press Buttons All Day?</h3>
           <p>On what it means to spend a working day collaborating with AI, and whether the work that comes out of it counts.</p>
-          <span class="read-link">Read on Substack <span class="arrow">→</span></span>
+          <span class="go">Read <span class="arrow">&rarr;</span></span>
         </a>
-        <a class="writing-card reveal" href="https://elzanneamao.substack.com/p/how-social-media-spent-more-than" target="_blank" rel="noopener">
-          <div class="card-img"><img src="https://substackcdn.com/image/fetch/$s_!e7Jd!,w_1456,c_limit,f_webp,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa3b50027-1809-411a-ad93-d52a77149637_730x550.png" alt="How Social Media Spent a Decade Reinventing 1960s Advertising article" loading="lazy"></div>
+        <a class="post reveal" href="https://elzanneamao.substack.com/p/how-social-media-spent-more-than" target="_blank" rel="noopener">
           <h3>How Social Media Spent More Than a Decade Reinventing 1960s Advertising</h3>
           <p>On how digital marketing circled back to principles the ad industry figured out sixty years ago, and what that means for where we go next.</p>
-          <span class="read-link">Read on Substack <span class="arrow">→</span></span>
+          <span class="go">Read <span class="arrow">&rarr;</span></span>
         </a>
       </div>
-      <div style="margin-top:40px;">
-        <a class="btn btn-gold reveal" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Subscribe on Substack</a>
-      </div>
+      <p class="after reveal"><a class="tlink" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Subscribe on Substack <span class="arrow">&rarr;</span></a></p>
     </div>
   </section>
 
-  <!-- FAQs -->
-  <section id="faq" class="faq-band">
-    <div class="wrap">
-      <div class="head-block">
-        <h2 class="section-head reveal">Frequently asked questions</h2>
-        <div class="accent-line"></div>
+  <!-- FAQ -->
+  <section id="faq" class="faq">
+    <div class="wrap split">
+      <div class="reveal">
+        <h2 class="kicker">Frequently asked questions</h2>
       </div>
       <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-toggle">
-            <span class="faq-q">What kind of AI consulting is this?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer">
-            <p>This practice focuses on content quality and brand coherence. I don't build chatbots, automate CRM workflows, or set up AI agents. I work with businesses that have already adopted AI tools for content production and are dealing with the downstream effects: inconsistent output, flattened brand voice, or content that no longer sounds like it comes from a specific business with a specific point of view.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-toggle">
-            <span class="faq-q">Who is this for?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer">
-            <p>Founder-operators and senior leaders of established small to mid-sized businesses, typically 5 to 50 people. The common profile is a business where AI tools have been adopted — often informally, by individual team members — and the content has started to drift without anyone making a deliberate decision to change it. You may have noticed that your content is less distinctive than it used to be, or that different team members are producing noticeably different quality when they use AI.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-toggle">
-            <span class="faq-q">How is this different from an AI automation consultant?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer">
-            <p>AI automation consultants build systems that make your operations faster — bots, agents, workflow automations. That's useful work, but it doesn't address what's happening to the quality and coherence of your content. I assess the content itself: whether it meets your brand standards, whether it's consistent across channels, and whether the way your team uses AI is producing output you'd stand behind. The diagnostic and the system I build are both independent — they don't lead into an implementation pipeline or a platform partnership.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-toggle">
-            <span class="faq-q">Do you build AI tools or sell software?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer">
-            <p>No. I assess content quality, diagnose where AI adoption has introduced problems, and build documented systems your team uses to maintain quality going forward. I don't sell, resell, or partner with any AI platform. If your current tools are the right ones and the problem is how your team uses them, I'll say that.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-toggle">
-            <span class="faq-q">What does "independent" mean in this context?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer">
-            <p>It means my recommendations aren't shaped by a platform partnership or an implementation practice I need to fill. If the audit finding is that you need a different tool, I'll recommend it. If the finding is that you need to change how your team prompts rather than switch tools, I'll recommend that instead. The deliverable is the diagnosis and the system — I don't have a build service to sell you afterwards.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-toggle">
-            <span class="faq-q">What does a typical engagement look like?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer">
-            <p>Most clients start with the audit, which takes about two weeks and produces a written report with specific findings and recommendations. If the findings indicate a need for structured change, the system design engagement follows — that's a four-to-eight-week build that produces a documented content operations system your team owns and runs independently. An ongoing advisory retainer is available for businesses that want strategic oversight as tools and practices evolve.</p>
-          </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-toggle">
-            <span class="faq-q">I'm not sure if I have a problem. How do I know if I need this?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
+        <details name="faq">
+          <summary>What kind of AI consulting is this?</summary>
+          <div class="faq-answer"><p>This practice focuses on content quality and brand coherence. I don't build chatbots, automate CRM workflows, or set up AI agents. I work with businesses that have already adopted AI tools for content production and are dealing with the downstream effects: inconsistent output, flattened brand voice, or content that no longer sounds like it comes from a specific business with a specific point of view.</p></div>
+        </details>
+        <details name="faq">
+          <summary>Who is this for?</summary>
+          <div class="faq-answer"><p>Founder-operators and senior leaders of established small to mid-sized businesses, typically 5 to 50 people. The common profile is a business where AI tools have been adopted — often informally, by individual team members — and the content has started to drift without anyone making a deliberate decision to change it. You may have noticed that your content is less distinctive than it used to be, or that different team members are producing noticeably different quality when they use AI.</p></div>
+        </details>
+        <details name="faq">
+          <summary>How is this different from an AI automation consultant?</summary>
+          <div class="faq-answer"><p>AI automation consultants build systems that make your operations faster — bots, agents, workflow automations. That's useful work, but it doesn't address what's happening to the quality and coherence of your content. I assess the content itself: whether it meets your brand standards, whether it's consistent across channels, and whether the way your team uses AI is producing output you'd stand behind. The diagnostic and the system I build are both independent — they don't lead into an implementation pipeline or a platform partnership.</p></div>
+        </details>
+        <details name="faq">
+          <summary>Do you build AI tools or sell software?</summary>
+          <div class="faq-answer"><p>No. I assess content quality, diagnose where AI adoption has introduced problems, and build documented systems your team uses to maintain quality going forward. I don't sell, resell, or partner with any AI platform. If your current tools are the right ones and the problem is how your team uses them, I'll say that.</p></div>
+        </details>
+        <details name="faq">
+          <summary>What does "independent" mean in this context?</summary>
+          <div class="faq-answer"><p>It means my recommendations aren't shaped by a platform partnership or an implementation practice I need to fill. If the audit finding is that you need a different tool, I'll recommend it. If the finding is that you need to change how your team prompts rather than switch tools, I'll recommend that instead. The deliverable is the diagnosis and the system — I don't have a build service to sell you afterwards.</p></div>
+        </details>
+        <details name="faq">
+          <summary>What does a typical engagement look like?</summary>
+          <div class="faq-answer"><p>Most clients start with the audit, which takes about two weeks and produces a written report with specific findings and recommendations. If the findings indicate a need for structured change, the system design engagement follows — that's a four-to-eight-week build that produces a documented content operations system your team owns and runs independently. An ongoing advisory retainer is available for businesses that want strategic oversight as tools and practices evolve.</p></div>
+        </details>
+        <details name="faq">
+          <summary>I'm not sure if I have a problem. How do I know if I need this?</summary>
           <div class="faq-answer">
             <p>A few indicators:</p>
             <ul>
@@ -698,63 +536,57 @@
             </ul>
             <p>If any of those apply, the audit will tell you whether there's a real problem and how significant it is.</p>
           </div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-toggle">
-            <span class="faq-q">Can I just write better prompts myself?</span>
-            <span class="faq-icon" aria-hidden="true"></span>
-          </button>
-          <div class="faq-answer">
-            <p>Better prompts help with individual outputs, but they don't solve the organisational problem. If three people on your team each write their own prompts with their own interpretation of the brand voice, you get three versions of the brand — regardless of how good each individual prompt is. The system I build gives your team a shared standard: documented prompts per channel, clear decision rights, and a workflow that produces consistent output across people and tools.</p>
-          </div>
-        </div>
+        </details>
+        <details name="faq">
+          <summary>Can I just write better prompts myself?</summary>
+          <div class="faq-answer"><p>Better prompts help with individual outputs, but they don't solve the organisational problem. If three people on your team each write their own prompts with their own interpretation of the brand voice, you get three versions of the brand — regardless of how good each individual prompt is. The system I build gives your team a shared standard: documented prompts per channel, clear decision rights, and a workflow that produces consistent output across people and tools.</p></div>
+        </details>
       </div>
     </div>
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="contact">
-    <div class="wrap">
-      <h2 class="reveal">Ready to restore your brand's authority?</h2>
-      <p class="contact-sub reveal">Tell me what's going on with your content. I'll let you know whether I can help and what the right next step is.</p>
-      <form name="contact" method="POST" data-netlify="true" class="contact-form reveal">
+  <section id="contact" class="dark contact">
+    <div class="wrap split">
+      <div class="reveal">
+        <h2>Ready to restore your <em>brand's authority?</em></h2>
+        <p class="sub">Tell me what's going on with your content. I'll let you know whether I can help and what the right next step is.</p>
+      </div>
+      <form name="contact" method="POST" data-netlify="true" class="reveal">
         <input type="hidden" name="form-name" value="contact">
         <div class="form-row">
-          <div class="form-field">
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
+          <div class="field">
+            <label for="name">Full name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" autocomplete="name" required>
           </div>
-          <div class="form-field">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" autocomplete="email" required>
           </div>
         </div>
-        <div class="form-field">
+        <div class="field">
           <label for="message">Message</label>
           <textarea id="message" name="message" placeholder="Tell me about your current AI content workflow…" required></textarea>
         </div>
-        <div class="form-submit">
-          <button type="submit" class="btn-send">Send Enquiry</button>
-        </div>
+        <button type="submit" class="btn btn-light">Send enquiry</button>
       </form>
     </div>
   </section>
 </main>
 
 <footer>
-  <div class="wrap footer-inner">
-    <span class="fname">Elzanne Amao</span>
-    <div class="footer-mid">
+  <div class="wrap">
+    <span>© 2026 Elzanne Amao. All rights reserved.</span>
+    <div class="social">
       <a href="https://elzanneamao.substack.com" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>Substack</a>
       <a href="https://www.linkedin.com/in/elzanneamao" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
     </div>
-    <span class="footer-copy">© 2026 Elzanne Amao. All rights reserved.</span>
   </div>
 </footer>
 
 <script>
-  // Reveal on scroll (progressive enhancement)
   document.addEventListener('DOMContentLoaded', () => {
+    // Reveal on scroll (progressive enhancement)
     const els = document.querySelectorAll('.reveal');
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
@@ -765,50 +597,16 @@
       els.forEach(el => el.classList.add('in'));
     }
 
-    // Carousel
-    const slides = Array.from(document.querySelectorAll('.slide'));
-    const dotsWrap = document.querySelector('.dots');
-    let i = 0;
-    slides.forEach((_, idx) => {
-      const d = document.createElement('button');
-      d.className = 'dot' + (idx === 0 ? ' active' : '');
-      d.setAttribute('aria-label', 'Go to testimonial ' + (idx + 1));
-      d.addEventListener('click', () => go(idx));
-      dotsWrap.appendChild(d);
+    // Mobile menu
+    const btn = document.querySelector('.menu-btn');
+    const links = document.getElementById('site-links');
+    const close = () => { links.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); btn.textContent = 'Menu'; };
+    btn.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Close' : 'Menu';
     });
-    const dots = Array.from(document.querySelectorAll('.dot'));
-    function go(n){
-      i = (n + slides.length) % slides.length;
-      slides.forEach((s, idx) => s.classList.toggle('active', idx === i));
-      dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
-    }
-    document.querySelector('.car-btn.next').addEventListener('click', () => go(i + 1));
-    document.querySelector('.car-btn.prev').addEventListener('click', () => go(i - 1));
-    // Swipe support
-    let touchStartX = 0;
-    document.querySelector('.slides').addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-    document.querySelector('.slides').addEventListener('touchend', e => { const diff = touchStartX - e.changedTouches[0].screenX; if (Math.abs(diff) > 50) go(diff > 0 ? i + 1 : i - 1); }, { passive: true });
-
-    // Mobile menu toggle
-    const menuIcon = document.querySelector('.menu-icon');
-    const navLinks = document.querySelector('.nav-links');
-    menuIcon.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-      menuIcon.textContent = navLinks.classList.contains('open') ? 'Close' : 'Menu';
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => { navLinks.classList.remove('open'); menuIcon.textContent = 'Menu'; });
-    });
-
-    // FAQ accordion
-    document.querySelectorAll('.faq-toggle').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
-      });
-    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
   });
 </script>
 </body>
