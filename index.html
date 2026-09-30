@@ -132,19 +132,20 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400..800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=20">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400..800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=21">
 <style>
   /* Homepage-only styles. Shared styles are in site.css */
   .hero-band{overflow:hidden;padding:96px 0 0;background:linear-gradient(180deg,var(--night) 0%,var(--night-2) 100%)}
-  .hero{display:grid;grid-template-columns:5fr 7fr;gap:72px;align-items:end}
+  .hero{display:grid;grid-template-columns:4fr 7fr;gap:64px;align-items:end}
   .photo{position:relative;padding-top:48px}
   .photo::before{content:"";position:absolute;left:50%;top:44%;width:150%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(203,215,193,.75) 0%,rgba(180,196,166,.45) 30%,rgba(122,140,110,.12) 58%,rgba(38,48,41,0) 72%)}
   .photo img{position:relative;z-index:1;display:block;width:100%;max-width:470px;height:auto;margin:0 auto}
   .hero-text{align-self:center;padding:40px 0 120px}
-  h1{font-weight:800;font-size:clamp(2.2rem,3.9vw,3.6rem);line-height:1.05;letter-spacing:-.025em}
+  h1{font-weight:800;letter-spacing:-.025em}
+  .hero h1{font-size:clamp(2rem,1.2rem + 2.6vw,3.25rem);line-height:1.12;max-width:22ch;text-wrap:balance}
   .nowrap{white-space:nowrap}
-  h1 em{font-style:normal;color:var(--sage-lt)}
+  .hero h1 em{font-style:italic;font-weight:400;color:var(--sea)}
   .lede{font-size:20px;color:var(--sea);max-width:40ch;margin-top:28px}
   .actions{display:flex;flex-wrap:wrap;gap:28px;align-items:center;margin-top:36px}
   /* Hero footnote: under the subhead on desktop, below the buttons on mobile */
@@ -274,7 +275,7 @@
     <div class="wrap hero">
       <div class="photo"><img src="images/elzanne-hero.webp" alt="Elzanne Amao" width="900" height="1272" fetchpriority="high"></div>
       <div class="hero-text">
-        <h1>Businesses that keep their own voice are easier to trust as <span class="nowrap">AI-generated</span> content spreads.<a href="#research" class="footnote-mark" aria-label="See the research">*</a></h1>
+        <h1>Businesses that keep their own voice <em>are easier to trust as <span class="nowrap">AI-generated</span> content&nbsp;spreads.</em><a href="#research" class="footnote-mark" aria-label="See the research">*</a></h1>
         <p class="lede">I audit how your team uses AI for content and build the standards that keep your work sounding like the people behind it.</p>
         <p class="footnote">*Readers report roughly half the trust in content they perceive as <span class="nowrap">AI-generated</span>. <a href="#research">See the research</a></p>
         <div class="actions">
@@ -525,6 +526,6 @@
   </div>
 </footer>
 
-<script src="site.js?v=20"></script>
+<script src="site.js?v=21"></script>
 </body>
 </html>
