@@ -133,7 +133,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400..800;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=21">
+<link rel="stylesheet" href="site.css?v=22">
 <style>
   /* Homepage-only styles. Shared styles are in site.css */
   .hero-band{overflow:hidden;padding:96px 0 0;background:linear-gradient(180deg,var(--night) 0%,var(--night-2) 100%)}
@@ -148,12 +148,7 @@
   .hero h1 em{font-style:italic;font-weight:400;color:var(--sea)}
   .lede{font-size:20px;color:var(--sea);max-width:40ch;margin-top:28px}
   .actions{display:flex;flex-wrap:wrap;gap:28px;align-items:center;margin-top:36px}
-  /* Hero footnote: under the subhead on desktop, below the buttons on mobile */
   .hero-text{display:flex;flex-direction:column;align-items:flex-start}
-  .footnote-mark{color:var(--gold);text-decoration:none;font-size:.6em;vertical-align:super;line-height:0;margin-left:.05em}
-  .footnote-mark:hover{color:#c9c56a}
-  .footnote{font-size:.8rem;opacity:.8;margin-top:1rem;color:var(--sea);max-width:52ch}
-  .footnote a{color:#fff;border-bottom:1px solid var(--gold)}
   section{padding:128px 0}
   .section-intro{font-size:19px;color:var(--muted);max-width:56ch;margin-bottom:64px}
 
@@ -227,7 +222,6 @@
     .hero-band{padding-top:80px}
     .hero{grid-template-columns:1fr;gap:8px}
     .hero-text{padding:24px 0 0}
-    .hero-text .footnote{order:3;margin-top:24px}
     .photo{order:2;max-width:340px;margin:0 auto;width:100%}
     section{padding:80px 0}
     .stats{grid-template-columns:1fr;gap:16px}
@@ -275,9 +269,8 @@
     <div class="wrap hero">
       <div class="photo"><img src="images/elzanne-hero.webp" alt="Elzanne Amao" width="900" height="1272" fetchpriority="high"></div>
       <div class="hero-text">
-        <h1>Businesses that keep their own voice <em>are easier to trust as <span class="nowrap">AI-generated</span> content&nbsp;spreads.</em><a href="#research" class="footnote-mark" aria-label="See the research">*</a></h1>
+        <h1>Businesses that keep their own voice <em>are easier to trust as <span class="nowrap">AI-generated</span> content&nbsp;spreads.</em></h1>
         <p class="lede">I audit how your team uses AI for content and build the standards that keep your work sounding like the people behind it.</p>
-        <p class="footnote">*Readers report roughly half the trust in content they perceive as <span class="nowrap">AI-generated</span>. <a href="#research">See the research</a></p>
         <div class="actions">
           <a class="btn btn-light" href="#services">View my services</a>
           <a class="tlink" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Read my Substack</a>
@@ -526,6 +519,6 @@
   </div>
 </footer>
 
-<script src="site.js?v=21"></script>
+<script src="site.js?v=22"></script>
 </body>
 </html>
