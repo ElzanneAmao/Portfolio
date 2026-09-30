@@ -132,8 +132,8 @@
 <script>document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400..800;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=24">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=25">
 <style>
   /* Homepage-only styles. Shared styles are in site.css */
   .hero-band{overflow:hidden;padding:96px 0 0;background:linear-gradient(180deg,var(--night) 0%,var(--night-2) 100%)}
@@ -146,8 +146,8 @@
   .hero h1{font-size:clamp(2rem,1.2rem + 2.6vw,3.25rem);line-height:1.12;max-width:22ch;text-wrap:balance}
   .nowrap{white-space:nowrap}
   .hero h1 em{font-style:italic;font-weight:400;color:inherit}
-  .lede{font-size:20px;color:var(--sea);max-width:40ch;margin-top:28px}
-  .actions{display:flex;flex-wrap:wrap;gap:28px;align-items:center;margin-top:36px}
+  .lede{font-size:21px;font-weight:300;color:#fff;max-width:40ch;margin-top:28px;line-height:1.6}
+  .actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:36px}
   .hero-text{display:flex;flex-direction:column;align-items:flex-start}
   section{padding:128px 0}
   .section-intro{font-size:19px;color:var(--muted);max-width:56ch;margin-bottom:64px}
@@ -222,6 +222,8 @@
     .hero-band{padding-top:80px}
     .hero{grid-template-columns:1fr;gap:8px}
     .hero-text{padding:24px 0 0}
+    .actions{flex-direction:column;align-items:stretch;gap:12px;width:100%}
+    .actions .btn{text-align:center}
     .photo{order:2;max-width:340px;margin:0 auto;width:100%}
     section{padding:80px 0}
     .stats{grid-template-columns:1fr;gap:16px}
@@ -273,7 +275,7 @@
         <p class="lede">I audit how your team uses AI for content and build the standards that keep your work sounding like the people behind it.</p>
         <div class="actions">
           <a class="btn btn-light" href="#services">View my services</a>
-          <a class="tlink" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Read my Substack</a>
+          <a class="btn btn-ghost" href="https://elzanneamao.substack.com" target="_blank" rel="noopener">Read my Substack</a>
         </div>
       </div>
     </div>
@@ -519,6 +521,6 @@
   </div>
 </footer>
 
-<script src="site.js?v=24"></script>
+<script src="site.js?v=25"></script>
 </body>
 </html>
